@@ -9,8 +9,7 @@ public class ModuleSide : MonoBehaviour
     [SerializeField]
     private Transform dockTransform = null;
 
-    private Vector2 middlePointGlobal = Vector2.zero;
-    private Vector2 normalDirectionGlobal = Vector2.zero;
+    public bool connected = false;
 
     public Module ModuleParent
     {
@@ -24,7 +23,7 @@ public class ModuleSide : MonoBehaviour
     {
         get
         {
-            return middlePointGlobal;
+            return dockTransform.position;
         }
     }
 
@@ -32,23 +31,20 @@ public class ModuleSide : MonoBehaviour
     {
         get
         {
-            return normalDirectionGlobal;
+            return dockTransform.up;
         }
-    }
-
-    private void Start()
-    {
-        middlePointGlobal = dockTransform.position;
-        normalDirectionGlobal = dockTransform.up;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ModuleSide otherModuleSide = collision.GetComponent<ModuleSide>();
-
-        if(otherModuleSide)
+        if(connected == false)
         {
-            moduleParent.InteractionBetweenModulesSides(this, otherModuleSide);
+            ModuleSide otherModuleSide = collision.GetComponent<ModuleSide>();
+
+            if (otherModuleSide)
+            {
+                moduleParent.InteractionBetweenModulesSides(this, otherModuleSide);
+            }
         }
     }
 }
