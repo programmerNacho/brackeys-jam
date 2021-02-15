@@ -17,17 +17,15 @@ public class PlayerModule : Module
                     DockOtherModule(myModuleSide, otherModuleSide, otherSimpleModule);
                     otherSimpleModule.SetState(SimpleModule.State.WithPlayer);
                     break;
-                case SimpleModule.State.WithPlayer:
-                    break;
+
                 case SimpleModule.State.WithEnemy:
-                    break;
-                default:
+                    // Me muero.
                     break;
             }
         }
         else if (otherModule is EnemyModule otherEnemyModule)
         {
-
+            // Hemos chocado nexos el enemigo y yo. Muero.
         }
     }
 }

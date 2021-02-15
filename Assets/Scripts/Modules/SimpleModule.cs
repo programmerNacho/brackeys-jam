@@ -30,13 +30,26 @@ public class SimpleModule : Module
                             case State.WithPlayer:
                                 SetState(State.WithPlayer);
                                 break;
+                            case State.WithEnemy:
+                                SetState(State.WithEnemy);
+                                break;
                         }
                     }
                     break;
-                case State.WithPlayer:
-                    break;
-                case State.WithEnemy:
-                    break;
+            }
+        }
+        else if(otherModule is PlayerModule otherPlayerModule)
+        {
+            if(currentState == State.WithEnemy)
+            {
+                // Me desacoplo.
+            }
+        }
+        else if(otherModule is EnemyModule otherEnemyModule)
+        {
+            if(currentState == State.WithPlayer)
+            {
+                // Me desacoplo.
             }
         }
     }
