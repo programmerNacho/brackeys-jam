@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7267710894748608508}
   - component: {fileID: 7267710894748608509}
   - component: {fileID: 7267710894748608482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7267710895014714498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 7267710895280646911}
   - component: {fileID: 7267710895280646910}
   - component: {fileID: 7267710895280646905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41418427, y: 0.021959854}
+  m_Size: {x: 0.3, y: 0.04}
   m_EdgeRadius: 0
 --- !u!50 &7267710895280646910
 Rigidbody2D:
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 7267710895343278907}
   - component: {fileID: 7267710895343278906}
   - component: {fileID: 7267710895343278901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41418427, y: 0.021959854}
+  m_Size: {x: 0.3, y: 0.04}
   m_EdgeRadius: 0
 --- !u!50 &7267710895343278906
 Rigidbody2D:
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 7267710895579236373}
   - component: {fileID: 7267710895579236372}
   - component: {fileID: 7267710895579236375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41418427, y: 0.021959854}
+  m_Size: {x: 0.3, y: 0.04}
   m_EdgeRadius: 0
 --- !u!50 &7267710895579236372
 Rigidbody2D:
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 7267710896371923923}
   - component: {fileID: 7267710896371923922}
   - component: {fileID: 7267710896371923949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41418427, y: 0.021959854}
+  m_Size: {x: 0.3, y: 0.04}
   m_EdgeRadius: 0
 --- !u!50 &7267710896371923922
 Rigidbody2D:
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 7267710896388426723}
   - component: {fileID: 7267710896388426722}
   - component: {fileID: 7267710896388426749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41418427, y: 0.021959854}
+  m_Size: {x: 0.3, y: 0.04}
   m_EdgeRadius: 0
 --- !u!50 &7267710896388426722
 Rigidbody2D:
@@ -628,7 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7267710896560904722}
   - component: {fileID: 7267710896560904749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 7267710896696901694}
   - component: {fileID: 7267710896696901689}
   - component: {fileID: 7267710896696901688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +757,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41418427, y: 0.021959854}
+  m_Size: {x: 0.3, y: 0.04}
   m_EdgeRadius: 0
 --- !u!50 &7267710896696901689
 Rigidbody2D:

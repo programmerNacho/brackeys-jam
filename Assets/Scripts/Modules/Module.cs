@@ -18,6 +18,42 @@ public abstract class Module : MonoBehaviour
 
     public abstract void InteractionBetweenModulesSides(ModuleSide myModuleSide, ModuleSide otherModuleSide);
 
+    protected void DockOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    {
+        ConnectModulesAndModuleSides(myModuleSide, otherModuleSide, otherModule);
+        SetOtherModuleParentAndPhysicsBehaviour(otherModule);
+        RotateOtherModule(myModuleSide, otherModuleSide, otherModule);
+        MoveOtherModule(myModuleSide, otherModuleSide, otherModule);
+    }
+
+    private void RotateOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    {
+        Vector2 inverseMyModuleSideNormal = -myModuleSide.NormalDirectionGlobal;
+        Vector2 otherModuleSideNormal = otherModuleSide.NormalDirectionGlobal;
+        float angleRotationZ = Vector2.SignedAngle(otherModuleSideNormal, inverseMyModuleSideNormal);
+        otherModule.transform.Rotate(Vector3.forward, angleRotationZ);
+    }
+
+    private void MoveOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    {
+        Vector2 myDockPoint = myModuleSide.MiddlePointGlobal;
+        Vector2 otherDockPoint = otherModuleSide.MiddlePointGlobal;
+        Vector2 translationOtherModule = myDockPoint - otherDockPoint;
+        otherModule.transform.position = (Vector2)otherModule.transform.position + translationOtherModule;
+    }
+
+    private void ConnectModulesAndModuleSides(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    {
+        ConnectNewModule(otherModule, myModuleSide);
+        otherModule.ConnectNewModule(this, otherModuleSide);
+    }
+
+    private void SetOtherModuleParentAndPhysicsBehaviour(Module otherModule)
+    {
+        otherModule.SetParentModule(this);
+        otherModule.DeActivatePhysics();
+    }
+
     public void ConnectNewModule(Module newModule, ModuleSide sideConnected)
     {
         if(connectedModules.Contains(newModule) == false && moduleSides.Contains(sideConnected))
@@ -27,22 +63,26 @@ public abstract class Module : MonoBehaviour
         }
     }
 
-    public void SetParentModule(Module parentModule)
+    public virtual void SetParentModule(Module parentModule)
     {
-        transform.SetParent(parentModule.transform);
+        transform.SetParent(parentModule.transform, true);
     }
 
     public void ActivatePhysics()
     {
+        if(rigidbody)
+        {
+            Destroy(rigidbody);
+        }
+
+        rigidbody = gameObject.AddComponent<Rigidbody2D>();
         rigidbody.isKinematic = false;
         rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        rigidbody.gravityScale = 0f;
     }
 
     public void DeActivatePhysics()
     {
-        rigidbody.isKinematic = true;
-        rigidbody.bodyType = RigidbodyType2D.Kinematic;
-        rigidbody.velocity = Vector2.zero;
-        rigidbody.angularVelocity = 0f;
+        Destroy(rigidbody);
     }
 }

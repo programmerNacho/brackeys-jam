@@ -41,7 +41,7 @@ public class ModuleSide : MonoBehaviour
         {
             ModuleSide otherModuleSide = collision.GetComponent<ModuleSide>();
 
-            if (otherModuleSide)
+            if (otherModuleSide && otherModuleSide.moduleParent != moduleParent)
             {
                 moduleParent.InteractionBetweenModulesSides(this, otherModuleSide);
             }
