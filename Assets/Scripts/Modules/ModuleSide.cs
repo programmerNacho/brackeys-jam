@@ -4,15 +4,51 @@ using UnityEngine;
 
 public class ModuleSide : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Module moduleParent = null;
+    [SerializeField]
+    private Transform dockTransform = null;
+
+    private Vector2 middlePointGlobal = Vector2.zero;
+    private Vector2 normalDirectionGlobal = Vector2.zero;
+
+    public Module ModuleParent
     {
-        
+        get
+        {
+            return moduleParent;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public Vector2 MiddlePointGlobal
     {
-        
+        get
+        {
+            return middlePointGlobal;
+        }
+    }
+
+    public Vector2 NormalDirectionGlobal
+    {
+        get
+        {
+            return normalDirectionGlobal;
+        }
+    }
+
+    private void Start()
+    {
+        middlePointGlobal = dockTransform.position;
+        normalDirectionGlobal = dockTransform.up;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ModuleSide otherModuleSide = collision.GetComponent<ModuleSide>();
+
+        if(otherModuleSide)
+        {
+            moduleParent.InteractionBetweenModulesSides(this, otherModuleSide);
+        }
     }
 }
