@@ -61,10 +61,9 @@ public class SimpleModule : Module
 
         foreach (Module m in connectedModules)
         {
-            if(m is SimpleModule s)
+            if(m is SimpleModule s && m.transform.parent == transform)
             {
-                s.currentState = state;
-                s.gameObject.layer = LayerMask.NameToLayer(currentState.ToString());
+                s.SetState(currentState);
             }
         }
     }
@@ -78,8 +77,8 @@ public class SimpleModule : Module
         else
         {
             Module currentParentModule = transform.parent.GetComponent<Module>();
-            currentParentModule.DeActivatePhysics();
             base.SetParentModule(parentModule);
+            currentParentModule.DeActivatePhysics();
             currentParentModule.SetParentModule(this);
         }
     }
