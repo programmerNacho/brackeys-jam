@@ -9,8 +9,6 @@ public class ModuleSide : MonoBehaviour
     [SerializeField]
     private Transform dockTransform = null;
 
-    public bool connected = false;
-
     public Module ModuleParent
     {
         get
@@ -37,11 +35,11 @@ public class ModuleSide : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(connected == false)
-        {
-            ModuleSide otherModuleSide = collision.GetComponent<ModuleSide>();
+        ModuleSide otherModuleSide = collision.GetComponent<ModuleSide>();
 
-            if (otherModuleSide && otherModuleSide.moduleParent != moduleParent)
+        if (moduleParent.CanDock())
+        {
+            if (otherModuleSide && otherModuleSide.moduleParent != moduleParent && otherModuleSide.moduleParent.CanDock())
             {
                 moduleParent.InteractionBetweenModulesSides(this, otherModuleSide);
             }

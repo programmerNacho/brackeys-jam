@@ -28,4 +28,14 @@ public class PlayerModule : Module
             // Hemos chocado nexos el enemigo y yo. Muero.
         }
     }
+
+    public override void ModuleImpacted(Vector2 globalImpactPoint, Vector2 globalImpactDirection)
+    {
+        Die();
+    }
+
+    private void Die()
+    {
+        Debug.Log("Muerto");
+    }
 }

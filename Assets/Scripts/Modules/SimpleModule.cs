@@ -82,4 +82,46 @@ public class SimpleModule : Module
             currentParentModule.SetParentModule(this);
         }
     }
+
+    public override void ModuleImpacted(Vector2 globalImpactPoint, Vector2 globalImpactDirection)
+    {
+        BeginCanDockCooldown();
+        DisconnectFromParentModule();
+        base.ActivatePhysics();
+        transform.parent = null;
+
+        if (connectedModules.Count > 0)
+        {
+            SetState(State.WithSimple);
+        }
+        else
+        {
+            SetState(State.Free);
+        }
+
+
+        rigidbody.AddForce(globalImpactDirection * 5f, ForceMode2D.Impulse);
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+
+        Module otherModule = collision.gameObject.GetComponent<Module>();
+
+        if(otherModule)
+        {
+            if(otherModule is SimpleModule simpleModule)
+            {
+                bool playerAgainstEnemy = currentState == State.WithPlayer && simpleModule.currentState == State.WithEnemy;
+                bool enemyAgainstPlayer = currentState == State.WithEnemy && simpleModule.currentState == State.WithPlayer;
+
+                if (playerAgainstEnemy || enemyAgainstPlayer)
+                {
+                    CalculateAndExecuteImpact(collision);
+                }
+            }
+        }
+        
+    }
 }
