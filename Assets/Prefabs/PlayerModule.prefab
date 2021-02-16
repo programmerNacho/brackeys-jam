@@ -76,7 +76,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 7267710894748608510}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 7267710896388426749}
   - {fileID: 7267710895343278901}
   - {fileID: 7267710895579236375}
+  cooldownToCanDock: 2
 --- !u!1 &7267710895014714525
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 7267710894748608482}
   dockTransform: {fileID: 7267710895280646904}
-  connected: 0
 --- !u!1 &7267710895343278903
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 7267710894748608482}
   dockTransform: {fileID: 7267710895343278900}
-  connected: 0
 --- !u!1 &7267710895579236369
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +426,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 7267710894748608482}
   dockTransform: {fileID: 7267710895579236374}
-  connected: 0
 --- !u!1 &7267710896371923951
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +520,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 7267710894748608482}
   dockTransform: {fileID: 7267710896371923948}
-  connected: 0
 --- !u!1 &7267710896388426751
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +614,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 7267710894748608482}
   dockTransform: {fileID: 7267710896388426748}
-  connected: 0
 --- !u!1 &7267710896560904748
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,4 +790,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 7267710894748608482}
   dockTransform: {fileID: 7267710896696901691}
-  connected: 0

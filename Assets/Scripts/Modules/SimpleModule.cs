@@ -121,6 +121,10 @@ public class SimpleModule : Module
                     CalculateAndExecuteImpact(collision);
                 }
             }
+            else if((otherModule is PlayerModule && currentState == State.WithEnemy) || (otherModule is EnemyModule && currentState == State.WithPlayer))
+            {
+                CalculateAndExecuteImpact(collision);
+            }
         }
         
     }
