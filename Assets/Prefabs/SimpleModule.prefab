@@ -156,9 +156,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -182,6 +182,7 @@ MonoBehaviour:
   - {fileID: 1882706742654541095}
   - {fileID: 1882706742686693427}
   - {fileID: 1882706743225698683}
+  cooldownToCanDock: 2
   currentState: 0
 --- !u!1 &1882706742654541089
 GameObject:
@@ -255,7 +256,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 1882706742296232684}
   dockTransform: {fileID: 1882706742654541088}
-  connected: 0
 --- !u!1 &1882706742675553632
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +362,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 1882706742296232684}
   dockTransform: {fileID: 1882706742686693436}
-  connected: 0
 --- !u!1 &1882706743225699973
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 1882706742296232684}
   dockTransform: {fileID: 1882706743225699972}
-  connected: 0
 --- !u!1 &1882706743481977728
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,4 +506,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleParent: {fileID: 1882706742296232684}
   dockTransform: {fileID: 1882706743481977735}
-  connected: 0

@@ -35,7 +35,7 @@ public class FollowTarget : MonoBehaviour
     private void ChangeZ()
     {
         float zIncrement = Input.GetAxis("Mouse ScrollWheel") * sizeSpeed * Time.deltaTime;
-        size += zIncrement;
+        size -= zIncrement;
         if (size > sizeMin) size = sizeMin;
         else if (size < SizeMax) size = SizeMax;
 
