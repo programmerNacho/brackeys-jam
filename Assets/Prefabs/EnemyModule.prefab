@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: 6780230816748406266}
   - {fileID: 6780230817783862578}
   - {fileID: 6780230818086864400}
+  cooldownToCanDock: 2
 --- !u!1001 &4234545338691997191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27,9 +28,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7267710894748608509, guid: 2666e8469d626e8448b659f4a7d6e039, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7267710894748608510, guid: 2666e8469d626e8448b659f4a7d6e039, type: 3}
       propertyPath: m_Name
-      value: EnemyModule Variant
+      value: EnemyModule
       objectReference: {fileID: 0}
     - target: {fileID: 7267710894748608510, guid: 2666e8469d626e8448b659f4a7d6e039, type: 3}
       propertyPath: m_Layer
@@ -137,6 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7267710894748608482, guid: 2666e8469d626e8448b659f4a7d6e039, type: 3}
+    - {fileID: 223584644, guid: 2666e8469d626e8448b659f4a7d6e039, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2666e8469d626e8448b659f4a7d6e039, type: 3}
 --- !u!1 &6780230817189718521 stripped
 GameObject:

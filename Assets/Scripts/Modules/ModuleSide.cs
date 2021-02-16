@@ -5,11 +5,11 @@ using UnityEngine;
 public class ModuleSide : MonoBehaviour
 {
     [SerializeField]
-    private Module moduleParent = null;
+    private Block moduleParent = null;
     [SerializeField]
     private Transform dockTransform = null;
 
-    public Module ModuleParent
+    public Block ModuleParent
     {
         get
         {
