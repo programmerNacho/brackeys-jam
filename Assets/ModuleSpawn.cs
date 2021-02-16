@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeSpawn : MonoBehaviour
+public class ModuleSpawn : MonoBehaviour
 {
     [SerializeField]
-    private GameObject nodePrefab = null;
+    private GameObject modulePrefab = null;
 
     private Rigidbody2D body = null;
 
@@ -16,7 +16,7 @@ public class NodeSpawn : MonoBehaviour
     private float spawnRate = 1;
 
     [SerializeField]
-    private int maxNodes = 200;
+    private int maxModules = 200;
 
     void Start()
     {
@@ -26,13 +26,13 @@ public class NodeSpawn : MonoBehaviour
     private void CheckNodeCount()
     {
         int nodes = FindObjectsOfType<SimpleModule>().Length;
-        if (nodes < maxNodes) SpawnNode();
+        if (nodes < maxModules) SpawnNode();
 
         Invoke("CheckNodeCount", spawnRate);
     }
     private void SpawnNode()
     {
-        GameObject prefab = Instantiate(nodePrefab, transform.position, transform.rotation);
+        GameObject prefab = Instantiate(modulePrefab, transform.position, transform.rotation);
         body = prefab.GetComponent<Rigidbody2D>();
 
         float x = Random.Range(-1f, 1f);

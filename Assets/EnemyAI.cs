@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour
     private LayerMask nodeLayerMask = new LayerMask();
 
     private PlayerModule playerTarget;
-    private SimpleModule nodeTarget;
+    private SimpleModule moduleTarget;
 
     [SerializeField]
     private float wanderTime = 3.0f;
@@ -97,34 +97,34 @@ public class EnemyAI : MonoBehaviour
 
     private bool CheckNodesInRange()
     {
-        nodeTarget = null;
+        moduleTarget = null;
 
         Vector2 sourceCast = transform.position;
-        float radio = rangeOfVisionAgainstNodes / 2;
+        float radio = rangeOfVisionAgainstNodes;
 
-        RaycastHit2D[] objectInRange = Physics2D.CircleCastAll(sourceCast, radio, Vector2.right, 1, nodeLayerMask);
+        RaycastHit2D[] modulesInRange = Physics2D.CircleCastAll(sourceCast, radio, Vector2.right, 1, nodeLayerMask);
         float targetDistance = 9999;
 
-        foreach (var item in objectInRange)
+        foreach (var item in modulesInRange)
         {
-            SimpleModule node = null;
-            if (item.collider.TryGetComponent<SimpleModule>(out node))
+            SimpleModule module = null;
+            if (item.collider.TryGetComponent<SimpleModule>(out module))
             {
-                bool isFree = node.currentState == SimpleModule.State.Free;
+                bool isFree = module.currentState == SimpleModule.State.Free || module.currentState == SimpleModule.State.WithSimple;
                 if (isFree)
                 {
-                    float nodeDistance = Vector2.Distance(transform.position, node.transform.position);
-                    bool itsClose = nodeDistance < targetDistance;
+                    float moduleDistance = Vector2.Distance(transform.position, module.transform.position);
+                    bool itsClose = moduleDistance < targetDistance;
                     if (itsClose)
                     {
-                        nodeTarget = node;
-                        targetDistance = nodeDistance;
+                        moduleTarget = module;
+                        targetDistance = moduleDistance;
                     }
                 }
             }
         }
 
-        if (nodeTarget != null)
+        if (moduleTarget != null)
         {
             NodeInRange();
             return true;
@@ -175,7 +175,7 @@ public class EnemyAI : MonoBehaviour
 
     private void NodeInRange()
     {
-        shipController.GoToPoint(nodeTarget.transform.position);
+        shipController.GoToPoint(moduleTarget.transform.position);
     }
     private void EnemyInRange()
     {
