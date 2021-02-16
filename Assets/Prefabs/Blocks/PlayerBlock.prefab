@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 1673798582245462848}
+  blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798581813182279}
 --- !u!1 &1673798581830209364
 GameObject:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 1673798582245462848}
+  blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798581830209367}
 --- !u!1 &1673798581910154903
 GameObject:
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 1673798582245462848}
+  blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798582042096768}
 --- !u!1 &1673798582245462853
 GameObject:
@@ -377,7 +377,9 @@ GameObject:
   - component: {fileID: 1673798582245462854}
   - component: {fileID: 8351536817885058360}
   - component: {fileID: 8351536817885058367}
-  - component: {fileID: 1673798582245462848}
+  - component: {fileID: 1341177420}
+  - component: {fileID: 6396130074767299067}
+  - component: {fileID: 1341177427}
   m_Layer: 8
   m_Name: PlayerBlock
   m_TagString: Untagged
@@ -445,8 +447,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 5
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -468,7 +470,7 @@ MonoBehaviour:
   body: {fileID: 0}
   rotateSpeed: 10
   countinuousRotateSpeed: 2000
-  moveSpeed: 100
+  moveSpeed: 500
   maxSpeed: 6
   shotRate: 0.5
   OnShotStart:
@@ -496,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipController: {fileID: 8351536817885058360}
---- !u!114 &1673798582245462848
+--- !u!114 &1341177420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -505,12 +507,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1673798582245462853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 766b0a5d219dad4458f5256d9b101cd6, type: 3}
+  m_Script: {fileID: 11500000, guid: bbd90f1f093c56d4894cbe781c574b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentBlock: {fileID: 0}
   childBlocks: []
   dockCooldownAfterDisconnect: 2
+  currentAffiliation: 1
+  blockPhysics: {fileID: 6396130074767299067}
+  blockDock: {fileID: 1341177427}
+--- !u!114 &6396130074767299067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673798582245462853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc44dd5e138c98d45a9497b2c6ca8ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 1673798582245462854}
+--- !u!114 &1341177427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673798582245462853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32965cda082f8474f88cc07c7f34859e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1673798582515771430
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 1673798582245462848}
+  blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798582785891907}
 --- !u!1 &1673798582859018124
 GameObject:
@@ -733,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 1673798582245462848}
+  blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798582859018127}
 --- !u!1 &1673798583159995562
 GameObject:
@@ -827,5 +857,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 1673798582245462848}
+  blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798583159995565}

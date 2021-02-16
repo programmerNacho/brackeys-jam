@@ -190,6 +190,8 @@ GameObject:
   - component: {fileID: 7175202599737904883}
   - component: {fileID: 7175202599737904882}
   - component: {fileID: 7175202599737904881}
+  - component: {fileID: 1339926317}
+  - component: {fileID: 7236266871803188986}
   m_Layer: 6
   m_Name: SimpleBlock
   m_TagString: Untagged
@@ -275,6 +277,34 @@ MonoBehaviour:
   parentBlock: {fileID: 0}
   childBlocks: []
   dockCooldownAfterDisconnect: 2
+  currentAffiliation: 0
+  blockPhysics: {fileID: 1339926317}
+  blockDock: {fileID: 7236266871803188986}
+--- !u!114 &1339926317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175202599737904892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc44dd5e138c98d45a9497b2c6ca8ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 7175202599737904882}
+--- !u!114 &7236266871803188986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175202599737904892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32965cda082f8474f88cc07c7f34859e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7175202599879162892
 GameObject:
   m_ObjectHideFlags: 0

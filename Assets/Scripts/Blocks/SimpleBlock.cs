@@ -6,10 +6,6 @@ namespace Game
 {
     public class SimpleBlock : Block
     {
-        public enum Affiliation { Free, Player, Enemy }
-
-        public Affiliation CurrentAffiliation { get; private set; }
-
         public override void DockTry(Block otherBlock, BlockSide mySide, BlockSide otherSide)
         {
             if (otherBlock is SimpleBlock simpleBlock)
@@ -19,10 +15,13 @@ namespace Game
                     if (simpleBlock.CurrentAffiliation == Affiliation.Free)
                     {
                         ConnectBlock(otherBlock, false);
+                        Dock(mySide, otherSide, otherBlock);
                     }
                     else if (simpleBlock.CurrentAffiliation == Affiliation.Player || simpleBlock.CurrentAffiliation == Affiliation.Enemy)
                     {
                         ConnectBlock(otherBlock, true);
+                        ChangeBlockAndChildBlocksAffiliation(simpleBlock.CurrentAffiliation);
+                        otherBlock.Dock(otherSide, mySide, this);
                     }
                 }
             }
@@ -31,38 +30,6 @@ namespace Game
         public override void Attacked(Vector2 globalImpactPoint, Vector2 globalImpactDirection)
         {
             DisconnectFromParent();
-        }
-
-        protected override void OnCollisionEnter2D(Collision2D collision)
-        {
-            Vector2 globalImpactPoint = collision.GetContact(0).point;
-            Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
-
-            SimpleBlock simpleBlock = collision.gameObject.GetComponent<SimpleBlock>();
-            if(simpleBlock)
-            {
-                if(CurrentAffiliation == Affiliation.Player && simpleBlock.CurrentAffiliation == Affiliation.Enemy ||
-                   CurrentAffiliation == Affiliation.Enemy && simpleBlock.CurrentAffiliation == Affiliation.Player)
-                {
-                    Attacked(globalImpactPoint, globalImpactDirection);
-                }
-            }
-        }
-
-        protected override void OnTriggerEnter2D(Collider2D collision)
-        {
-            Vector2 globalImpactPoint = collision.transform.position;
-            Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
-
-            SimpleBlock simpleBlock = collision.GetComponent<SimpleBlock>();
-            if (simpleBlock)
-            {
-                if (CurrentAffiliation == Affiliation.Player && simpleBlock.CurrentAffiliation == Affiliation.Enemy ||
-                   CurrentAffiliation == Affiliation.Enemy && simpleBlock.CurrentAffiliation == Affiliation.Player)
-                {
-                    Attacked(globalImpactPoint, globalImpactDirection);
-                }
-            }
         }
     }
 }
