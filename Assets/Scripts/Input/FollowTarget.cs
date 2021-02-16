@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class FollowTarget : MonoBehaviour
 {
+    private Camera cam = null;
+
     [SerializeField]
     private GameObject target;
 
     [SerializeField]
-    private float z = -20;
+    private float size = 10;
 
     [SerializeField]
-    private float zmin = -50;
+    private float sizeMin = 50;
 
     [SerializeField]
-    private float zmax = -10;
+    private float SizeMax = 20;
 
     [SerializeField]
-    private float zSpeed = 2000;
+    private float sizeSpeed = 2000;
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     private void Update()
     {
@@ -27,16 +34,19 @@ public class FollowTarget : MonoBehaviour
 
     private void ChangeZ()
     {
-        float zIncrement = Input.GetAxis("Mouse ScrollWheel") * zSpeed * Time.deltaTime;
-        z += zIncrement;
-        if (z > zmin) z = zmin;
-        else if (z < zmax) z = zmax;
+        float zIncrement = Input.GetAxis("Mouse ScrollWheel") * sizeSpeed * Time.deltaTime;
+        size += zIncrement;
+        if (size > sizeMin) size = sizeMin;
+        else if (size < SizeMax) size = SizeMax;
+
+        cam.orthographicSize = size;
+
     }
 
     private void MoveToTarget()
     {
         Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
-        Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, z);
+        Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, -10);
         transform.position = newPosition;
     }
 }

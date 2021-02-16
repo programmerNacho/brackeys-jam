@@ -27,6 +27,14 @@ public class PlayerInput : MonoBehaviour
         KeyboardRotation();
         Shot();
         Disassemble();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            shipController.GoToPoint(targetPosition);
+            Debug.Log("Goto: " + targetPosition);
+            Debug.DrawLine(shipController.transform.position, targetPosition, Color.white, 2);
+        }
     }
 
     private void Disassemble()
@@ -58,9 +66,13 @@ public class PlayerInput : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        Vector2 direction = new Vector2(x, y);
+        bool isMoving = x != 0 || y != 0;
 
-        shipController.MoveTowardsDirectionAcceleration(direction);
+        if (isMoving)
+        {
+            Vector2 direction = new Vector2(x, y);
+            shipController.MoveTowardsDirectionAcceleration(direction);
+        }
     }
 
     private void KeyboardRotation()

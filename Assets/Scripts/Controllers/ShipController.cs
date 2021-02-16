@@ -21,6 +21,12 @@ public class ShipController : MonoBehaviour
     [SerializeField]
     private float shotRate = 0.5f;
 
+    private bool moveToPoint = false;
+    private Vector2 targetPosition = Vector2.zero;
+
+    [SerializeField]
+    private float stopDistance = 1;
+
     public UnityEvent OnShotStart = new UnityEvent();
     public UnityEvent OnShot = new UnityEvent();
     public UnityEvent OnShotEnd = new UnityEvent();
@@ -35,6 +41,27 @@ public class ShipController : MonoBehaviour
     private void FixedUpdate()
     {
         LimitVelocity();
+    }
+
+    private void Update()
+    {
+        MoveGoToPointContinuous();
+    }
+
+    private void MoveGoToPointContinuous()
+    {
+        if (moveToPoint)
+        {
+            bool isToClose = Vector2.Distance(transform.position, targetPosition) <= stopDistance;
+            if (isToClose)
+            {
+                moveToPoint = false;
+            }
+            else
+            {
+                MoveTowardToPoint(targetPosition);
+            }
+        }
     }
 
     private void LimitVelocity()
@@ -91,11 +118,19 @@ public class ShipController : MonoBehaviour
     public void Teleport(Vector2 destination)
     {
         transform.position = destination;
+        moveToPoint = false;
     }
 
     public void MoveTowardsDirectionAcceleration(Vector2 direcion)
     {
         body.AddForce(direcion * moveSpeed * Time.deltaTime, ForceMode2D.Force);
+        moveToPoint = false;
+    }
+
+    public void MoveTowardToPoint(Vector2 targetPosition)
+    {
+        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+        body.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode2D.Force);
     }
 
     public float GetAngle(Vector2 vector)
@@ -108,6 +143,12 @@ public class ShipController : MonoBehaviour
         {
             return Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
         }
+    }
+
+    public void GoToPoint(Vector2 targetPosition)
+    {
+        this.targetPosition = targetPosition;
+        moveToPoint = true;
     }
 
     public void ShotStart()
