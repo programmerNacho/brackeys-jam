@@ -14,7 +14,7 @@ public class ShipController : MonoBehaviour
     private float countinuousRotateSpeed = 100.0f;
 
     [SerializeField]
-    private float moveSpeed = 10.0f;
+    private float moveSpeed = 1000.0f;
     [SerializeField]
     private float maxSpeed = 6.0f;
 
@@ -27,11 +27,13 @@ public class ShipController : MonoBehaviour
     [SerializeField]
     private float stopDistance = 1;
 
+    private bool moving = false;
+
     public UnityEvent OnShotStart = new UnityEvent();
     public UnityEvent OnShot = new UnityEvent();
     public UnityEvent OnShotEnd = new UnityEvent();
     public UnityEvent OnDisassemble = new UnityEvent();
-    
+
 
     private void Start()
     {
@@ -46,6 +48,25 @@ public class ShipController : MonoBehaviour
     private void Update()
     {
         MoveGoToPointContinuous();
+        CheckVelocity();
+    }
+
+    private void CheckVelocity()
+    {
+        if (moving)
+        {
+            if (body.velocity.magnitude < 0.1f)
+            {
+                moving = false;
+            }
+        }
+        else
+        {
+            if (body.velocity.magnitude > 0.1f)
+            {
+                moving = true;
+            }
+        }
     }
 
     private void MoveGoToPointContinuous()
@@ -123,6 +144,7 @@ public class ShipController : MonoBehaviour
 
     public void MoveTowardsDirectionAcceleration(Vector2 direcion)
     {
+        direcion = direcion.normalized;
         body.AddForce(direcion * moveSpeed * Time.deltaTime, ForceMode2D.Force);
         moveToPoint = false;
     }
@@ -173,5 +195,10 @@ public class ShipController : MonoBehaviour
     public void Disassemble()
     {
         OnDisassemble.Invoke();
+    }
+
+    public bool GetMoving()
+    {
+        return moving;
     }
 }
