@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
 
     private Vector2 moveDirection = Vector2.zero;
 
+    private bool shoting = false;
+
     private void Start()
     {
         SerializeVariables();
@@ -22,6 +24,33 @@ public class PlayerInput : MonoBehaviour
     {
         Move();
         LookAtMouse();
+        KeyboardRotation();
+        Shot();
+        Disassemble();
+    }
+
+    private void Disassemble()
+    {
+        if (Input.GetMouseButtonDown(2))
+        {
+            shipController.Disassemble();
+        }
+    }
+    private void Shot()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            shipController.ShotStart();
+            shoting = true;
+        }
+        else if (!Input.GetMouseButton(0))
+        {
+            if (shoting)
+            {
+                shoting = false;
+                shipController.ShotEnd();
+            }
+        }
     }
 
     private void Move()
@@ -30,9 +59,23 @@ public class PlayerInput : MonoBehaviour
         float y = Input.GetAxis("Vertical");
 
         Vector2 direction = new Vector2(x, y);
-        print(direction);
 
         shipController.MoveTowardsDirectionAcceleration(direction);
+    }
+
+    private void KeyboardRotation()
+    {
+
+        // No tiene un else para que se anulen si se pulsan a la vez.
+        if (Input.GetKey(KeyCode.Q))
+        {
+            shipController.RotateContinuous(false);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            shipController.RotateContinuous(true);
+        }
     }
     private void LookAtMouse()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShipController : MonoBehaviour
 {
@@ -9,11 +10,22 @@ public class ShipController : MonoBehaviour
 
     [SerializeField]
     private float rotateSpeed = 10.0f;
+    [SerializeField]
+    private float countinuousRotateSpeed = 100.0f;
 
     [SerializeField]
     private float moveSpeed = 10.0f;
     [SerializeField]
     private float maxSpeed = 6.0f;
+
+    [SerializeField]
+    private float shotRate = 0.5f;
+
+    public UnityEvent OnShotStart = new UnityEvent();
+    public UnityEvent OnShot = new UnityEvent();
+    public UnityEvent OnShotEnd = new UnityEvent();
+    public UnityEvent OnDisassemble = new UnityEvent();
+    
 
     private void Start()
     {
@@ -39,6 +51,19 @@ public class ShipController : MonoBehaviour
     }
 
     #region Rotate
+    public void RotateContinuous(bool clockwise)
+    {
+        float angleSpeed = countinuousRotateSpeed;
+        if (clockwise) angleSpeed = -countinuousRotateSpeed;
+
+        Vector2 currentLookDirection = transform.up;
+
+        float currentAngle = -GetAngle(currentLookDirection);
+        float newAngle = currentAngle + (angleSpeed * Time.deltaTime);
+
+        RotateAngleInstant(newAngle);
+    }
+
     public void RotateTowardDirectionAcceleration(Vector2 targetLookDirection)
     {
 
@@ -83,5 +108,29 @@ public class ShipController : MonoBehaviour
         {
             return Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
         }
+    }
+
+    public void ShotStart()
+    {
+        OnShotStart.Invoke();
+        OnShot.Invoke();
+        Invoke("Shot", shotRate);
+    }
+
+    private void Shot()
+    {
+        OnShot.Invoke();
+        Invoke("Shot", shotRate);
+    }
+
+    public void ShotEnd()
+    {
+        OnShotStart.Invoke();
+        CancelInvoke("Shot");
+    }
+
+    public void Disassemble()
+    {
+        OnDisassemble.Invoke();
     }
 }
