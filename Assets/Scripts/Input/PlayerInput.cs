@@ -38,10 +38,8 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-            Vector2 mousePosition = Input.mousePosition;
-            Vector2 centerScreen = new Vector2(Screen.width / 2, Screen.height / 2);
-
-            Vector2 targetLookDirection = (mousePosition - centerScreen).normalized;
+            Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 targetLookDirection = (mouseWorldPosition - (Vector2)transform.position).normalized;
 
             shipController.RotateTowardDirectionAcceleration(targetLookDirection);
         }
