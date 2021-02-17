@@ -80,8 +80,12 @@ PrefabInstance:
       value: EnemyBlock Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: moveSpeed
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8351536817885058367, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}

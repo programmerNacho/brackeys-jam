@@ -211,6 +211,8 @@ namespace Game
                 blockPhysics.AddExplosionForce(transform.position, destroyExplosionForce);
             }
 
+            DisconnectFromParent();
+
             GetComponentInParent<Rigidbody2D>()?.GetComponent<BlockPhysics>()?.AddExplosionForce(transform.position, destroyExplosionForce);
             BlockDestroy();
         }
@@ -223,7 +225,8 @@ namespace Game
 
         public void DisconnectFromParent()
         {
-            Block parent = transform.parent?.GetComponent<Block>();
+            Block parent = null;
+            parent = transform.parent?.GetComponent<Block>();
 
             if (parent)
             {
