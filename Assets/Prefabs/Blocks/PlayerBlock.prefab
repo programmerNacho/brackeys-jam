@@ -439,8 +439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 0}
-  rotateSpeed: 10
-  countinuousRotateSpeed: 100
+  rotateSpeed: 200
+  countinuousRotateSpeed: 200
   moveSpeed: 10
   maxSpeed: 6
   shotRate: 0.5

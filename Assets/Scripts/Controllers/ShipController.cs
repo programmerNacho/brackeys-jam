@@ -15,8 +15,22 @@ public class ShipController : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed = 10.0f;
+
     [SerializeField]
-    private float maxSpeed = 6.0f;
+    private float speedReductionByWeigth = 0.1f;
+    private int weight = 0;
+    [SerializeField]
+    private float boostIncrement = 0.5f;
+    private float boost = 0;
+
+
+
+    [SerializeField]
+    private float baseMaxSpeed = 8.0f;
+    [SerializeField]
+    private float baseMinSpeed = 3.0f;
+
+    private float maxSpeed = 0;
 
     [SerializeField]
     private float shotRate = 0.5f;
@@ -56,6 +70,10 @@ public class ShipController : MonoBehaviour
 
     private void CheckVelocity()
     {
+        maxSpeed = baseMaxSpeed - (weight * speedReductionByWeigth);
+        maxSpeed += boost * boostIncrement;
+        maxSpeed = Mathf.Clamp(maxSpeed, baseMinSpeed, baseMaxSpeed);
+
         if (moving)
         {
             if (body.velocity.magnitude < 0.1f)
@@ -90,9 +108,9 @@ public class ShipController : MonoBehaviour
 
     private void LimitVelocity()
     {
-        if (body.velocity.magnitude > maxSpeed)
+        if (body.velocity.magnitude > baseMaxSpeed)
         {
-            body.velocity = body.velocity.normalized * maxSpeed;
+            body.velocity = body.velocity.normalized * baseMaxSpeed;
         }
     }
 
@@ -203,5 +221,15 @@ public class ShipController : MonoBehaviour
     public bool GetMoving()
     {
         return moving;
+    }
+
+    public void ChangeWeight(int weight)
+    {
+        this.weight += weight;
+    }
+
+    public void ChangeBoost(int boost)
+    {
+        this.boost += boost;
     }
 }

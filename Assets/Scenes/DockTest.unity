@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5254280677742201518, guid: cf6104b3cece99c4a816d61c26021101, type: 3}
       propertyPath: combatBehavior
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf6104b3cece99c4a816d61c26021101, type: 3}
@@ -1187,11 +1187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.037933
+      value: 11.92
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.7001257
+      value: 6.49
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1242,12 +1242,16 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: rotateSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: stopDistance
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: countinuousRotateSpeed
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}

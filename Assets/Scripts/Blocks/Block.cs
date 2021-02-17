@@ -18,6 +18,9 @@ namespace Game
         [SerializeField]
         protected BlockDock blockDock = null;
 
+
+        [SerializeField]
+        protected int weight = 1;
         [SerializeField]
         protected float destroyExplosionForce = 5;
 
@@ -38,6 +41,12 @@ namespace Game
             {
                 currentAffiliation = value;
             }
+        }
+
+        private void Start()
+        {
+            OnConnect.AddListener(AddWeight);
+            OnDisconnect.AddListener(RemoveWeight);
         }
 
         public bool CanDock { get; private set; } = true;
@@ -225,6 +234,9 @@ namespace Game
 
         public void DisconnectFromParent()
         {
+
+            OnDisconnect.Invoke();
+
             Block parent = null;
             parent = transform.parent?.GetComponent<Block>();
 
@@ -237,9 +249,6 @@ namespace Game
             ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
             InitiateDockCooldown();
             AddPhysics();
-
-            OnDisconnect.Invoke();
-
         }
 
         protected IEnumerator CanDockCooldown()
@@ -257,6 +266,25 @@ namespace Game
         protected void DisconnectFromChildBlocks(Block block)
         {
             childBlocks.Remove(block);
+        }
+
+        protected void AddWeight()
+        {
+            ShipController shipController = GetComponentInParent<ShipController>();
+
+            if (shipController)
+            {
+                shipController.ChangeWeight(weight);
+            }
+        }
+        protected void RemoveWeight()
+        {
+            ShipController shipController = GetComponentInParent<ShipController>();
+
+            if (shipController)
+            {
+                shipController.ChangeWeight(-weight);
+            }
         }
 
         //protected virtual void OnTriggerEnter2D(Collider2D collision)
