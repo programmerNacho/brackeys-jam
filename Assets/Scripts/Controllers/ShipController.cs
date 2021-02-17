@@ -223,9 +223,9 @@ public class ShipController : MonoBehaviour
         return moving;
     }
 
-    public void ChangeWeight(int weight)
+    public void ChangeWeight()
     {
-        this.weight += weight;
+        weight = GetComponentsInChildren<Game.Block>().Length;
     }
 
     public void ChangeBoost(int boost)

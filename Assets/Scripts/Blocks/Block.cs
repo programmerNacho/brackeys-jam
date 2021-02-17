@@ -18,6 +18,8 @@ namespace Game
         [SerializeField]
         protected BlockDock blockDock = null;
 
+        public int group = 0;
+
 
         [SerializeField]
         protected int weight = 1;
@@ -82,7 +84,6 @@ namespace Game
             otherSide.GetComponentInParent<Rigidbody2D>()?.GetComponent<Block>()?.RemovePhysics();
             ConnectTargetBlockWithThis(otherBlock);
             Dock(mySide, otherSide, otherBlock);
-            OnConnect.Invoke();
         }
 
         public void Dock(BlockSide myBlockSide, BlockSide otherBlockSide, Block otherBlock)
@@ -134,6 +135,11 @@ namespace Game
             ConnectToChildBlocks(targetBlock);
 
             targetBlock.ChangeBlockAndChildBlocksAffiliation(CurrentAffiliation);
+
+            foreach (var item in targetBlock.GetComponentsInChildren<Block>())
+            {
+                item.OnConnect.Invoke();
+            }
         }
 
         protected void RecalculateHierarchy(Block block)
@@ -235,7 +241,10 @@ namespace Game
         public void DisconnectFromParent()
         {
 
-            OnDisconnect.Invoke();
+            foreach (var item in GetComponentsInChildren<Block>())
+            {
+                item.OnDisconnect.Invoke();
+            }
 
             Block parent = null;
             parent = transform.parent?.GetComponent<Block>();
@@ -274,7 +283,7 @@ namespace Game
 
             if (shipController)
             {
-                shipController.ChangeWeight(weight);
+                shipController.ChangeWeight();
             }
         }
         protected void RemoveWeight()
@@ -283,7 +292,7 @@ namespace Game
 
             if (shipController)
             {
-                shipController.ChangeWeight(-weight);
+                shipController.ChangeWeight();
             }
         }
 
