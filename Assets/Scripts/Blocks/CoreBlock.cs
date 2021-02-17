@@ -6,5 +6,8 @@ namespace Game
 {
     public class CoreBlock : Block
     {
+        protected override void CheckOverlaying()
+        {
+        }
     }
 }

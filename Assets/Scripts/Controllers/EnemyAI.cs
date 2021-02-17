@@ -109,7 +109,6 @@ public class EnemyAI : MonoBehaviour
         foreach (var item in blocksInRange)
         {
             Game.SimpleBlock block = item.collider.GetComponentInParent<Game.SimpleBlock>();
-            Debug.Log(block);
             if (block)
             {
                 bool isFree = block.CurrentAffiliation == Affiliation.Free;

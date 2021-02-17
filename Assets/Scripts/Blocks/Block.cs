@@ -18,7 +18,8 @@ namespace Game
         [SerializeField]
         protected BlockDock blockDock = null;
 
-        public int group = 0;
+        [SerializeField]
+        protected float overlayingRadio = 0.5f;
 
 
         [SerializeField]
@@ -26,7 +27,7 @@ namespace Game
         [SerializeField]
         protected float destroyExplosionForce = 5;
 
-        private Block oldParentBlock = null;
+        protected Block oldParentBlock = null;
 
         public UnityEvent OnConnect = new UnityEvent();
         public UnityEvent OnDisconnect = new UnityEvent();
@@ -48,6 +49,7 @@ namespace Game
         private void Start()
         {
             OnConnect.AddListener(AddWeight);
+            OnConnect.AddListener(CheckOverlaying);
             OnDisconnect.AddListener(RemoveWeight);
         }
 
@@ -215,11 +217,16 @@ namespace Game
 
         public virtual void Attacked(Block targetBlock)
         {
+            BlockHurt();
+        }
+
+        protected virtual void BlockHurt()
+        {
             Block[] tempChildrenBlock = new Block[childBlocks.Count];
             childBlocks.CopyTo(tempChildrenBlock);
 
             foreach (var childrenBlock in tempChildrenBlock)
-            { 
+            {
                 childrenBlock.DisconnectFromParent();
 
                 BlockPhysics blockPhysics = childrenBlock.GetComponent<BlockPhysics>();
@@ -232,9 +239,8 @@ namespace Game
             BlockDestroy();
         }
 
-        public virtual void BlockDestroy()
+        protected virtual void BlockDestroy()
         {
-            Debug.Log(gameObject.name);
             Destroy(gameObject);
         }
 
@@ -276,6 +282,8 @@ namespace Game
         {
             childBlocks.Remove(block);
         }
+
+        protected abstract void CheckOverlaying();
 
         protected void AddWeight()
         {
