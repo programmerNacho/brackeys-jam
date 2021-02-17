@@ -265,6 +265,8 @@ MonoBehaviour:
   currentAffiliation: 0
   blockPhysics: {fileID: 4020825187425396371}
   blockDock: {fileID: 6735386219560392248}
+  overlayingRadio: 1.25
+  weight: 1
   destroyExplosionForce: 5
   OnConnect:
     m_PersistentCalls:

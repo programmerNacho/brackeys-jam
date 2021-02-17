@@ -86,6 +86,11 @@ namespace Game
             otherSide.GetComponentInParent<Rigidbody2D>()?.GetComponent<Block>()?.RemovePhysics();
             ConnectTargetBlockWithThis(otherBlock);
             Dock(mySide, otherSide, otherBlock);
+
+            foreach (var item in otherBlock.GetComponentsInChildren<Block>())
+            {
+                item.OnConnect.Invoke();
+            }
         }
 
         public void Dock(BlockSide myBlockSide, BlockSide otherBlockSide, Block otherBlock)
@@ -137,11 +142,6 @@ namespace Game
             ConnectToChildBlocks(targetBlock);
 
             targetBlock.ChangeBlockAndChildBlocksAffiliation(CurrentAffiliation);
-
-            foreach (var item in targetBlock.GetComponentsInChildren<Block>())
-            {
-                item.OnConnect.Invoke();
-            }
         }
 
         protected void RecalculateHierarchy(Block block)
