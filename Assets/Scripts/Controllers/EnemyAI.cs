@@ -42,9 +42,10 @@ public class EnemyAI : MonoBehaviour
     private void SerializeVariables()
     {
         if (shipController == null) shipController = GetComponent<ShipController>();
+        Invoke("Tick", 0.2f);
     }
 
-    private void Update()
+    private void Tick()
     {
         if (!CheckPlayersInRange())
         {
@@ -61,8 +62,8 @@ public class EnemyAI : MonoBehaviour
         {
             isWander = false;
         }
+        Invoke("Tick", 0.2f);
     }
-
     private void StopWander()
     {
         isWander = false;

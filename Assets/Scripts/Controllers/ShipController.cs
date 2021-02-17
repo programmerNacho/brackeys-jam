@@ -32,6 +32,9 @@ public class ShipController : MonoBehaviour
     public UnityEvent OnShotStart = new UnityEvent();
     public UnityEvent OnShot = new UnityEvent();
     public UnityEvent OnShotEnd = new UnityEvent();
+
+    public UnityEvent OnAutoShot = new UnityEvent();
+
     public UnityEvent OnDisassemble = new UnityEvent();
 
 
