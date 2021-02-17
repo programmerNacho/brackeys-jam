@@ -442,10 +442,7 @@ MonoBehaviour:
   rotateSpeed: 200
   countinuousRotateSpeed: 200
   moveSpeed: 10
-  speedReductionByWeigth: 0.1
-  boostIncrement: 0.5
-  baseMaxSpeed: 8
-  baseMinSpeed: 3
+  maxSpeed: 6
   shotRate: 0.5
   stopDistance: 0.05
   OnShotStart:
@@ -493,8 +490,6 @@ MonoBehaviour:
   currentAffiliation: 1
   blockPhysics: {fileID: 6396130074767299067}
   blockDock: {fileID: 1341177427}
-  overlayingRadio: 0.5
-  weight: 1
   destroyExplosionForce: 5
   OnConnect:
     m_PersistentCalls:
@@ -925,9 +920,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.4689316, y: 0.81204253}
-      - {x: -0.46793887, y: 0.8023947}
-      - {x: -0.93483603, y: 0.0056822887}
-      - {x: -0.46186918, y: -0.8085588}
-      - {x: 0.4684676, y: -0.80635947}
-      - {x: 0.9370353, y: -0.0039399434}
+    - - {x: 0.48863462, y: 0.82386434}
+      - {x: -0.4758201, y: 0.8299789}
+      - {x: -0.96242017, y: 0.013563484}
+      - {x: -0.4855128, y: -0.8203806}
+      - {x: 0.4684676, y: -0.8260624}
+      - {x: 0.95673835, y: 0.00788185}
