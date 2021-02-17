@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Module : MonoBehaviour
+public abstract class Block : MonoBehaviour
 {
     [SerializeField]
-    protected List<Module> connectedModules = new List<Module>();
+    protected List<Block> connectedModules = new List<Block>();
     [SerializeField]
     protected List<ModuleSide> moduleSides = new List<ModuleSide>();
     [SerializeField]
@@ -23,7 +23,7 @@ public abstract class Module : MonoBehaviour
     public void BeginCanDockCooldown()
     {
         timeToCanDock = cooldownToCanDock;
-        foreach (Module m in connectedModules)
+        foreach (Block m in connectedModules)
         {
             if (m.transform.parent == transform)
             {
@@ -39,7 +39,7 @@ public abstract class Module : MonoBehaviour
 
     public abstract void InteractionBetweenModulesSides(ModuleSide myModuleSide, ModuleSide otherModuleSide);
 
-    protected void DockOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    protected void DockOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Block otherModule)
     {
         ConnectModulesAndModuleSides(myModuleSide, otherModuleSide, otherModule);
         SetOtherModuleParentAndPhysicsBehaviour(otherModule);
@@ -47,7 +47,7 @@ public abstract class Module : MonoBehaviour
         MoveOtherModule(myModuleSide, otherModuleSide, otherModule);
     }
 
-    private void RotateOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    private void RotateOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Block otherModule)
     {
         Vector2 inverseMyModuleSideNormal = -myModuleSide.NormalDirectionGlobal;
         Vector2 otherModuleSideNormal = otherModuleSide.NormalDirectionGlobal;
@@ -55,7 +55,7 @@ public abstract class Module : MonoBehaviour
         otherModule.transform.Rotate(Vector3.forward, angleRotationZ);
     }
 
-    private void MoveOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    private void MoveOtherModule(ModuleSide myModuleSide, ModuleSide otherModuleSide, Block otherModule)
     {
         Vector2 myDockPoint = myModuleSide.MiddlePointGlobal;
         Vector2 otherDockPoint = otherModuleSide.MiddlePointGlobal;
@@ -63,7 +63,7 @@ public abstract class Module : MonoBehaviour
         otherModule.transform.position = (Vector2)otherModule.transform.position + translationOtherModule;
     }
 
-    private void ConnectModulesAndModuleSides(ModuleSide myModuleSide, ModuleSide otherModuleSide, Module otherModule)
+    private void ConnectModulesAndModuleSides(ModuleSide myModuleSide, ModuleSide otherModuleSide, Block otherModule)
     {
         ConnectNewModule(otherModule, myModuleSide);
         otherModule.ConnectNewModule(this, otherModuleSide);
@@ -71,9 +71,9 @@ public abstract class Module : MonoBehaviour
 
     protected void DisconnectFromParentModule()
     {
-        List<Module> disconnect = new List<Module>();
+        List<Block> disconnect = new List<Block>();
 
-        foreach (Module m in connectedModules)
+        foreach (Block m in connectedModules)
         {
             if(m.transform == transform.parent)
             {
@@ -81,20 +81,20 @@ public abstract class Module : MonoBehaviour
             }
         }
 
-        foreach (Module m in disconnect)
+        foreach (Block m in disconnect)
         {
             m.connectedModules.Remove(this);
             connectedModules.Remove(m);
         }
     }
 
-    private void SetOtherModuleParentAndPhysicsBehaviour(Module otherModule)
+    private void SetOtherModuleParentAndPhysicsBehaviour(Block otherModule)
     {
         otherModule.SetParentModule(this);
         otherModule.DeActivatePhysics();
     }
 
-    public void ConnectNewModule(Module newModule, ModuleSide sideConnected)
+    public void ConnectNewModule(Block newModule, ModuleSide sideConnected)
     {
         if(connectedModules.Contains(newModule) == false && moduleSides.Contains(sideConnected))
         {
@@ -102,7 +102,7 @@ public abstract class Module : MonoBehaviour
         }
     }
 
-    public virtual void SetParentModule(Module parentModule)
+    public virtual void SetParentModule(Block parentModule)
     {
         if(parentModule == null)
         {

@@ -16,8 +16,8 @@ TagManager:
   - WithSimple
   - WithPlayer
   - WithEnemy
-  - 
-  - 
+  - Side
+  - Module
   - 
   - 
   - 

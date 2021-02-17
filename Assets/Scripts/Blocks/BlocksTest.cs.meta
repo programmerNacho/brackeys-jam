@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scripts/Controllers/Borderland.cs.meta
-guid: a1a0d4f12500091468e6d4b673a2eb5b
-=======
-guid: 53934a4e2740d964f807a4f616236c8c
->>>>>>> main:Assets/Scripts/Blocks/Block.cs.meta
+guid: 453c3e430adb95747b1b48014f9f1631
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

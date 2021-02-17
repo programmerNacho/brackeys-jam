@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleModule : Module
+public class SimpleModule : Block
 {
     public enum State { Free, WithSimple, WithPlayer, WithEnemy }
 
@@ -10,7 +10,7 @@ public class SimpleModule : Module
 
     public override void InteractionBetweenModulesSides(ModuleSide myModuleSide, ModuleSide otherModuleSide)
     {
-        Module otherModule = otherModuleSide.ModuleParent;
+        Block otherModule = otherModuleSide.ModuleParent;
 
         if (otherModule is SimpleModule otherSimpleModule)
         {
@@ -59,7 +59,7 @@ public class SimpleModule : Module
         currentState = state;
         gameObject.layer = LayerMask.NameToLayer(currentState.ToString());
 
-        foreach (Module m in connectedModules)
+        foreach (Block m in connectedModules)
         {
             if(m is SimpleModule s && m.transform.parent == transform)
             {
@@ -68,7 +68,7 @@ public class SimpleModule : Module
         }
     }
 
-    public override void SetParentModule(Module parentModule)
+    public override void SetParentModule(Block parentModule)
     {
         if(transform.parent == null)
         {
@@ -76,7 +76,7 @@ public class SimpleModule : Module
         }
         else
         {
-            Module currentParentModule = transform.parent.GetComponent<Module>();
+            Block currentParentModule = transform.parent.GetComponent<Block>();
             base.SetParentModule(parentModule);
             currentParentModule.DeActivatePhysics();
             currentParentModule.SetParentModule(this);
@@ -107,7 +107,7 @@ public class SimpleModule : Module
     {
         base.OnCollisionEnter2D(collision);
 
-        Module otherModule = collision.gameObject.GetComponent<Module>();
+        Block otherModule = collision.gameObject.GetComponent<Block>();
 
         if(otherModule)
         {
