@@ -39,7 +39,8 @@ public class ModuleSide : MonoBehaviour
 
         if (moduleParent.CanDock())
         {
-            if (otherModuleSide && otherModuleSide.moduleParent != moduleParent && otherModuleSide.moduleParent.CanDock())
+            bool otherModuleCanDock = otherModuleSide && otherModuleSide.moduleParent != moduleParent && otherModuleSide.moduleParent.CanDock();
+            if ( otherModuleCanDock)
             {
                 moduleParent.InteractionBetweenModulesSides(this, otherModuleSide);
             }
