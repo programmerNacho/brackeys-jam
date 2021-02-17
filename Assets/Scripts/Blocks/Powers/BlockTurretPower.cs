@@ -13,12 +13,12 @@ namespace Game
 
         public virtual void AddBoost()
         {
-            currentNumberOfBoosts = Mathf.Clamp(currentNumberOfBoosts + 1, 0, maxNumberOfBoosts + 1);
+            currentNumberOfBoosts = Mathf.Clamp(currentNumberOfBoosts + 1, 0, maxNumberOfBoosts);
         }
 
         public virtual void RemoveBoost()
         {
-            currentNumberOfBoosts = Mathf.Clamp(currentNumberOfBoosts - 1, 0, maxNumberOfBoosts + 1);
+            currentNumberOfBoosts = Mathf.Clamp(currentNumberOfBoosts - 1, 0, maxNumberOfBoosts);
         }
     }
 }

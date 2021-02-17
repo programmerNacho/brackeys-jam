@@ -14,7 +14,8 @@ namespace Game
             if(myBlock)
             {
                 myBlock.OnConnect.AddListener(OnBlockConnected);
-                myBlock.OnDisconnect.AddListener(OnBlockDisconnected);
+                myBlock.OnStartDisconnect.AddListener(OnBlockDisconnected);
+                myBlock.OnCompleteDisconnect.AddListener(OnBlockConnected);
             }
         }
 
@@ -23,7 +24,8 @@ namespace Game
             if (myBlock)
             {
                 myBlock.OnConnect.RemoveListener(OnBlockConnected);
-                myBlock.OnDisconnect.RemoveListener(OnBlockDisconnected);
+                myBlock.OnStartDisconnect.RemoveListener(OnBlockDisconnected);
+                myBlock.OnCompleteDisconnect.RemoveListener(OnBlockConnected);
             }
         }
 
@@ -32,7 +34,8 @@ namespace Game
             if (myBlock)
             {
                 myBlock.OnConnect.RemoveListener(OnBlockConnected);
-                myBlock.OnDisconnect.RemoveListener(OnBlockDisconnected);
+                myBlock.OnStartDisconnect.RemoveListener(OnBlockDisconnected);
+                myBlock.OnCompleteDisconnect.RemoveListener(OnBlockConnected);
             }
         }
 
