@@ -16,6 +16,8 @@ public class BlockPhysics : MonoBehaviour
         {
             rigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
+        rigidbody.drag = 3;
+        rigidbody.angularDrag = 3;
         rigidbody.useFullKinematicContacts = true;
         rigidbody.isKinematic = false;
         rigidbody.bodyType = RigidbodyType2D.Dynamic;
