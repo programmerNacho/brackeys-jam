@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BlockPhysics : MonoBehaviour
 {
-    [SerializeField]
-    private new Rigidbody2D rigidbody = null;
+    public new Rigidbody2D rigidbody = null;
 
     public void AddRigidbody2D()
     {
@@ -17,6 +16,8 @@ public class BlockPhysics : MonoBehaviour
         {
             rigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
+        rigidbody.drag = 3;
+        rigidbody.angularDrag = 3;
         rigidbody.useFullKinematicContacts = true;
         rigidbody.isKinematic = false;
         rigidbody.bodyType = RigidbodyType2D.Dynamic;
@@ -26,5 +27,12 @@ public class BlockPhysics : MonoBehaviour
     public void RemoveRigidbody2D()
     {
         Destroy(rigidbody);
+    }
+
+    public void AddExplosionForce(Vector2 sourceExplosion, float force)
+    {
+        Vector2 explosionDirection = ((Vector2)transform.position - sourceExplosion).normalized;
+
+        rigidbody?.AddForce(explosionDirection * force, ForceMode2D.Impulse);
     }
 }

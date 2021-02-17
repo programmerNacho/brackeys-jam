@@ -10,13 +10,13 @@ public class FollowTarget : MonoBehaviour
     private GameObject target;
 
     [SerializeField]
-    private float size = 10;
+    private float size = 5;
 
     [SerializeField]
     private float sizeMin = 50;
 
     [SerializeField]
-    private float SizeMax = 20;
+    private float SizeMax = 5;
 
     [SerializeField]
     private float sizeSpeed = 2000;

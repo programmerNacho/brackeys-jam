@@ -42,9 +42,10 @@ public class EnemyAI : MonoBehaviour
     private void SerializeVariables()
     {
         if (shipController == null) shipController = GetComponent<ShipController>();
+        Invoke("Tick", 0.2f);
     }
 
-    private void Update()
+    private void Tick()
     {
         if (!CheckPlayersInRange())
         {
@@ -61,8 +62,8 @@ public class EnemyAI : MonoBehaviour
         {
             isWander = false;
         }
+        Invoke("Tick", 0.2f);
     }
-
     private void StopWander()
     {
         isWander = false;
@@ -102,13 +103,14 @@ public class EnemyAI : MonoBehaviour
         Vector2 sourceCast = transform.position;
         float radio = rangeOfVisionAgainstNodes;
 
-        RaycastHit2D[] modulesInRange = Physics2D.CircleCastAll(sourceCast, radio, Vector2.right, 1, nodeLayerMask);
+        RaycastHit2D[] blocksInRange = Physics2D.CircleCastAll(sourceCast, radio, Vector2.right, 1, nodeLayerMask);
         float targetDistance = 9999;
 
-        foreach (var item in modulesInRange)
+        foreach (var item in blocksInRange)
         {
-            Game.SimpleBlock block = null;
-            if (item.collider.TryGetComponent<Game.SimpleBlock>(out block))
+            Game.SimpleBlock block = item.collider.GetComponentInParent<Game.SimpleBlock>();
+            Debug.Log(block);
+            if (block)
             {
                 bool isFree = block.CurrentAffiliation == Affiliation.Free;
                 if (isFree)

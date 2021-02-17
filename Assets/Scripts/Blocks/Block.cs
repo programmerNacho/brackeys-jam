@@ -18,6 +18,9 @@ namespace Game
         [SerializeField]
         protected BlockDock blockDock = null;
 
+        [SerializeField]
+        protected float destroyExplosionForce = 5;
+
         private Block oldParentBlock = null;
 
         public UnityEvent OnConnect = new UnityEvent();
@@ -195,11 +198,35 @@ namespace Game
             }
         }
 
-        public abstract void Attacked(Vector2 globalImpactPoint, Vector2 globalImpactDirection);
+        public virtual void Attacked(Block targetBlock)
+        {
+            Block[] tempChildrenBlock = new Block[childBlocks.Count];
+            childBlocks.CopyTo(tempChildrenBlock);
+
+            foreach (var childrenBlock in tempChildrenBlock)
+            { 
+                childrenBlock.DisconnectFromParent();
+
+                BlockPhysics blockPhysics = childrenBlock.GetComponent<BlockPhysics>();
+                blockPhysics.AddExplosionForce(transform.position, destroyExplosionForce);
+            }
+
+            DisconnectFromParent();
+
+            GetComponentInParent<Rigidbody2D>()?.GetComponent<BlockPhysics>()?.AddExplosionForce(transform.position, destroyExplosionForce);
+            BlockDestroy();
+        }
+
+        public virtual void BlockDestroy()
+        {
+            Debug.Log(gameObject.name);
+            Destroy(gameObject);
+        }
 
         public void DisconnectFromParent()
         {
-            Block parent = transform.parent?.GetComponent<Block>();
+            Block parent = null;
+            parent = transform.parent?.GetComponent<Block>();
 
             if (parent)
             {
@@ -232,39 +259,20 @@ namespace Game
             childBlocks.Remove(block);
         }
 
-        protected virtual void OnCollisionEnter2D(Collision2D collision)
-        {
-            Block block = collision.gameObject.GetComponent<Block>();
-            if (block)
-            {
-                bool isMyEnemy = CurrentAffiliation == Affiliation.Player && block.CurrentAffiliation == Affiliation.Enemy ||
-                   CurrentAffiliation == Affiliation.Enemy && block.CurrentAffiliation == Affiliation.Player;
+        //protected virtual void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    Block block = collision.gameObject.GetComponent<Block>();
+        //    if (block)
+        //    {
+        //        if (CurrentAffiliation == Affiliation.Player && block.CurrentAffiliation == Affiliation.Enemy ||
+        //           CurrentAffiliation == Affiliation.Enemy && block.CurrentAffiliation == Affiliation.Player)
+        //        {
+        //            Vector2 globalImpactPoint = collision.transform.position;
+        //            Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
 
-                if (isMyEnemy)
-                {
-                    Vector2 globalImpactPoint = collision.GetContact(0).point;
-                    Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
-
-                    Attacked(globalImpactPoint, globalImpactDirection);
-                }
-            }
-        }
-
-        protected virtual void OnTriggerEnter2D(Collider2D collision)
-        {
-            Block block = collision.gameObject.GetComponent<Block>();
-            if (block)
-            {
-                Debug.Log(block.gameObject.name);
-                if (CurrentAffiliation == Affiliation.Player && block.CurrentAffiliation == Affiliation.Enemy ||
-                   CurrentAffiliation == Affiliation.Enemy && block.CurrentAffiliation == Affiliation.Player)
-                {
-                    Vector2 globalImpactPoint = collision.transform.position;
-                    Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
-
-                    Attacked(globalImpactPoint, globalImpactDirection);
-                }
-            }
-        }
+        //            Attacked(globalImpactPoint, globalImpactDirection);
+        //        }
+        //    }
+        //}
     }
 }

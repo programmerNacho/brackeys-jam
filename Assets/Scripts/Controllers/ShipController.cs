@@ -14,7 +14,7 @@ public class ShipController : MonoBehaviour
     private float countinuousRotateSpeed = 100.0f;
 
     [SerializeField]
-    private float moveSpeed = 1000.0f;
+    private float moveSpeed = 10.0f;
     [SerializeField]
     private float maxSpeed = 6.0f;
 
@@ -25,13 +25,16 @@ public class ShipController : MonoBehaviour
     private Vector2 targetPosition = Vector2.zero;
 
     [SerializeField]
-    private float stopDistance = 1;
+    private float stopDistance = 0.05f;
 
     private bool moving = false;
 
     public UnityEvent OnShotStart = new UnityEvent();
     public UnityEvent OnShot = new UnityEvent();
     public UnityEvent OnShotEnd = new UnityEvent();
+
+    public UnityEvent OnAutoShot = new UnityEvent();
+
     public UnityEvent OnDisassemble = new UnityEvent();
 
 
@@ -145,14 +148,14 @@ public class ShipController : MonoBehaviour
     public void MoveTowardsDirectionAcceleration(Vector2 direcion)
     {
         direcion = direcion.normalized;
-        body.AddForce(direcion * moveSpeed * Time.deltaTime, ForceMode2D.Force);
+        body.AddForce(direcion * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
         moveToPoint = false;
     }
 
     public void MoveTowardToPoint(Vector2 targetPosition)
     {
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-        body.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode2D.Force);
+        body.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     public float GetAngle(Vector2 vector)
