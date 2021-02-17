@@ -26,8 +26,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private LayerMask nodeLayerMask = new LayerMask();
 
-    private PlayerModule playerTarget;
-    private SimpleModule moduleTarget;
+    private Game.CoreBlock playerTarget;
+    private Game.SimpleBlock moduleTarget;
 
     [SerializeField]
     private float wanderTime = 3.0f;
@@ -107,17 +107,17 @@ public class EnemyAI : MonoBehaviour
 
         foreach (var item in modulesInRange)
         {
-            SimpleModule module = null;
-            if (item.collider.TryGetComponent<SimpleModule>(out module))
+            Game.SimpleBlock block = null;
+            if (item.collider.TryGetComponent<Game.SimpleBlock>(out block))
             {
-                bool isFree = module.currentState == SimpleModule.State.Free || module.currentState == SimpleModule.State.WithSimple;
+                bool isFree = block.CurrentAffiliation == Affiliation.Free;
                 if (isFree)
                 {
-                    float moduleDistance = Vector2.Distance(transform.position, module.transform.position);
+                    float moduleDistance = Vector2.Distance(transform.position, block.transform.position);
                     bool itsClose = moduleDistance < targetDistance;
                     if (itsClose)
                     {
-                        moduleTarget = module;
+                        moduleTarget = block;
                         targetDistance = moduleDistance;
                     }
                 }
@@ -138,20 +138,23 @@ public class EnemyAI : MonoBehaviour
     private bool CheckPlayersInRange()
     {
         playerTarget = null;
-        PlayerModule[] playersInGame = FindObjectsOfType<PlayerModule>();
+        Game.CoreBlock[] coresInGame = FindObjectsOfType<Game.CoreBlock>();
         float targetDistance = 9999;
 
-        foreach (var player in playersInGame)
+        foreach (var core in coresInGame)
         {
-            float playerDistance = Vector2.Distance(transform.position, player.transform.position);
-            bool playerIsVear = playerDistance <= rangeOfVisionAgainstPlayer;
-            if (playerIsVear)
+            if (core.CurrentAffiliation == Affiliation.Player)
             {
-                bool itsClose = playerDistance < targetDistance;
-                if (itsClose)
+                float playerDistance = Vector2.Distance(transform.position, core.transform.position);
+                bool playerIsNear = playerDistance <= rangeOfVisionAgainstPlayer;
+                if (playerIsNear)
                 {
-                    playerTarget = player;
-                    targetDistance = playerDistance;
+                    bool itsClose = playerDistance < targetDistance;
+                    if (itsClose)
+                    {
+                        playerTarget = core;
+                        targetDistance = playerDistance;
+                    }
                 }
             }
         }

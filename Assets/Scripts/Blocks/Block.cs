@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game
 {
@@ -18,6 +19,11 @@ namespace Game
         protected BlockDock blockDock = null;
 
         private Block oldParentBlock = null;
+
+        public UnityEvent OnConnect = new UnityEvent();
+        public UnityEvent OnDisconnect = new UnityEvent();
+        public UnityEvent OnDestroy = new UnityEvent();
+        public UnityEvent OnCreate = new UnityEvent();
 
         public Affiliation CurrentAffiliation 
         {
@@ -43,9 +49,7 @@ namespace Game
 
                     if (isFree)
                     {
-                        ConnectTargetBlockWithThis(otherBlock);
-                        otherSide.GetComponentInParent<Rigidbody2D>()?.GetComponent<Block>()?.RemovePhysics();
-                        Dock(mySide, otherSide, otherBlock);
+                        PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }
                 else
@@ -55,11 +59,18 @@ namespace Game
                     if (isFree)
                     {
                         otherBlock.InitiateDockCooldown();
-                        ConnectTargetBlockWithThis(otherBlock);
-                        Dock(mySide, otherSide, otherBlock);
+                        PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }
             }
+        }
+
+        private void PrepareDock(Block otherBlock, BlockSide mySide, BlockSide otherSide)
+        {
+            otherSide.GetComponentInParent<Rigidbody2D>()?.GetComponent<Block>()?.RemovePhysics();
+            ConnectTargetBlockWithThis(otherBlock);
+            Dock(mySide, otherSide, otherBlock);
+            OnConnect.Invoke();
         }
 
         public void Dock(BlockSide myBlockSide, BlockSide otherBlockSide, Block otherBlock)
@@ -199,6 +210,9 @@ namespace Game
             ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
             InitiateDockCooldown();
             AddPhysics();
+
+            OnDisconnect.Invoke();
+
         }
 
         protected IEnumerator CanDockCooldown()

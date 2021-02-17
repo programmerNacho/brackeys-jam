@@ -25,7 +25,7 @@ public class ModuleSpawn : MonoBehaviour
 
     private void CheckNodeCount()
     {
-        int nodes = FindObjectsOfType<SimpleModule>().Length;
+        int nodes = FindObjectsOfType<Game.SimpleBlock>().Length;
         if (nodes < maxModules) SpawnNode();
 
         Invoke("CheckNodeCount", spawnRate);
