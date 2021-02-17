@@ -39,7 +39,9 @@ public class ModuleLobo : MonoBehaviour
     private void InsertNewModule(ModuleSideLobo mySide, ModuleSideLobo otherSide)
     {
         ModuleLobo otherModule = otherSide.GetModule();
+
         otherModule.SetSideCanDock(false);
+
         NewHierarchy(otherSide.GetModule());
     }
 
@@ -62,7 +64,6 @@ public class ModuleLobo : MonoBehaviour
 
             module.childrenList.Remove(parent);
 
-            Debug.Log(module.oldParent);
             if (module.oldParent != null)
             {
                 module.childrenList.Add(module.oldParent);
@@ -75,6 +76,7 @@ public class ModuleLobo : MonoBehaviour
     private void SaveParents(ModuleLobo module)
     {
         module.SetOldParent();
+
         foreach (var item in module.GetComponentsInChildren<ModuleLobo>())
         {
             item.SetOldParent();

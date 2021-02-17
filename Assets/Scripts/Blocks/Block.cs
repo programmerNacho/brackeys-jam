@@ -7,8 +7,6 @@ namespace Game
     public abstract class Block : MonoBehaviour
     {
         [SerializeField]
-        protected Block parentBlock = null;
-        [SerializeField]
         protected List<Block> childBlocks = new List<Block>();
         [SerializeField]
         protected float dockCooldownAfterDisconnect = 2f;
@@ -18,6 +16,8 @@ namespace Game
         protected BlockPhysics blockPhysics = null;
         [SerializeField]
         protected BlockDock blockDock = null;
+
+        private Block oldParentBlock = null;
 
         public Affiliation CurrentAffiliation 
         {
@@ -33,7 +33,34 @@ namespace Game
 
         public bool CanDock { get; private set; } = true;
 
-        public abstract void DockTry(Block otherBlock, BlockSide mySide, BlockSide otherSide);
+        public void DockTry(Block otherBlock, BlockSide mySide, BlockSide otherSide)
+        {
+            if (otherBlock != null && !(otherBlock is CoreBlock))
+            {
+                if (CurrentAffiliation != Affiliation.Free)
+                {
+                    bool isFree = otherBlock.CurrentAffiliation == Affiliation.Free;
+
+                    if (isFree)
+                    {
+                        ConnectTargetBlockWithThis(otherBlock);
+                        otherSide.GetComponentInParent<Rigidbody2D>()?.GetComponent<Block>()?.RemovePhysics();
+                        Dock(mySide, otherSide, otherBlock);
+                    }
+                }
+                else
+                {
+                    bool isFree = otherBlock.CurrentAffiliation == Affiliation.Free;
+
+                    if (isFree)
+                    {
+                        otherBlock.InitiateDockCooldown();
+                        ConnectTargetBlockWithThis(otherBlock);
+                        Dock(mySide, otherSide, otherBlock);
+                    }
+                }
+            }
+        }
 
         public void Dock(BlockSide myBlockSide, BlockSide otherBlockSide, Block otherBlock)
         {
@@ -52,66 +79,126 @@ namespace Game
             }
         }
 
-        public void ConnectBlock(Block otherBlock, bool isNewParent)
+        public void ConnectTargetBlockWithThis(Block targetBlock)
         {
-            if (otherBlock == null)
+            if (targetBlock == null)
             {
                 Debug.LogError("otherBlock is null.");
                 return;
             }
+            Block parent = GetComponentInParent<Block>();
 
-            bool iHaveParent = parentBlock != null;
+            bool targetBlockIsMyParent = parent != null && parent == targetBlock;
 
-            if (iHaveParent && parentBlock == otherBlock)
+            if (targetBlockIsMyParent)
             {
                 Debug.LogError("otherBlock is already parent.");
                 return;
             }
 
-            if (childBlocks.Contains(otherBlock))
+            if (childBlocks.Contains(targetBlock))
             {
                 Debug.LogError("otherBlock is already connected.");
                 return;
             }
 
-            if (isNewParent)
+            SaveParents(targetBlock);
+
+            targetBlock.transform.parent = transform;
+
+            RecalculateHierarchy(targetBlock);
+
+            ConnectToChildBlocks(targetBlock);
+
+            targetBlock.ChangeBlockAndChildBlocksAffiliation(CurrentAffiliation);
+        }
+
+        protected void RecalculateHierarchy(Block block)
+        {
+            if (block)
             {
-                otherBlock.ConnectToChildBlocks(this);
-                SetBlockParent(otherBlock);
-                RemovePhysics();
+                Block parent = block.transform.parent?.GetComponent<Block>();
+                if (parent)
+                {
+                    block.DisconnectFromChildBlocks(parent);
+
+                    if (block.oldParentBlock)
+                    {
+                        block.ConnectToChildBlocks(block.oldParentBlock);
+                        block.oldParentBlock.transform.parent = block.transform;
+                        RecalculateHierarchy(block.oldParentBlock);
+                    }
+                }
             }
-            else
+        }
+
+        protected void SaveParents(Block block)
+        {
+            block.SetOldParent();
+
+            foreach (var item in block.GetComponentsInChildren<Block>())
             {
-                ConnectToChildBlocks(otherBlock);
-                otherBlock.SetBlockParent(this);
-                otherBlock.RemovePhysics();
+                item.SetOldParent();
+            }
+            foreach (var item in block.GetComponentsInParent<Block>())
+            {
+                item.SetOldParent();
+            }
+        }
+
+        public void SetOldParent()
+        {
+            oldParentBlock = null;
+
+            if (transform.parent != null)
+            {
+                oldParentBlock = transform.parent.GetComponent<Block>();
+            }
+        }
+
+        public void InitiateDockCooldown()
+        {
+            StopCoroutine(CanDockCooldown());
+            StartCoroutine(CanDockCooldown());
+            foreach (var item in GetComponentsInChildren<Block>())
+            {
+                item.StopCoroutine(CanDockCooldown());
+                item.StartCoroutine(CanDockCooldown());
             }
         }
 
         protected void AddPhysics()
         {
-            blockPhysics.AddRigidbody2D();
+            bool imCore = GetComponent<CoreBlock>();
+            if (!imCore)
+            {
+                blockPhysics.AddRigidbody2D();
+            }
         }
         protected void RemovePhysics()
         {
-            blockPhysics.RemoveRigidbody2D();
+            bool imCore = GetComponent<CoreBlock>();
+            if (!imCore)
+            {
+                blockPhysics.RemoveRigidbody2D();
+            }
         }
 
         public abstract void Attacked(Vector2 globalImpactPoint, Vector2 globalImpactDirection);
 
         public void DisconnectFromParent()
         {
-            if(parentBlock)
+            Block parent = transform.parent?.GetComponent<Block>();
+
+            if (parent)
             {
-                parentBlock.DisconnectFromChildBlocks(this);
+                parent.DisconnectFromChildBlocks(this);
             }
 
-            parentBlock = null;
             transform.parent = null;
-
-            AddPhysics();
             ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
-            StartCoroutine(CanDockCooldown());
+            InitiateDockCooldown();
+            AddPhysics();
         }
 
         protected IEnumerator CanDockCooldown()
@@ -131,42 +218,15 @@ namespace Game
             childBlocks.Remove(block);
         }
 
-        protected void SetBlockParent(Block newParentBlock)
-        {
-            if (parentBlock != null)
-            {
-
-                ConnectToChildBlocks(parentBlock);
-                parentBlock.DisconnectFromChildBlocks(this);
-
-                if (newParentBlock != null)
-                {
-                    parentBlock = newParentBlock;
-                    transform.SetParent(parentBlock.transform, true);
-                }
-
-                foreach (Block child in childBlocks)
-                {
-                    if(child.parentBlock != this && child.transform.parent == transform)
-                    {
-                        child.SetBlockParent(this);
-                    }
-                }
-            }
-            else
-            {
-                parentBlock = newParentBlock;
-                transform.SetParent(parentBlock.transform, true);
-            }
-        }
-
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
             Block block = collision.gameObject.GetComponent<Block>();
             if (block)
             {
-                if (CurrentAffiliation == Affiliation.Player && block.CurrentAffiliation == Affiliation.Enemy ||
-                   CurrentAffiliation == Affiliation.Enemy && block.CurrentAffiliation == Affiliation.Player)
+                bool isMyEnemy = CurrentAffiliation == Affiliation.Player && block.CurrentAffiliation == Affiliation.Enemy ||
+                   CurrentAffiliation == Affiliation.Enemy && block.CurrentAffiliation == Affiliation.Player;
+
+                if (isMyEnemy)
                 {
                     Vector2 globalImpactPoint = collision.GetContact(0).point;
                     Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;

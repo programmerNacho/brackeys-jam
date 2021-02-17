@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798581813182279}
+  canDock: 1
 --- !u!1 &1673798581830209364
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798581830209367}
+  canDock: 1
 --- !u!1 &1673798581910154903
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798582042096768}
+  canDock: 1
 --- !u!1 &1673798582245462853
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 0}
   rotateSpeed: 10
-  countinuousRotateSpeed: 2000
+  countinuousRotateSpeed: 200
   moveSpeed: 500
   maxSpeed: 6
   shotRate: 0.5
@@ -510,7 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd90f1f093c56d4894cbe781c574b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentBlock: {fileID: 0}
   childBlocks: []
   dockCooldownAfterDisconnect: 2
   currentAffiliation: 1
@@ -671,6 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798582785891907}
+  canDock: 1
 --- !u!1 &1673798582859018124
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798582859018127}
+  canDock: 1
 --- !u!1 &1673798583159995562
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,3 +863,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockParent: {fileID: 1341177420}
   dockTransform: {fileID: 1673798583159995565}
+  canDock: 1

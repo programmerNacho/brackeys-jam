@@ -6,18 +6,6 @@ namespace Game
 {
     public class CoreBlock : Block
     {
-        public override void DockTry(Block otherBlock, BlockSide mySide, BlockSide otherSide)
-        {
-            if (otherBlock is SimpleBlock simpleBlock)
-            {
-                if (simpleBlock.CurrentAffiliation == Affiliation.Free)
-                {
-                    ConnectBlock(otherBlock, false);
-                    otherBlock.ChangeBlockAndChildBlocksAffiliation(CurrentAffiliation);
-                    blockDock.Dock(mySide, otherSide, otherBlock);
-                }
-            }
-        }
 
         public override void Attacked(Vector2 globalImpactPoint, Vector2 globalImpactDirection)
         {

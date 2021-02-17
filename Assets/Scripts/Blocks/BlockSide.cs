@@ -11,6 +11,8 @@ namespace Game
         [SerializeField]
         private Transform dockTransform = null;
 
+        public bool canDock = true;
+
         public Block BlockParent
         {
             get
@@ -39,7 +41,9 @@ namespace Game
         {
             BlockSide otherBlockSide = collision.GetComponent<BlockSide>();
 
-            if (otherBlockSide && !IsCollidingWithOwnBlockSide(otherBlockSide) && otherBlockSide.CanBlockParentDock())
+            bool canDock = otherBlockSide && !IsCollidingWithOwnBlockSide(otherBlockSide) && otherBlockSide.CanBlockParentDock() && CanBlockParentDock();
+
+            if (canDock)
             {
                 blockParent.DockTry(otherBlockSide.BlockParent, this, otherBlockSide);
             }
