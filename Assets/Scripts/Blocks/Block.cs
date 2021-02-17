@@ -30,8 +30,7 @@ namespace Game
         protected Block oldParentBlock = null;
 
         public UnityEvent OnConnect = new UnityEvent();
-        public UnityEvent OnStartDisconnect = new UnityEvent();
-        public UnityEvent OnCompleteDisconnect = new UnityEvent();
+        public UnityEvent OnDisconnect = new UnityEvent();
         public UnityEvent OnDestroy = new UnityEvent();
         public UnityEvent OnCreate = new UnityEvent();
 
@@ -51,7 +50,7 @@ namespace Game
         {
             OnConnect.AddListener(AddWeight);
             OnConnect.AddListener(CheckOverlaying);
-            OnStartDisconnect.AddListener(RemoveWeight);
+            OnDisconnect.AddListener(RemoveWeight);
         }
 
         public bool CanDock { get; private set; } = true;
@@ -87,47 +86,10 @@ namespace Game
             otherSide.GetComponentInParent<Rigidbody2D>()?.GetComponent<Block>()?.RemovePhysics();
             ConnectTargetBlockWithThis(otherBlock);
             Dock(mySide, otherSide, otherBlock);
-            ConnectFromShipController();
-        }
 
-        public void ConnectFromShipController()
-        {
-            ShipController shipController = GetComponentInParent<ShipController>();
-
-            if (shipController)
+            foreach (var item in otherBlock.GetComponentsInChildren<Block>())
             {
-                Block[] blocks = shipController.GetComponentsInChildren<Block>();
-
-                foreach (var item in blocks)
-                {
-                    Debug.DrawLine(item.transform.position, shipController.transform.position, Color.green, 1);
-
-                    item.OnConnect.Invoke();
-                }
-            }
-        }
-
-        public void DisconnectFromShipController(bool complete)
-        {
-            ShipController shipController = GetComponentInParent<ShipController>();
-
-            if (shipController)
-            {
-                Block[] blocks = shipController.GetComponentsInChildren<Block>();
-
-                foreach (var item in blocks)
-                {
-                    Debug.DrawLine(item.transform.position, shipController.transform.position, Color.red, 1);
-
-                    if(complete == false)
-                    {
-                        item.OnStartDisconnect.Invoke();
-                    }
-                    else
-                    {
-                        item.OnCompleteDisconnect.Invoke();
-                    }
-                }
+                item.OnConnect.Invoke();
             }
         }
 
@@ -284,10 +246,14 @@ namespace Game
 
         public void DisconnectFromParent()
         {
+
+            foreach (var item in GetComponentsInChildren<Block>())
+            {
+                item.OnDisconnect.Invoke();
+            }
+
             Block parent = null;
             parent = transform.parent?.GetComponent<Block>();
-
-            DisconnectFromShipController(false);
 
             if (parent)
             {
@@ -298,8 +264,6 @@ namespace Game
             ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
             InitiateDockCooldown();
             AddPhysics();
-
-            DisconnectFromShipController(true);
         }
 
         protected IEnumerator CanDockCooldown()

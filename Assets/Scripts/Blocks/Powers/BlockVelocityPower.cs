@@ -10,12 +10,25 @@ namespace Game
 
         public override void OnBlockConnected()
         {
-            
+            if(shipControllerAffected == null)
+            {
+                shipControllerAffected = myBlock.GetComponentInParent<ShipController>();
+
+                if(shipControllerAffected)
+                {
+                    // Le aplico el boost.
+                }
+            }
         }
 
         public override void OnBlockDisconnected()
         {
-            
+            if(shipControllerAffected)
+            {
+                // Le quito el boost.
+
+                shipControllerAffected = null;
+            }
         }
     }
 }
