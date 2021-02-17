@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2027093641}
-  size: 10
+  size: 20
   sizeMin: 50
   SizeMax: 10
   sizeSpeed: 2000
@@ -270,11 +270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.8
+      value: 45.35
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.3
+      value: 51.42
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -355,7 +355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468834235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.2, y: 50.4, z: 0}
+  m_LocalPosition: {x: 35.9, y: 56.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1761555515}
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98c0081ad169eb43bc23b4f588c36b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modulePrefab: {fileID: 7175202599737904892, guid: feb143ced43b9ea4abfddeff9350def9, type: 3}
+  modulePrefab: {fileID: 6217646424062419232, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
   speed: 3
   spawnRate: 1
   maxModules: 200
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98c0081ad169eb43bc23b4f588c36b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modulePrefab: {fileID: 7175202599737904892, guid: feb143ced43b9ea4abfddeff9350def9, type: 3}
+  modulePrefab: {fileID: 3731980590412761002, guid: e63cf87fd0dfc224c98cf0811e208940, type: 3}
   speed: 3
   spawnRate: 1
   maxModules: 200
@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98c0081ad169eb43bc23b4f588c36b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modulePrefab: {fileID: 7175202599737904892, guid: feb143ced43b9ea4abfddeff9350def9, type: 3}
+  modulePrefab: {fileID: 3217287696406044018, guid: 878974f90ef5be649a61862b52d842c5, type: 3}
   speed: 3
   spawnRate: 1
   maxModules: 200
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98c0081ad169eb43bc23b4f588c36b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modulePrefab: {fileID: 7175202599737904892, guid: feb143ced43b9ea4abfddeff9350def9, type: 3}
+  modulePrefab: {fileID: 1497488831016130611, guid: 6b8652fe377d51444803aa08752ba892, type: 3}
   speed: 3
   spawnRate: 1
   maxModules: 200
