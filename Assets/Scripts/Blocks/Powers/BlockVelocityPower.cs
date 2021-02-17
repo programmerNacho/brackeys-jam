@@ -6,29 +6,17 @@ namespace Game
 {
     public class BlockVelocityPower : BlockPower
     {
-        private ShipController shipControllerAffected = null;
-
         public override void OnBlockConnected()
         {
-            if(shipControllerAffected == null)
+            CoreBlock coreBlock = myBlock.GetComponentInParent<CoreBlock>();
+            if (coreBlock)
             {
-                shipControllerAffected = myBlock.GetComponentInParent<ShipController>();
-
-                if(shipControllerAffected)
-                {
-                    // Le aplico el boost.
-                }
+                coreBlock.speedBoost++;
             }
         }
 
         public override void OnBlockDisconnected()
         {
-            if(shipControllerAffected)
-            {
-                // Le quito el boost.
-
-                shipControllerAffected = null;
-            }
         }
     }
 }

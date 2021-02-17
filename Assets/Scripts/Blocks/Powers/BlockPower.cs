@@ -11,10 +11,9 @@ namespace Game
 
         private void OnEnable()
         {
-            if(myBlock)
+            if (myBlock)
             {
-                myBlock.OnConnect.AddListener(OnBlockConnected);
-                myBlock.OnDisconnect.AddListener(OnBlockDisconnected);
+                myBlock.OnSetPowers.AddListener(OnBlockConnected);
             }
         }
 
@@ -22,8 +21,7 @@ namespace Game
         {
             if (myBlock)
             {
-                myBlock.OnConnect.RemoveListener(OnBlockConnected);
-                myBlock.OnDisconnect.RemoveListener(OnBlockDisconnected);
+                myBlock.OnSetPowers.RemoveListener(OnBlockConnected);
             }
         }
 
@@ -31,8 +29,7 @@ namespace Game
         {
             if (myBlock)
             {
-                myBlock.OnConnect.RemoveListener(OnBlockConnected);
-                myBlock.OnDisconnect.RemoveListener(OnBlockDisconnected);
+                myBlock.OnSetPowers.RemoveListener(OnBlockConnected);
             }
         }
 

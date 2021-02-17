@@ -418,8 +418,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
-  m_AngularDrag: 3
+  m_LinearDrag: 0.5
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -441,11 +441,11 @@ MonoBehaviour:
   body: {fileID: 0}
   rotateSpeed: 200
   countinuousRotateSpeed: 200
-  moveSpeed: 10
-  speedReductionByWeigth: 0.1
-  boostIncrement: 0.5
-  baseMaxSpeed: 8
-  baseMinSpeed: 3
+  moveSpeed: 30
+  speedReductionByWeigth: 0.5
+  boostIncrement: 5
+  baseMaxSpeed: 20
+  baseMinSpeed: 5
   shotRate: 0.5
   stopDistance: 0.05
   OnShotStart:
@@ -494,20 +494,16 @@ MonoBehaviour:
   blockPhysics: {fileID: 6396130074767299067}
   blockDock: {fileID: 1341177427}
   overlayingRadio: 0.5
-  weight: 1
   destroyExplosionForce: 5
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
-  OnDisconnect:
+  OnSetPowers:
     m_PersistentCalls:
       m_Calls: []
-  OnDestroy:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCreate:
-    m_PersistentCalls:
-      m_Calls: []
+  rateOfFireBoost: 0
+  speedBoost: 0
+  weight: 1
 --- !u!114 &6396130074767299067
 MonoBehaviour:
   m_ObjectHideFlags: 0

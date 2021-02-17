@@ -60,12 +60,12 @@ public class ShipController : MonoBehaviour
     private void FixedUpdate()
     {
         LimitVelocity();
+        CheckVelocity();
     }
 
     private void Update()
     {
         MoveGoToPointContinuous();
-        CheckVelocity();
     }
 
     private void CheckVelocity()
@@ -108,9 +108,9 @@ public class ShipController : MonoBehaviour
 
     private void LimitVelocity()
     {
-        if (body.velocity.magnitude > baseMaxSpeed)
+        if (body.velocity.magnitude > maxSpeed)
         {
-            body.velocity = body.velocity.normalized * baseMaxSpeed;
+            body.velocity = body.velocity.normalized * maxSpeed;
         }
     }
 
@@ -223,13 +223,13 @@ public class ShipController : MonoBehaviour
         return moving;
     }
 
-    public void ChangeWeight()
+    public void ChangeWeight(int weight)
     {
-        weight = GetComponentsInChildren<Game.Block>().Length;
+        this.weight = weight;
     }
 
     public void ChangeBoost(int boost)
     {
-        this.boost += boost;
+        this.boost = boost;
     }
 }

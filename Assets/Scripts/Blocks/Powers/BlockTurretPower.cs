@@ -11,14 +11,9 @@ namespace Game
 
         protected int currentNumberOfBoosts = 0;
 
-        public virtual void AddBoost()
+        public virtual void SetBoost(int boostCount)
         {
-            currentNumberOfBoosts = Mathf.Clamp(currentNumberOfBoosts + 1, 0, maxNumberOfBoosts + 1);
-        }
-
-        public virtual void RemoveBoost()
-        {
-            currentNumberOfBoosts = Mathf.Clamp(currentNumberOfBoosts - 1, 0, maxNumberOfBoosts + 1);
+            currentNumberOfBoosts = Mathf.Clamp(boostCount, 0, maxNumberOfBoosts);
         }
     }
 }

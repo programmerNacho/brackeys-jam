@@ -21,18 +21,13 @@ namespace Game
         [SerializeField]
         protected float overlayingRadio = 0.5f;
 
-
-        [SerializeField]
-        protected int weight = 1;
         [SerializeField]
         protected float destroyExplosionForce = 5;
 
         protected Block oldParentBlock = null;
 
         public UnityEvent OnConnect = new UnityEvent();
-        public UnityEvent OnDisconnect = new UnityEvent();
-        public UnityEvent OnDestroy = new UnityEvent();
-        public UnityEvent OnCreate = new UnityEvent();
+        public UnityEvent OnSetPowers = new UnityEvent();
 
         public Affiliation CurrentAffiliation 
         {
@@ -48,9 +43,7 @@ namespace Game
 
         private void Start()
         {
-            OnConnect.AddListener(AddWeight);
             OnConnect.AddListener(CheckOverlaying);
-            OnDisconnect.AddListener(RemoveWeight);
         }
 
         public bool CanDock { get; private set; } = true;
@@ -81,16 +74,22 @@ namespace Game
             }
         }
 
+        private void ResetCorePowers()
+        {
+            CoreBlock core = GetComponentInParent<CoreBlock>();
+            if (core)
+            {
+                core.SetPowers();
+            }
+        }
+
         private void PrepareDock(Block otherBlock, BlockSide mySide, BlockSide otherSide)
         {
             otherSide.GetComponentInParent<Rigidbody2D>()?.GetComponent<Block>()?.RemovePhysics();
             ConnectTargetBlockWithThis(otherBlock);
             Dock(mySide, otherSide, otherBlock);
 
-            foreach (var item in otherBlock.GetComponentsInChildren<Block>())
-            {
-                item.OnConnect.Invoke();
-            }
+            ResetCorePowers();
         }
 
         public void Dock(BlockSide myBlockSide, BlockSide otherBlockSide, Block otherBlock)
@@ -246,12 +245,6 @@ namespace Game
 
         public void DisconnectFromParent()
         {
-
-            foreach (var item in GetComponentsInChildren<Block>())
-            {
-                item.OnDisconnect.Invoke();
-            }
-
             Block parent = null;
             parent = transform.parent?.GetComponent<Block>();
 
@@ -264,6 +257,11 @@ namespace Game
             ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
             InitiateDockCooldown();
             AddPhysics();
+
+            if (parent)
+            {
+                parent.ResetCorePowers();
+            }
         }
 
         protected IEnumerator CanDockCooldown()
@@ -284,25 +282,6 @@ namespace Game
         }
 
         protected abstract void CheckOverlaying();
-
-        protected void AddWeight()
-        {
-            ShipController shipController = GetComponentInParent<ShipController>();
-
-            if (shipController)
-            {
-                shipController.ChangeWeight();
-            }
-        }
-        protected void RemoveWeight()
-        {
-            ShipController shipController = GetComponentInParent<ShipController>();
-
-            if (shipController)
-            {
-                shipController.ChangeWeight();
-            }
-        }
 
         //protected virtual void OnTriggerEnter2D(Collider2D collision)
         //{

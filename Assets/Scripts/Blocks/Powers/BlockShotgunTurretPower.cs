@@ -16,14 +16,5 @@ namespace Game
 
         }
 
-        public override void AddBoost()
-        {
-            base.AddBoost();
-        }
-
-        public override void RemoveBoost()
-        {
-            base.RemoveBoost();
-        }
     }
 }
