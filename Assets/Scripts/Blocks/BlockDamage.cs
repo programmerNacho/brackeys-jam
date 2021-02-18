@@ -63,7 +63,22 @@ namespace Game
         protected virtual void BlockDestroy()
         {
             Disconnect();
+            NotifyTheLevelManager();
             Destroy(gameObject);
+        }
+
+        private void NotifyTheLevelManager()
+        {
+            CoreBlock core = gameObject.GetComponent<CoreBlock>();
+            if (core)
+            {
+                LevelManager levelManager = FindObjectOfType<LevelManager>();
+                if (levelManager)
+                {
+                    levelManager.CheckTargetsRemainig(core);
+                }
+            }
+
         }
     }
 }

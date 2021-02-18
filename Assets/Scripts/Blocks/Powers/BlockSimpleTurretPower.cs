@@ -60,7 +60,16 @@ namespace Game
 
         private void LookAtNearestEnemy(Block nearestEnemy)
         {
-            turretPivot.transform.up = (nearestEnemy.transform.position - transform.position).normalized;
+            Rigidbody2D targetBody = nearestEnemy.GetComponentInParent<Rigidbody2D>();
+
+            Vector2 targetDirection = targetBody.velocity.normalized;
+            float distanceToTarget = Vector2.Distance(transform.position, nearestEnemy.transform.position);
+            float targetSpeed = targetBody.velocity.magnitude * distanceToTarget * Time.deltaTime;
+            targetSpeed *= 0.8f;
+
+            Vector2 targetPredectePosition = (Vector2)nearestEnemy.transform.position + (targetDirection * targetSpeed);
+
+            turretPivot.transform.up = (targetPredectePosition - (Vector2)transform.position).normalized;
         }
 
         private void WaitForShot(float timeToWaitForShot)
