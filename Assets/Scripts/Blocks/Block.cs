@@ -259,7 +259,9 @@ namespace Game
             }
 
             transform.parent = null;
-            ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
+
+            if (!GetComponent<CoreBlock>()) ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
+
             InitiateDockCooldown(dockCooldownAfterDisconnect);
             AddPhysics();
 

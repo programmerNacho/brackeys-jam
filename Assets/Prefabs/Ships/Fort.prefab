@@ -13291,8 +13291,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2704591075210695668}
-  m_LocalRotation: {x: 0, y: 0, z: 0.031017486, w: 0.9995189}
-  m_LocalPosition: {x: 2.06, y: 0.99, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4221125627916832890}
@@ -13305,7 +13305,7 @@ Transform:
   - {fileID: 4346926653392895944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.378}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2597821727760112094
 Rigidbody2D:
   serializedVersion: 4
@@ -13442,6 +13442,7 @@ MonoBehaviour:
   flankTime: 5
   flankAngle: 50
   rotate: 1
+  lookToTarget: 0
   rotateTime: 7
   combatBehavior: 2
   rangeOfVisionAgainstPlayer: 120
