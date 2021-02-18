@@ -167,6 +167,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2192070253333726764}
   blockDock: {fileID: 7319175256601011313}
   centerCollider: {fileID: 6942564395542653334}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -381,6 +382,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 513632287185263411}
   blockDock: {fileID: 1033718777060739694}
   centerCollider: {fileID: 7191362961433800617}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -766,6 +768,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8726748359982046896}
   blockDock: {fileID: 1491534472897800743}
   centerCollider: {fileID: 8721979814757421269}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -939,6 +942,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 7481016886244973810}
   blockDock: {fileID: 1889492087789344241}
   centerCollider: {fileID: 8077859575084551158}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -1165,6 +1169,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2854894935004119127}
   blockDock: {fileID: 7492621830068762304}
   centerCollider: {fileID: 3874219127662527838}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -2202,6 +2207,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 6400642382690609977}
   blockDock: {fileID: 8604571869880509758}
   centerCollider: {fileID: 6049304528587884873}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -3052,6 +3058,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 3245029000845451205}
   blockDock: {fileID: 7408622126038316783}
   centerCollider: {fileID: 5983533218479471420}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -3765,6 +3772,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 4981465788264278316}
   blockDock: {fileID: 7299407472449825971}
   centerCollider: {fileID: 4382641587610001607}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -5210,6 +5218,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1943717196056020117}
   blockDock: {fileID: 4236135916729158162}
   centerCollider: {fileID: 822858706941096320}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -5787,6 +5796,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 3670852086959746214}
   blockDock: {fileID: 8360904661852908625}
   centerCollider: {fileID: 3182450960049931239}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -5938,6 +5948,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1647293091435863448}
   blockDock: {fileID: 8496587737567289197}
   centerCollider: {fileID: 7484400147635274178}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -6960,6 +6971,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8328593808905081340}
   blockDock: {fileID: 5273224934227143664}
   centerCollider: {fileID: 5824816334763503937}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -9035,6 +9047,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2908269234315243670}
   blockDock: {fileID: 5161436398307400964}
   centerCollider: {fileID: 141656268979937977}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -11597,6 +11610,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 4860171899017917730}
   blockDock: {fileID: 8813884251729291179}
   centerCollider: {fileID: 1392472458080736340}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -12608,6 +12622,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8007879462356679355}
   blockDock: {fileID: 4130504325634554763}
   centerCollider: {fileID: 7886984885318938683}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -13061,6 +13076,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 566638483325471612}
   blockDock: {fileID: 1769275465133878765}
   centerCollider: {fileID: 605240327560150057}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -13344,7 +13360,7 @@ MonoBehaviour:
   moveSpeed: 30
   speedReductionByWeigth: 0.25
   boostIncrement: 1
-  baseMaxSpeed: 20
+  baseMaxSpeed: 10
   baseMinSpeed: 5
   shotRate: 0.5
   stopDistance: 0.05
@@ -13387,6 +13403,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 3528671365336512900}
   blockDock: {fileID: 2799639457005002082}
   centerCollider: {fileID: 4367059457713787290}
+  canDock: 0
   health: 1
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -14144,6 +14161,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 7933116800663756838}
   blockDock: {fileID: 8805732250614375177}
   centerCollider: {fileID: 5889253867905968476}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -14315,6 +14333,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2627251286552659050}
   blockDock: {fileID: 5684279570545688364}
   centerCollider: {fileID: 8764998135882322033}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -14535,6 +14554,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2662485933123283665}
   blockDock: {fileID: 8242058552689892629}
   centerCollider: {fileID: 1656250878156764193}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -14969,6 +14989,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 7326283176766397239}
   blockDock: {fileID: 7852087080619283875}
   centerCollider: {fileID: 2672508149996584689}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -16917,6 +16938,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1958706697942494010}
   blockDock: {fileID: 3108473388231159900}
   centerCollider: {fileID: 2731711709120281356}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -17348,6 +17370,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 6089805385006137136}
   blockDock: {fileID: 6405085433521228855}
   centerCollider: {fileID: 1308601337159966792}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -17603,6 +17626,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 5736091248168818582}
   blockDock: {fileID: 2107109878555921419}
   centerCollider: {fileID: 1758955686546892433}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -17866,6 +17890,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 5010470479054031023}
   blockDock: {fileID: 4578423297224875054}
   centerCollider: {fileID: 2011849254768145967}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -19631,6 +19656,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 4837335489868996455}
   blockDock: {fileID: 8189978916843173632}
   centerCollider: {fileID: 4067803391433470440}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -20479,6 +20505,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 674159664548238578}
   blockDock: {fileID: 3295064459821710615}
   centerCollider: {fileID: 5329139446429201540}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -22113,6 +22140,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 197536898941545733}
   blockDock: {fileID: 4903886303048423839}
   centerCollider: {fileID: 7060742326645960522}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -22814,6 +22842,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2167594744845030707}
   blockDock: {fileID: 2304376613578345672}
   centerCollider: {fileID: 5262169237290112152}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -23789,6 +23818,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 7688393606102903146}
   blockDock: {fileID: 8315093052790115213}
   centerCollider: {fileID: 4386285622972208266}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -24052,6 +24082,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 6353720100992091014}
   blockDock: {fileID: 9202176132858051761}
   centerCollider: {fileID: 3765082326844891430}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -24193,6 +24224,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8477956977032559909}
   blockDock: {fileID: 8801575571427374000}
   centerCollider: {fileID: 830843862865967486}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -24642,6 +24674,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8714911565930199100}
   blockDock: {fileID: 3231081764891484261}
   centerCollider: {fileID: 8001969296648179310}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -25916,6 +25949,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 3667911180939830534}
   blockDock: {fileID: 748033928648921255}
   centerCollider: {fileID: 7974062345936019413}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -26027,6 +26061,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8324690239167241069}
   blockDock: {fileID: 4795036281402207728}
   centerCollider: {fileID: 2726997876104112433}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -26544,6 +26579,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 3182295337975011078}
   blockDock: {fileID: 9150422986726959782}
   centerCollider: {fileID: 2015361378753956131}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -27415,6 +27451,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 6563138956825900220}
   blockDock: {fileID: 2695860626062562900}
   centerCollider: {fileID: 1345455032622573001}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -28323,6 +28360,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1836138214028079836}
   blockDock: {fileID: 8218304460543240780}
   centerCollider: {fileID: 4956935293110831635}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -28706,6 +28744,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 5163367675111287741}
   blockDock: {fileID: 3856740820559938571}
   centerCollider: {fileID: 3558816997755607302}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -28857,6 +28896,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 450276235780075567}
   blockDock: {fileID: 1915396149458985998}
   centerCollider: {fileID: 4918640487531603175}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -29656,6 +29696,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 580690969795591179}
   blockDock: {fileID: 7327402059190480575}
   centerCollider: {fileID: 9127321639011987295}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -30002,6 +30043,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1518317403867906756}
   blockDock: {fileID: 1225000656051576399}
   centerCollider: {fileID: 4810155099961154490}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -30373,6 +30415,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 7388815100601802298}
   blockDock: {fileID: 4935389789019022922}
   centerCollider: {fileID: 1230635093682720649}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -31919,6 +31962,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2088384788172301121}
   blockDock: {fileID: 6572593850080006688}
   centerCollider: {fileID: 7466987084663940733}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -32623,6 +32667,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 6751104313296898944}
   blockDock: {fileID: 16746545757042316}
   centerCollider: {fileID: 3941013271863781019}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -33327,6 +33372,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1903005485382896001}
   blockDock: {fileID: 1368876646900188600}
   centerCollider: {fileID: 1705319526187187274}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -35083,6 +35129,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8871797300105169849}
   blockDock: {fileID: 5096695274355926464}
   centerCollider: {fileID: 1462059114732144140}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -35747,6 +35794,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 910888988169173317}
   blockDock: {fileID: 2236272700769275961}
   centerCollider: {fileID: 3544565597702367361}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -35977,6 +36025,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8343262419325202251}
   blockDock: {fileID: 732349438225945689}
   centerCollider: {fileID: 1107601022649906997}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -37315,6 +37364,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 5933470766349829399}
   blockDock: {fileID: 5258980108688765154}
   centerCollider: {fileID: 4905838849980571678}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -37540,6 +37590,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1833740365134230544}
   blockDock: {fileID: 4563293639751484153}
   centerCollider: {fileID: 583069229275421455}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -38088,6 +38139,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 678267021452060342}
   blockDock: {fileID: 8624896735056476850}
   centerCollider: {fileID: 1907705215985216783}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -38760,6 +38812,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 8069726633762461900}
   blockDock: {fileID: 3524118190241459543}
   centerCollider: {fileID: 3241889692739349823}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -39238,6 +39291,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 4719881743082569683}
   blockDock: {fileID: 6757175712987441583}
   centerCollider: {fileID: 2515529252786857895}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -39578,6 +39632,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2478331647698386695}
   blockDock: {fileID: 2390256236921984982}
   centerCollider: {fileID: 818755564387442577}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -40459,6 +40514,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 6320782945594279518}
   blockDock: {fileID: 5849013193799449690}
   centerCollider: {fileID: 1409905222283172123}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -40678,6 +40734,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 5937675211493045746}
   blockDock: {fileID: 2432419163918117977}
   centerCollider: {fileID: 2086136257222935562}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -41601,6 +41658,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 5549935989685459689}
   blockDock: {fileID: 5277827101064390131}
   centerCollider: {fileID: 8728473314331247863}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0
@@ -42399,6 +42457,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 2586140293766396086}
   blockDock: {fileID: 7018085034917780354}
   centerCollider: {fileID: 5452137308098980645}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -42822,6 +42881,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 4558586402382389}
   blockDock: {fileID: 5597584185406514145}
   centerCollider: {fileID: 5678830991635470547}
+  canDock: 0
   health: 2
   overlayingRadio: 1.25
   simultaneousDock: 0
@@ -43055,6 +43115,7 @@ MonoBehaviour:
   blockPhysics: {fileID: 1904826689058403095}
   blockDock: {fileID: 2436646510870112980}
   centerCollider: {fileID: 3322954082541412244}
+  canDock: 0
   health: 2
   overlayingRadio: 0.5
   simultaneousDock: 0

@@ -19,6 +19,9 @@ namespace Game
         [SerializeField]
         private Collider2D centerCollider = null;
 
+        [SerializeField]
+        private bool canDock = true;
+
         public int health = 2;
         protected int currentHealth = 0;
 
@@ -64,7 +67,8 @@ namespace Game
             {
                 blockDock = gameObject.AddComponent<BlockDock>();
             }
-            
+
+            CanDock = canDock;
 
             currentHealth = health;
         }
