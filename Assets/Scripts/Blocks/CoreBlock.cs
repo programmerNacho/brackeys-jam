@@ -16,6 +16,17 @@ namespace Game
         {
             base.Start();
             shipController = GetComponent<ShipController>();
+
+            foreach (var block in GetChildrensBlocks())
+            {
+                block.ChangeBlockAndChildBlocksAffiliation(currentAffiliation);
+
+                Block parent = block.transform.parent?.GetComponent<Block>();
+                if (parent) parent.ConnectToChildBlocks(this);
+            }
+
+            CheckShipStatus();
+
         }
 
         public void CheckShipStatus()

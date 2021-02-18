@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipController: {fileID: 0}
   tickTime: 0.2
-  flank: 0
-  flankTime: 2
+  flank: 1
+  flankTime: 3
   flankAngle: 50
-  rotate: 0
+  rotate: 1
   lookToTarget: 0
-  rotateTime: 2
-  combatBehavior: 2
-  rangeOfVisionAgainstPlayer: 30
-  rangeOfVisionAgainstNodes: 30
+  rotateTime: 3
+  combatBehavior: 1
+  rangeOfVisionAgainstPlayer: 100
+  rangeOfVisionAgainstNodes: 40
   nodeLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  wanderTime: 3
+  wanderTime: 10
 --- !u!114 &5936269169521621130
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -185,11 +185,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 406
-        y: 1739
+        y: 1741
         width: 248
         height: 215
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.49693888, y: 0.3875159}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,7 +205,7 @@ TextureImporter:
       name: BlockEnemy
       rect:
         serializedVersion: 2
-        x: 725
+        x: 726
         y: 1558
         width: 513
         height: 446

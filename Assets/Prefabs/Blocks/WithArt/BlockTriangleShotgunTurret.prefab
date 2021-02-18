@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436202975876541755}
   m_LocalRotation: {x: -0, y: -0, z: -0.49999967, w: -0.8660256}
-  m_LocalPosition: {x: -0.65, y: -0.06, z: 0}
+  m_LocalPosition: {x: -0.65, y: 0.1510013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276929931053177978}
@@ -416,7 +416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5865365033161501211}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0.00000032782552}
-  m_LocalPosition: {x: 0, y: -1.15, z: 0}
+  m_LocalPosition: {x: 0, y: -0.9389987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276929931053177978}
@@ -489,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7583234623327176603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000055486365, y: -0.09090909, z: 0}
+  m_LocalPosition: {x: 0.000055486365, y: 0.12009221, z: 0}
   m_LocalScale: {x: 0.90909094, y: 0.90909094, z: 0.90909094}
   m_Children: []
   m_Father: {fileID: 276929931053177978}
@@ -592,7 +592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8210517637679551455}
   m_LocalRotation: {x: -0, y: -0, z: 0.5000004, w: -0.8660252}
-  m_LocalPosition: {x: 0.65, y: -0.06, z: 0}
+  m_LocalPosition: {x: 0.65, y: 0.151, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276929931053177978}
@@ -701,7 +701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9211159104580210773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.630215, y: 50.69892, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 246748126076622257}
@@ -749,8 +749,10 @@ MonoBehaviour:
   blockPhysics: {fileID: 2184755071856875494}
   blockDock: {fileID: 8423417993527650125}
   centerCollider: {fileID: 5046031231205079620}
+  canDock: 1
   health: 2
   overlayingRadio: 0.5
+  simultaneousDock: 0
   OnConnect:
     m_PersistentCalls:
       m_Calls: []

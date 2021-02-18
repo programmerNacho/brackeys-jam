@@ -284,7 +284,7 @@ namespace Game
             CanDock = true;
         }
 
-        protected void ConnectToChildBlocks(Block block)
+        public void ConnectToChildBlocks(Block block)
         {
             childBlocks.Add(block);
         }
