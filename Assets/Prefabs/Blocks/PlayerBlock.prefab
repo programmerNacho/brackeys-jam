@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 0}
-  rotateSpeed: 200
+  rotateSpeed: 2
   countinuousRotateSpeed: 200
   moveSpeed: 30
   speedReductionByWeigth: 0.5
@@ -494,8 +494,8 @@ MonoBehaviour:
   blockPhysics: {fileID: 6396130074767299067}
   blockDock: {fileID: 1341177427}
   centerCollider: {fileID: 0}
+  health: 1
   overlayingRadio: 0.5
-  destroyExplosionForce: 5
   OnConnect:
     m_PersistentCalls:
       m_Calls: []

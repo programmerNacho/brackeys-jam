@@ -9,9 +9,7 @@ public class ShipController : MonoBehaviour
     private Rigidbody2D body = null;
 
     [SerializeField]
-    private float rotateSpeed = 10.0f;
-    [SerializeField]
-    private float countinuousRotateSpeed = 100.0f;
+    private float rotateSpeed = 3.0f;
 
     [SerializeField]
     private float moveSpeed = 10.0f;
@@ -122,12 +120,12 @@ public class ShipController : MonoBehaviour
     #region Rotate
     public void RotateContinuous(bool clockwise)
     {
-        float angleSpeed = countinuousRotateSpeed;
-        if (clockwise) angleSpeed = -countinuousRotateSpeed;
+        float angleSpeed = rotateSpeed * 100;
+        if (clockwise) angleSpeed *= -1;
 
         Vector2 currentLookDirection = transform.up;
 
-        float currentAngle = -GetAngle(currentLookDirection);
+        float currentAngle = GetAngle(currentLookDirection);
         float newAngle = currentAngle + (angleSpeed * Time.deltaTime);
 
         RotateAngleInstant(newAngle);
@@ -136,24 +134,40 @@ public class ShipController : MonoBehaviour
     public void RotateTowardDirectionAcceleration(Vector2 targetLookDirection)
     {
 
-        Vector2 currentLookDirection = transform.up;
-
-        Vector2 newLookDirection = currentLookDirection + Vector2.MoveTowards(currentLookDirection, targetLookDirection, rotateSpeed * Time.deltaTime);
-
-        float newAngle = -GetAngle(newLookDirection);
-
-        RotateAngleInstant(newAngle);
+        //targetAngle
+        float targetAngle = GetAngle(targetLookDirection);
+        RotateAngleAcceleration(targetAngle);
     }
 
     public void RotateTowardDirectionInstant(Vector2 targetLookDirection)
     {
-        float angle = -GetAngle(targetLookDirection);
+        float angle = GetAngle(targetLookDirection);
         RotateAngleInstant(angle);
     }
 
+    public void RotateAngleAcceleration(float targetAngle)
+    {
+        // Obtener el equivalente
+        // Rotar
+        float myAngle = GetAngle(transform.up);
+        float newAngle = Mathf.MoveTowardsAngle(myAngle, targetAngle, rotateSpeed);
+
+        RotateAngleInstant(newAngle);
+    }
     public void RotateAngleInstant(float angle)
     {
         body.transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+    public float GetAngle(Vector2 vector)
+    {
+        if (vector.x < 0)
+        {
+            return -(360 - (Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg * -1));
+        }
+        else
+        {
+            return -Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
+        }
     }
     #endregion
 
@@ -174,18 +188,6 @@ public class ShipController : MonoBehaviour
     {
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
         body.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
-    }
-
-    public float GetAngle(Vector2 vector)
-    {
-        if (vector.x < 0)
-        {
-            return 360 - (Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg * -1);
-        }
-        else
-        {
-            return Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
-        }
     }
 
     public void GoToPoint(Vector2 targetPosition)

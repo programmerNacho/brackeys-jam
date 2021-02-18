@@ -7,12 +7,43 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private ShipController shipController;
 
+    [SerializeField]
+    private float tickTime = 0.2f;
+
     private enum CombatBehavior
     {
         Pasive,
         Defensive,
         Ofensive
     }
+
+    [SerializeField]
+    private bool flank;
+
+    [SerializeField]
+    [Range(1, 10)]
+    private float flankTime = 2;
+    private float timeToChangeFlankDirection = 0;
+    private bool flankDirectionIsRight = false;
+
+    [SerializeField]
+    [Range(1, 10)]
+    private float flankAngle = 50;
+
+    [SerializeField]
+    private bool rotate;
+    private bool isRottating = false;
+
+    [SerializeField]
+    [Range(1, 10)]
+    private float rotateTime = 2;
+    private float timeToChangeRotateDirection = 0;
+    private float rotateDirectionTarget = 0;
+
+    private bool continuousMove = false;
+    private Vector2 moveDirection = Vector2.zero;
+
+
 
     [SerializeField]
     private CombatBehavior combatBehavior = CombatBehavior.Pasive;
@@ -39,14 +70,28 @@ public class EnemyAI : MonoBehaviour
         SerializeVariables();
     }
 
+    private void Update()
+    {
+        if (rotate)
+        {
+            shipController.RotateAngleAcceleration(rotateDirectionTarget);
+        }
+        if (continuousMove)
+        {
+            shipController.MoveTowardsDirectionAcceleration(moveDirection);
+        }
+    }
+
     private void SerializeVariables()
     {
         if (shipController == null) shipController = GetComponent<ShipController>();
-        Invoke("Tick", 0.2f);
+        Invoke("Tick", tickTime);
     }
 
     private void Tick()
     {
+        Rotate();
+
         if (!CheckPlayersInRange())
         {
             if (!CheckNodesInRange())
@@ -64,6 +109,20 @@ public class EnemyAI : MonoBehaviour
         }
         Invoke("Tick", 0.2f);
     }
+
+    private void Rotate()
+    {
+        if (timeToChangeRotateDirection <= 0)
+        {
+            rotateDirectionTarget = Random.Range(0, 360);
+            timeToChangeRotateDirection = rotateTime;
+        }
+        else
+        {
+            timeToChangeRotateDirection -= tickTime;
+        }
+    }
+
     private void StopWander()
     {
         isWander = false;
@@ -180,6 +239,7 @@ public class EnemyAI : MonoBehaviour
     private void NodeInRange()
     {
         shipController.GoToPoint(moduleTarget.transform.position);
+        continuousMove = false;
     }
     private void EnemyInRange()
     {
@@ -200,12 +260,62 @@ public class EnemyAI : MonoBehaviour
 
     private void RunAway()
     {
-        Vector2 direction = transform.position - playerTarget.transform.position;
-        shipController.MoveTowardsDirectionAcceleration(direction);
+        if (flank)
+        {
+            Vector2 targetDirection = ((Vector2)transform.position - (Vector2)playerTarget.transform.position).normalized;
+            FlankMove(targetDirection);
+        }
+        else
+        {
+            Vector2 direction = transform.position - playerTarget.transform.position;
+            shipController.MoveTowardsDirectionAcceleration(direction);
+            continuousMove = false;
+        }
     }
 
     private void AttackTarget()
     {
-        shipController.GoToPoint(playerTarget.transform.position);
+        if (flank)
+        {
+            Vector2 targetDirection = ((Vector2)playerTarget.transform.position - (Vector2)transform.position).normalized;
+            FlankMove(targetDirection);
+        }
+        else
+        {
+            shipController.GoToPoint(playerTarget.transform.position);
+            continuousMove = false;
+        }
+    }
+
+    private void FlankMove(Vector2 targetDirection)
+    {
+        float targetAngle = shipController.GetAngle(targetDirection);
+
+        if (flankDirectionIsRight)
+        {
+            targetAngle += flankAngle;
+        }
+        else
+        {
+            targetAngle -= flankAngle;
+        }
+
+        moveDirection = (Vector2)(Quaternion.Euler(0, 0, targetAngle) * Vector2.up);
+        continuousMove = true;
+
+        ResetFlankTime();
+    }
+
+    private void ResetFlankTime()
+    {
+        if (timeToChangeFlankDirection <= 0)
+        {
+            flankDirectionIsRight = !flankDirectionIsRight;
+            timeToChangeFlankDirection = flankTime;
+        }
+        else
+        {
+            timeToChangeFlankDirection -= tickTime;
+        }
     }
 }
