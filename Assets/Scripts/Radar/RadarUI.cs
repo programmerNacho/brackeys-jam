@@ -14,12 +14,14 @@ namespace Game
         private float viewportOffset = 0.05f;
 
         private Radar radar = null;
+        private Camera mainCamera = null;
 
         private List<RadarTargetUI> radarTargetUIs = new List<RadarTargetUI>();
 
         private void Start()
         {
             radar = Radar.Instance;
+            mainCamera = Camera.main;
         }
 
         private void Update()
@@ -71,7 +73,6 @@ namespace Game
                 if (found == false)
                 {
                     targetUI.Target = null;
-                    targetUI.gameObject.SetActive(false);
                 }
             }
         }
@@ -115,16 +116,89 @@ namespace Game
         {
             targetUI.Target = target;
             targetUI.Appearance = appearances.GetAppearance(target.TypeOfTarget);
-            targetUI.gameObject.SetActive(true);
         }
 
         private void MoveAndRotateRadarTargetsUI()
         {
+            float viewportOffsetX = 0f;
+            float viewportOffsetY = 0f;
+
+            if (Screen.width >= Screen.height)
+            {
+                viewportOffsetX = viewportOffset;
+                viewportOffsetY = viewportOffset + (Screen.width / Screen.height) * viewportOffset;
+            }
+            else
+            {
+                viewportOffsetX = viewportOffset + (Screen.width / Screen.height) * viewportOffset;
+                viewportOffsetY = viewportOffset;
+            }
+
             foreach (RadarTargetUI targetUI in radarTargetUIs)
             {
                 if(targetUI.Target)
                 {
-                    
+                    Vector3 targetViewportPosition = mainCamera.WorldToViewportPoint(targetUI.Target.transform.position);
+
+                    Vector3 UIViewportPosition = Vector3.zero;
+
+                    bool outsideLeft = targetViewportPosition.x < 0;
+                    bool outsideRight = targetViewportPosition.x > 1;
+                    bool outsideBottom = targetViewportPosition.y < 0;
+                    bool outsideTop = targetViewportPosition.y > 1;
+
+                    if ((outsideLeft || outsideRight) && (outsideBottom || outsideTop))
+                    {
+                        if(outsideRight)
+                        {
+                            if(outsideBottom)
+                            {
+                                UIViewportPosition = new Vector2(1 - viewportOffsetX, viewportOffsetY);
+                            }
+                            else if(outsideTop)
+                            {
+                                UIViewportPosition = new Vector2(1 - viewportOffsetX, 1 - viewportOffsetY);
+                            }
+                        }
+                        else if(outsideLeft)
+                        {
+                            if (outsideBottom)
+                            {
+                                UIViewportPosition = new Vector2(viewportOffsetX, viewportOffsetY);
+                            }
+                            else if (outsideTop)
+                            {
+                                UIViewportPosition = new Vector2(viewportOffsetX, 1 - viewportOffsetY);
+                            }
+                        }
+                    }
+                    else if(outsideLeft || outsideRight)
+                    {
+                        if(outsideLeft)
+                        {
+                            UIViewportPosition = new Vector2(viewportOffsetX, targetViewportPosition.y);
+                        }
+                        else if(outsideRight)
+                        {
+                            UIViewportPosition = new Vector2(1 - viewportOffsetX, targetViewportPosition.y);
+                        }
+                    }
+                    else if(outsideBottom || outsideTop)
+                    {
+                        if(outsideBottom)
+                        {
+                            UIViewportPosition = new Vector2(targetViewportPosition.x, viewportOffsetY);
+                        }
+                        else if(outsideTop)
+                        {
+                            UIViewportPosition = new Vector2(targetViewportPosition.x, 1 - viewportOffsetY);
+                        }
+                    }
+
+                    UIViewportPosition.x = Mathf.Clamp(UIViewportPosition.x, viewportOffsetX, 1 - viewportOffsetX);
+                    UIViewportPosition.y = Mathf.Clamp(UIViewportPosition.y, viewportOffsetY, 1 - viewportOffsetY);
+
+                    targetUI.SetScreenPosition(mainCamera.ViewportToScreenPoint(UIViewportPosition));
                 }
             }
         }
