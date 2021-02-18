@@ -10,9 +10,6 @@ namespace Game
 
         public virtual void TakeDamage()
         {
-            SpriteRenderer mesh = myBlock.GetComponentInChildren<SpriteRenderer>();
-            mesh.color = Color.yellow;
-
             if (myBlock.health > 1)
             {
                 myBlock.health--;
@@ -36,10 +33,13 @@ namespace Game
 
             foreach (var childrenBlock in tempChildrenBlock)
             {
-                childrenBlock.DisconnectFromParent();
+                if (childrenBlock)
+                {
+                    childrenBlock.DisconnectFromParent();
 
-                BlockPhysics blockPhysics = childrenBlock.GetComponent<BlockPhysics>();
-                blockPhysics.AddExplosionForce(transform.position, destroyExplosionForce);
+                    BlockPhysics blockPhysics = childrenBlock.GetComponent<BlockPhysics>();
+                    blockPhysics.AddExplosionForce(transform.position, destroyExplosionForce);
+                }
             }
 
             myBlock.DisconnectFromParent();

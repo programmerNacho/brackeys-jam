@@ -111,9 +111,12 @@ namespace Game
             CurrentAffiliation = newAffiliation;
             foreach (Block child in childBlocks)
             {
-                if(child.CurrentAffiliation != newAffiliation && child.transform.parent == transform)
+                if (child)
                 {
-                    child.ChangeBlockAndChildBlocksAffiliation(newAffiliation);
+                    if (child.CurrentAffiliation != newAffiliation && child.transform.parent == transform)
+                    {
+                        child.ChangeBlockAndChildBlocksAffiliation(newAffiliation);
+                    }
                 }
             }
         }
@@ -122,7 +125,7 @@ namespace Game
         {
             if (targetBlock == null)
             {
-                Debug.LogError("otherBlock is null.");
+                Debug.LogWarning("otherBlock is null.");
                 return;
             }
             Block parent = GetComponentInParent<Block>();
@@ -131,13 +134,13 @@ namespace Game
 
             if (targetBlockIsMyParent)
             {
-                Debug.LogError("otherBlock is already parent.");
+                Debug.LogWarning("otherBlock is already parent.");
                 return;
             }
 
             if (childBlocks.Contains(targetBlock))
             {
-                Debug.LogError("otherBlock is already connected.");
+                Debug.LogWarning("otherBlock is already connected.");
                 return;
             }
 
@@ -227,10 +230,9 @@ namespace Game
         public void DisconnectFromParent()
         {
             Block parent = null;
-            parent = transform.parent?.GetComponent<Block>();
-
             if (parent)
             {
+                parent = transform.parent?.GetComponent<Block>();
                 parent.DisconnectFromChildBlocks(this);
             }
 

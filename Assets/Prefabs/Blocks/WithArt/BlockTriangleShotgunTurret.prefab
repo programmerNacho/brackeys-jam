@@ -231,14 +231,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBlock: {fileID: 2503561327116607978}
   turretPivot: {fileID: 8429438637471083176}
-  rangeOfSight: 10
-  projectileSpeed: 30
+  rangeOfSight: 20
+  projectileSpeed: 60
   timeToWaitToShootPerBoostLevel:
-  - 3
-  - 2
-  - 1
+  - 10
+  - 8
+  - 6
   projectilePrefab: {fileID: 3223126876811285995, guid: 000f67c9b36ff304cbbbcfe3565508dc, type: 3}
-  timeToDestroyProjectile: 1.5
+  timeToDestroyProjectile: 0.5
   shotTransforms:
   - {fileID: 5102482531687804914}
   - {fileID: 8553144479407113857}
@@ -685,8 +685,8 @@ MonoBehaviour:
   blockPhysics: {fileID: 2184755071856875494}
   blockDock: {fileID: 8423417993527650125}
   centerCollider: {fileID: 5046031231205079620}
+  health: 2
   overlayingRadio: 0.5
-  destroyExplosionForce: 5
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
