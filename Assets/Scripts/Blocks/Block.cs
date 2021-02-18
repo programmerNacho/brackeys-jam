@@ -28,6 +28,9 @@ namespace Game
         [SerializeField]
         protected float overlayingRadio = 0.5f;
 
+        [SerializeField]
+        private bool simultaneousDock = false;
+
         protected Block oldParentBlock = null;
 
         public UnityEvent OnConnect = new UnityEvent();
@@ -51,8 +54,17 @@ namespace Game
         {
             OnConnect.AddListener(CheckOverlaying);
 
-            DamageManager = gameObject.AddComponent<BlockDamage>();
-            DamageManager.myBlock = this;
+            if (!DamageManager)
+            {
+                DamageManager = gameObject.AddComponent<BlockDamage>();
+                DamageManager.myBlock = this;
+            }
+
+            if (!blockDock)
+            {
+                blockDock = gameObject.AddComponent<BlockDock>();
+            }
+            
 
             currentHealth = health;
         }
@@ -70,8 +82,12 @@ namespace Game
 
                     if (isFree)
                     {
-                        otherBlock.InitiateDockCooldown(0.01f);
-                        InitiateDockCooldown(0.01f);
+                        if (!simultaneousDock)
+                        {
+                            otherBlock.InitiateDockCooldown(0.01f);
+                            InitiateDockCooldown(0.01f);
+                        }
+
                         PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }
@@ -81,8 +97,11 @@ namespace Game
 
                     if (isFree)
                     {
-                        otherBlock.InitiateDockCooldown(0.01f);
-                        InitiateDockCooldown(0.01f);
+                        if (!simultaneousDock)
+                        {
+                            otherBlock.InitiateDockCooldown(0.01f);
+                            InitiateDockCooldown(0.01f);
+                        }
                         PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }

@@ -27,12 +27,15 @@ public class EnemyAI : MonoBehaviour
     private bool flankDirectionIsRight = false;
 
     [SerializeField]
-    [Range(1, 10)]
+    [Range(1, 90)]
     private float flankAngle = 50;
 
     [SerializeField]
     private bool rotate;
     private bool isRottating = false;
+
+    [SerializeField]
+    private bool lookToTarget = false;
 
     [SerializeField]
     [Range(1, 10)]
@@ -63,7 +66,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float wanderTime = 3.0f;
     private bool isWander = false;
-    private Vector2 wanderDirection = Vector2.zero;
 
     private void Start()
     {
@@ -136,8 +138,12 @@ public class EnemyAI : MonoBehaviour
 
             float x = Random.Range(-1f, 1f);
             float y = Random.Range(-1f, 1f);
-            wanderDirection = new Vector2(x, y);
-            shipController.MoveTowardsDirectionAcceleration(wanderDirection);
+
+            Vector2 direction = new Vector2(x, y);
+
+            rotateDirectionTarget = shipController.GetAngle(direction);
+            moveDirection = direction;
+            continuousMove = true;
 
             CancelInvoke("StopWander");
             Invoke("StopWander", wanderTime);
@@ -147,10 +153,7 @@ public class EnemyAI : MonoBehaviour
             if (!shipController.GetMoving())
             {
                 isWander = false;
-            }
-            else
-            {
-                shipController.MoveTowardsDirectionAcceleration(wanderDirection);
+                continuousMove = false;
             }
         }
     }
@@ -302,6 +305,7 @@ public class EnemyAI : MonoBehaviour
 
         moveDirection = (Vector2)(Quaternion.Euler(0, 0, targetAngle) * Vector2.up);
         continuousMove = true;
+        rotateDirectionTarget = shipController.GetAngle(moveDirection);
 
         ResetFlankTime();
     }

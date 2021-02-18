@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myBlock: {fileID: 8927118901439752817}
-  shieldHealth: 5
-  shieldRange: 3
+  shieldHealth: 2
+  currentShieldHealth: 5
+  range: 5
+  timeToRegenerateShieldHealth: 10
 --- !u!1001 &8124503112294677230
 PrefabInstance:
   m_ObjectHideFlags: 0

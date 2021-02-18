@@ -138,7 +138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.88, y: 0.1}
+  m_Size: {x: 1.88, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &7195562874348683500
 MonoBehaviour:
@@ -266,8 +266,9 @@ MonoBehaviour:
   blockPhysics: {fileID: 4020825187425396371}
   blockDock: {fileID: 6735386219560392248}
   centerCollider: {fileID: 3821850294116676984}
+  health: 2
   overlayingRadio: 1.25
-  destroyExplosionForce: 5
+  simultaneousDock: 0
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
@@ -355,7 +356,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.88, y: 0.1}
+  m_Size: {x: 1.88, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &3478471891821155555
 MonoBehaviour:
@@ -428,7 +429,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.88, y: 0.1}
+  m_Size: {x: 1.88, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &2020555660294473406
 MonoBehaviour:
@@ -616,7 +617,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.88, y: 0.1}
+  m_Size: {x: 1.88, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &4970147031272973422
 MonoBehaviour:
