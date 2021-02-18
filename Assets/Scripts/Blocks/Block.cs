@@ -19,18 +19,27 @@ namespace Game
         [SerializeField]
         private Collider2D centerCollider = null;
 
-        public int health = 2;
+        [SerializeField]
+        private bool canDock = true;
 
+        public int health = 2;
+        protected int currentHealth = 0;
+
+        protected List<BlockPowerShield> shields = new List<BlockPowerShield>();
+        private int shieldRange = -1;
 
         [SerializeField]
         protected float overlayingRadio = 0.5f;
+
+        [SerializeField]
+        private bool simultaneousDock = false;
 
         protected Block oldParentBlock = null;
 
         public UnityEvent OnConnect = new UnityEvent();
         public UnityEvent OnSetPowers = new UnityEvent();
 
-        public Affiliation CurrentAffiliation 
+        public Affiliation CurrentAffiliation
         {
             get
             {
@@ -47,8 +56,21 @@ namespace Game
         protected virtual void Start()
         {
             OnConnect.AddListener(CheckOverlaying);
-            DamageManager = gameObject.AddComponent<BlockDamage>();
-            DamageManager.myBlock = this;
+
+            if (!DamageManager)
+            {
+                DamageManager = gameObject.AddComponent<BlockDamage>();
+                DamageManager.myBlock = this;
+            }
+
+            if (!blockDock)
+            {
+                blockDock = gameObject.AddComponent<BlockDock>();
+            }
+
+            CanDock = canDock;
+
+            currentHealth = health;
         }
 
         public bool CanDock { get; private set; } = true;
@@ -64,8 +86,12 @@ namespace Game
 
                     if (isFree)
                     {
-                        otherBlock.InitiateDockCooldown(0.01f);
-                        InitiateDockCooldown(0.01f);
+                        if (!simultaneousDock)
+                        {
+                            otherBlock.InitiateDockCooldown(0.01f);
+                            InitiateDockCooldown(0.01f);
+                        }
+
                         PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }
@@ -75,8 +101,11 @@ namespace Game
 
                     if (isFree)
                     {
-                        otherBlock.InitiateDockCooldown(0.01f);
-                        InitiateDockCooldown(0.01f);
+                        if (!simultaneousDock)
+                        {
+                            otherBlock.InitiateDockCooldown(0.01f);
+                            InitiateDockCooldown(0.01f);
+                        }
                         PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }
@@ -86,10 +115,7 @@ namespace Game
         private void ResetCorePowers()
         {
             CoreBlock core = GetComponentInParent<CoreBlock>();
-            if (core)
-            {
-                core.CheckShipStatus();
-            }
+            if (core) core.CheckShipStatus();
         }
 
         private void PrepareDock(Block otherBlock, BlockSide mySide, BlockSide otherSide)
@@ -103,7 +129,7 @@ namespace Game
 
         public void Dock(BlockSide myBlockSide, BlockSide otherBlockSide, Block otherBlock)
         {
-            blockDock.Dock(myBlockSide, otherBlockSide, otherBlock);   
+            blockDock.Dock(myBlockSide, otherBlockSide, otherBlock);
         }
 
         public void ChangeBlockAndChildBlocksAffiliation(Affiliation newAffiliation)
@@ -237,7 +263,9 @@ namespace Game
             }
 
             transform.parent = null;
-            ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
+
+            if (!GetComponent<CoreBlock>()) ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
+
             InitiateDockCooldown(dockCooldownAfterDisconnect);
             AddPhysics();
 
@@ -245,6 +273,8 @@ namespace Game
             {
                 parent.ResetCorePowers();
             }
+
+            shields.Clear();
         }
 
         protected IEnumerator CanDockCooldown(float time)
@@ -265,5 +295,74 @@ namespace Game
         }
 
         protected abstract void CheckOverlaying();
+
+        public Block[] GetChildrensBlocks()
+        {
+            List<Block> childrensBlocks = new List<Block>();
+
+            foreach (var childrenBlock in GetComponentsInChildren<Block>())
+            {
+                if (childrenBlock) childrensBlocks.Add(childrenBlock);
+            }
+
+            return childrensBlocks.ToArray();
+        }
+        public Block[] GetNearbyBlocks()
+        {
+            List<Block> nearbyBlocks = new List<Block>();
+            nearbyBlocks.AddRange(GetChildrensBlocks());
+
+            Block parent = transform.parent?.GetComponent<Block>();
+            if (parent) nearbyBlocks.Add(parent);
+
+            return nearbyBlocks.ToArray();
+        }
+
+        public void AddShield(BlockPowerShield shield, int range)
+        {
+            shields.Add(shield);
+
+            shieldRange = range - 1;
+
+            if (shieldRange > 0)
+            {
+                foreach (var targetBlock in GetNearbyBlocks())
+                {
+                    bool iAmSubscribe = false;
+                    foreach (var item in shields)
+                    {
+                        if (item == shield)
+                        {
+                            iAmSubscribe = true;
+                            break;
+                        }
+                    }
+
+                    if (!iAmSubscribe)
+                    {
+                        targetBlock.AddShield(shield, shieldRange);
+                    }
+                }
+            }
+            ResetShieldDistance();
+        }
+
+        public BlockPowerShield[] GetShields()
+        {
+            return shields.ToArray();
+        }
+        public void ClearShields()
+        {
+            shields.Clear();
+        }
+        public int GetShieldDistance()
+        {
+            return shieldRange;
+        }
+
+        public void ResetShieldDistance()
+        {
+            this.shieldRange = 0;
+        }
     }
 }

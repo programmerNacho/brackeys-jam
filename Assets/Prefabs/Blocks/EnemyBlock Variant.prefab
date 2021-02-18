@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipController: {fileID: 0}
+  tickTime: 0.2
+  flank: 0
+  flankTime: 2
+  flankAngle: 50
+  rotate: 0
+  lookToTarget: 0
+  rotateTime: 2
   combatBehavior: 2
   rangeOfVisionAgainstPlayer: 30
   rangeOfVisionAgainstNodes: 30
@@ -133,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: rotateSpeed
-      value: 200
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: countinuousRotateSpeed

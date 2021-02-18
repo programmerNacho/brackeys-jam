@@ -239,7 +239,7 @@ MonoBehaviour:
   - 8
   - 6
   projectilePrefab: {fileID: 3223126876811285995, guid: 000f67c9b36ff304cbbbcfe3565508dc, type: 3}
-  timeToDestroyProjectile: 20
+  timeToDestroyProjectile: 8
   shotTransforms:
   - {fileID: 1199920967080977214}
 --- !u!1 &2853258363410358035
