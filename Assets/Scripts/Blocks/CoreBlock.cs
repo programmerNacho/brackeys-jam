@@ -20,33 +20,43 @@ namespace Game
 
         public void CheckShipStatus()
         {
-            RemoveOtherRigibody2D();
-            GetWeight();
+            ResetCore();
+            ResetBlockStatus();
             SetPowers();
+            SetShipFeatures();
         }
 
-        private void GetWeight()
+        private void ResetCore()
         {
             weight = 0;
-            foreach (var item in GetComponentsInChildren<Block>())
-            {
-                weight++;
-                item.OnSetPowers.Invoke();
-            }
-        }
-        private void RemoveOtherRigibody2D()
-        {
-            foreach (var item in GetComponentsInChildren<Rigidbody2D>())
-            {
-                if (item != GetComponent<Rigidbody2D>()) Destroy(item);
-            }
-        }
-
-        public void SetPowers()
-        {
             rateOfFireBoost = 0;
             speedBoost = 0;
+        }
 
+        private void ResetBlockStatus()
+        {
+            foreach (var block in GetChildrensBlocks())
+            {
+                weight++;
+
+                block.ClearShields();
+
+                Rigidbody2D body = block.GetComponent<Rigidbody2D>();
+                bool noIsMyBody = body && block != this;
+                if (noIsMyBody) Destroy(body);
+            }
+        }
+
+        private void SetPowers()
+        {
+            foreach (var block in GetChildrensBlocks())
+            {
+                block.OnSetPowers.Invoke();
+            }
+        }
+
+        public void SetShipFeatures()
+        {
             SetShipControllerSpeed();
             SetTurretRateOfFire();
         }

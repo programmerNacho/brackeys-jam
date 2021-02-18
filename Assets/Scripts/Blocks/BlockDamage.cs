@@ -10,14 +10,28 @@ namespace Game
 
         public virtual void TakeDamage()
         {
-            if (myBlock.health > 1)
+            bool iAmProtected = false;
+            foreach (var shield in myBlock.GetShields())
             {
-                myBlock.health--;
-                Disconnect();
+                if (shield.currentShieldHealth > 0)
+                {
+                    shield.currentShieldHealth--;
+                    iAmProtected = true;
+                    break;
+                }
             }
-            else
+
+            if (!iAmProtected)
             {
-                BlockDestroy();
+                if (myBlock.health > 1)
+                {
+                    myBlock.health--;
+                    Disconnect();
+                }
+                else
+                {
+                    BlockDestroy();
+                }
             }
         }
 

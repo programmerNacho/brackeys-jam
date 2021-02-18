@@ -9,6 +9,11 @@ namespace Game
         [SerializeField]
         protected Block myBlock = null;
 
+        private void Start()
+        {
+           if(!myBlock) myBlock = GetComponentInChildren<Block>();
+        }
+
         private void OnEnable()
         {
             if (myBlock)
