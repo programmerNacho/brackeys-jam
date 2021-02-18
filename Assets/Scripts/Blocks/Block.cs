@@ -19,6 +19,9 @@ namespace Game
         [SerializeField]
         private Collider2D centerCollider = null;
 
+        public int health = 2;
+
+
         [SerializeField]
         protected float overlayingRadio = 0.5f;
 
@@ -61,6 +64,8 @@ namespace Game
 
                     if (isFree)
                     {
+                        otherBlock.InitiateDockCooldown(0.01f);
+                        InitiateDockCooldown(0.01f);
                         PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }
@@ -70,7 +75,8 @@ namespace Game
 
                     if (isFree)
                     {
-                        otherBlock.InitiateDockCooldown();
+                        otherBlock.InitiateDockCooldown(0.01f);
+                        InitiateDockCooldown(0.01f);
                         PrepareDock(otherBlock, mySide, otherSide);
                     }
                 }
@@ -189,14 +195,15 @@ namespace Game
             }
         }
 
-        public void InitiateDockCooldown()
+        public void InitiateDockCooldown(float time)
         {
-            StopCoroutine(CanDockCooldown());
-            StartCoroutine(CanDockCooldown());
+            StopCoroutine(CanDockCooldown(time));
+            StartCoroutine(CanDockCooldown(time));
+
             foreach (var item in GetComponentsInChildren<Block>())
             {
-                item.StopCoroutine(CanDockCooldown());
-                item.StartCoroutine(CanDockCooldown());
+                item.StopCoroutine(CanDockCooldown(time));
+                item.StartCoroutine(CanDockCooldown(time));
             }
         }
 
@@ -229,7 +236,7 @@ namespace Game
 
             transform.parent = null;
             ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
-            InitiateDockCooldown();
+            InitiateDockCooldown(dockCooldownAfterDisconnect);
             AddPhysics();
 
             if (parent)
@@ -238,10 +245,10 @@ namespace Game
             }
         }
 
-        protected IEnumerator CanDockCooldown()
+        protected IEnumerator CanDockCooldown(float time)
         {
             CanDock = false;
-            yield return new WaitForSeconds(dockCooldownAfterDisconnect);
+            yield return new WaitForSeconds(time);
             CanDock = true;
         }
 

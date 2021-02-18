@@ -26,11 +26,6 @@ namespace Game
 
                 if (isMyEnemy)
                 {
-                    SpriteRenderer mesh = BlockParent.GetComponentInChildren<SpriteRenderer>();
-                    mesh.color = Color.yellow;
-                    SpriteRenderer meshB = collisionBlock.GetComponentInChildren<SpriteRenderer>();
-                    mesh.color = Color.red;
-
                     Vector2 globalImpactPoint = collision.GetContact(0).point;
                     Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
 

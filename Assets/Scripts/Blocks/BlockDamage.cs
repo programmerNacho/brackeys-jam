@@ -10,6 +10,27 @@ namespace Game
 
         public virtual void TakeDamage()
         {
+            SpriteRenderer mesh = myBlock.GetComponentInChildren<SpriteRenderer>();
+            mesh.color = Color.yellow;
+
+            if (myBlock.health > 1)
+            {
+                myBlock.health--;
+                Disconnect();
+            }
+            else
+            {
+                BlockDestroy();
+            }
+        }
+
+        private void AddExplosionForceInParent()
+        {
+            GetComponentInParent<Rigidbody2D>()?.GetComponent<BlockPhysics>()?.AddExplosionForce(transform.position, destroyExplosionForce);
+        }
+
+        private void Disconnect()
+        {
             Block[] tempChildrenBlock = new Block[myBlock.childBlocks.Count];
             myBlock.childBlocks.CopyTo(tempChildrenBlock);
 
@@ -23,11 +44,11 @@ namespace Game
 
             myBlock.DisconnectFromParent();
 
-            GetComponentInParent<Rigidbody2D>()?.GetComponent<BlockPhysics>()?.AddExplosionForce(transform.position, destroyExplosionForce);
-            BlockDestroy();
+            AddExplosionForceInParent();
         }
         protected virtual void BlockDestroy()
         {
+            Disconnect();
             Destroy(gameObject);
         }
     }
