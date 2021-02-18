@@ -14,9 +14,5 @@ namespace Game
                 coreBlock.speedBoost++;
             }
         }
-
-        public override void OnBlockDisconnected()
-        {
-        }
     }
 }

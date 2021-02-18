@@ -299,19 +299,13 @@ MonoBehaviour:
   currentAffiliation: 0
   blockPhysics: {fileID: 5558366988786244289}
   blockDock: {fileID: 2852881324283718250}
+  centerCollider: {fileID: 1546314469726943075}
   overlayingRadio: 0.5
-  weight: 1
   destroyExplosionForce: 5
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
-  OnDisconnect:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDestroy:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCreate:
+  OnSetPowers:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5558366988786244289

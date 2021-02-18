@@ -33,6 +33,11 @@ namespace Game
                     BlockParent.Attacked(collisionBlock);
                 }
             }
+            else if(collision.transform.tag == "Damager")
+            {
+                Destroy(collision.gameObject);
+                BlockParent.Attacked(null); 
+            }
         }
     }
 }

@@ -17,6 +17,8 @@ namespace Game
         protected BlockPhysics blockPhysics = null;
         [SerializeField]
         protected BlockDock blockDock = null;
+        [SerializeField]
+        private Collider2D centerCollider = null;
 
         [SerializeField]
         protected float overlayingRadio = 0.5f;
@@ -38,6 +40,7 @@ namespace Game
             private set
             {
                 currentAffiliation = value;
+                centerCollider.gameObject.layer = LayerMask.NameToLayer(currentAffiliation.ToString());
             }
         }
 
@@ -99,7 +102,7 @@ namespace Game
 
         public void ChangeBlockAndChildBlocksAffiliation(Affiliation newAffiliation)
         {
-            currentAffiliation = newAffiliation;
+            CurrentAffiliation = newAffiliation;
             foreach (Block child in childBlocks)
             {
                 if(child.CurrentAffiliation != newAffiliation && child.transform.parent == transform)

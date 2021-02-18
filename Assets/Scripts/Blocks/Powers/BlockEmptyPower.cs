@@ -10,10 +10,5 @@ namespace Game
         {
 
         }
-
-        public override void OnBlockDisconnected()
-        {
-
-        }
     }
 }

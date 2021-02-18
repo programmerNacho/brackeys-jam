@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1673798581813182296}
   - component: {fileID: 1673798581813182297}
   - component: {fileID: 1673798581813182277}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1673798581830209384}
   - component: {fileID: 1673798581830209385}
   - component: {fileID: 1673798581830209365}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1673798581910154921}
   - component: {fileID: 1673798581910154902}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 1673798582042096773}
   - component: {fileID: 1673798582042096770}
   - component: {fileID: 1673798582042096771}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 1341177420}
   - component: {fileID: 6396130074767299067}
   - component: {fileID: 1341177427}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: PlayerBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,6 +493,7 @@ MonoBehaviour:
   currentAffiliation: 1
   blockPhysics: {fileID: 6396130074767299067}
   blockDock: {fileID: 1341177427}
+  centerCollider: {fileID: 0}
   overlayingRadio: 0.5
   destroyExplosionForce: 5
   OnConnect:
@@ -538,7 +539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1673798582515771449}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Sides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +579,7 @@ GameObject:
   - component: {fileID: 1673798582785891908}
   - component: {fileID: 1673798582785891909}
   - component: {fileID: 1673798582785891905}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +674,7 @@ GameObject:
   - component: {fileID: 1673798582859018112}
   - component: {fileID: 1673798582859018113}
   - component: {fileID: 1673798582859018125}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,7 +769,7 @@ GameObject:
   - component: {fileID: 1673798583159995566}
   - component: {fileID: 1673798583159995567}
   - component: {fileID: 1673798583159995563}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +863,7 @@ GameObject:
   - component: {fileID: 8429443523353028163}
   - component: {fileID: 4083239886339084574}
   - component: {fileID: 4762530456182968456}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}

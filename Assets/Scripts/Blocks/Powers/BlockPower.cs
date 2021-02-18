@@ -34,6 +34,5 @@ namespace Game
         }
 
         public abstract void OnBlockConnected();
-        public abstract void OnBlockDisconnected();
     }
 }
