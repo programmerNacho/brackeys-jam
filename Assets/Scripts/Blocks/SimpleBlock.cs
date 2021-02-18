@@ -18,7 +18,7 @@ namespace Game
                 Block block = item.GetComponent<BlockCenter>()?.BlockParent;
                 if (block && block != this)
                 {
-                    BlockHurt();
+                    DamageManager.TakeDamage();
                 }
             }
         }

@@ -7,8 +7,7 @@ namespace Game
 {
     public abstract class Block : MonoBehaviour
     {
-        [SerializeField]
-        protected List<Block> childBlocks = new List<Block>();
+        public List<Block> childBlocks = new List<Block>();
         [SerializeField]
         protected float dockCooldownAfterDisconnect = 2f;
         [SerializeField]
@@ -22,9 +21,6 @@ namespace Game
 
         [SerializeField]
         protected float overlayingRadio = 0.5f;
-
-        [SerializeField]
-        protected float destroyExplosionForce = 5;
 
         protected Block oldParentBlock = null;
 
@@ -40,16 +36,20 @@ namespace Game
             private set
             {
                 currentAffiliation = value;
-                centerCollider.gameObject.layer = LayerMask.NameToLayer(currentAffiliation.ToString());
+                if (centerCollider)
+                    centerCollider.gameObject.layer = LayerMask.NameToLayer(currentAffiliation.ToString());
             }
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             OnConnect.AddListener(CheckOverlaying);
+            DamageManager = gameObject.AddComponent<BlockDamage>();
+            DamageManager.myBlock = this;
         }
 
         public bool CanDock { get; private set; } = true;
+        public BlockDamage DamageManager { get; private set; } = null;
 
         public void DockTry(Block otherBlock, BlockSide mySide, BlockSide otherSide)
         {
@@ -82,7 +82,7 @@ namespace Game
             CoreBlock core = GetComponentInParent<CoreBlock>();
             if (core)
             {
-                core.SetPowers();
+                core.CheckShipStatus();
             }
         }
 
@@ -217,35 +217,6 @@ namespace Game
             }
         }
 
-        public virtual void Attacked(Block targetBlock)
-        {
-            BlockHurt();
-        }
-
-        protected virtual void BlockHurt()
-        {
-            Block[] tempChildrenBlock = new Block[childBlocks.Count];
-            childBlocks.CopyTo(tempChildrenBlock);
-
-            foreach (var childrenBlock in tempChildrenBlock)
-            {
-                childrenBlock.DisconnectFromParent();
-
-                BlockPhysics blockPhysics = childrenBlock.GetComponent<BlockPhysics>();
-                blockPhysics.AddExplosionForce(transform.position, destroyExplosionForce);
-            }
-
-            DisconnectFromParent();
-
-            GetComponentInParent<Rigidbody2D>()?.GetComponent<BlockPhysics>()?.AddExplosionForce(transform.position, destroyExplosionForce);
-            BlockDestroy();
-        }
-
-        protected virtual void BlockDestroy()
-        {
-            Destroy(gameObject);
-        }
-
         public void DisconnectFromParent()
         {
             Block parent = null;
@@ -285,21 +256,5 @@ namespace Game
         }
 
         protected abstract void CheckOverlaying();
-
-        //protected virtual void OnTriggerEnter2D(Collider2D collision)
-        //{
-        //    Block block = collision.gameObject.GetComponent<Block>();
-        //    if (block)
-        //    {
-        //        if (CurrentAffiliation == Affiliation.Player && block.CurrentAffiliation == Affiliation.Enemy ||
-        //           CurrentAffiliation == Affiliation.Enemy && block.CurrentAffiliation == Affiliation.Player)
-        //        {
-        //            Vector2 globalImpactPoint = collision.transform.position;
-        //            Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
-
-        //            Attacked(globalImpactPoint, globalImpactDirection);
-        //        }
-        //    }
-        //}
     }
 }

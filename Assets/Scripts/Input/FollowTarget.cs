@@ -45,8 +45,16 @@ public class FollowTarget : MonoBehaviour
 
     private void MoveToTarget()
     {
-        Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
-        Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, -10);
-        transform.position = newPosition;
+        if (target)
+        {
+            Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
+            Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, -10);
+            transform.position = newPosition;
+        }
+        else
+        {
+            target = null;
+        }
+        
     }
 }

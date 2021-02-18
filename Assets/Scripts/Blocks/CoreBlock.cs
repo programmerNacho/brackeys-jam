@@ -12,23 +12,40 @@ namespace Game
         public int speedBoost = 0;
         public int weight = 0;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             shipController = GetComponent<ShipController>();
         }
 
-        public void SetPowers()
+        public void CheckShipStatus()
+        {
+            RemoveOtherRigibody2D();
+            GetWeight();
+            SetPowers();
+        }
+
+        private void GetWeight()
         {
             weight = 0;
-
-            rateOfFireBoost = 0;
-            speedBoost = 0;
-
             foreach (var item in GetComponentsInChildren<Block>())
             {
                 weight++;
                 item.OnSetPowers.Invoke();
             }
+        }
+        private void RemoveOtherRigibody2D()
+        {
+            foreach (var item in GetComponentsInChildren<Rigidbody2D>())
+            {
+                if (item != GetComponent<Rigidbody2D>()) Destroy(item);
+            }
+        }
+
+        public void SetPowers()
+        {
+            rateOfFireBoost = 0;
+            speedBoost = 0;
 
             SetShipControllerSpeed();
             SetTurretRateOfFire();

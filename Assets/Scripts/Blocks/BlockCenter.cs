@@ -18,8 +18,7 @@ namespace Game
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-
-            Block collisionBlock = collision.gameObject.GetComponentInParent<Block>();
+            Block collisionBlock = collision.collider.GetComponent<BlockCenter>()?.BlockParent;
             if (collisionBlock)
             {
                 bool isMyEnemy = BlockParent.CurrentAffiliation == Affiliation.Player && collisionBlock.CurrentAffiliation == Affiliation.Enemy ||
@@ -27,16 +26,22 @@ namespace Game
 
                 if (isMyEnemy)
                 {
+                    SpriteRenderer mesh = BlockParent.GetComponentInChildren<SpriteRenderer>();
+                    mesh.color = Color.yellow;
+                    SpriteRenderer meshB = collisionBlock.GetComponentInChildren<SpriteRenderer>();
+                    mesh.color = Color.red;
+
                     Vector2 globalImpactPoint = collision.GetContact(0).point;
                     Vector2 globalImpactDirection = (transform.position - collision.transform.position).normalized;
 
-                    BlockParent.Attacked(collisionBlock);
+                    collisionBlock.DamageManager.TakeDamage();
+                    BlockParent.DamageManager.TakeDamage();
                 }
             }
             else if(collision.transform.tag == "Damager")
             {
                 Destroy(collision.gameObject);
-                BlockParent.Attacked(null); 
+                BlockParent.DamageManager.TakeDamage(); 
             }
         }
     }
