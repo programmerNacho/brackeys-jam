@@ -16,13 +16,13 @@ namespace Game
 
         public List<TargetAppearance> appearances = new List<TargetAppearance>();
 
-        public TargetAppearance GetAppearance(string identifier)
+        public Sprite GetAppearance(string identifier)
         {
             foreach (TargetAppearance a in appearances)
             {
                 if (identifier == a.identifier)
                 {
-                    return a;
+                    return a.sprite;
                 }
             }
 
