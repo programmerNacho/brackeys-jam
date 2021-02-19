@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game
 {
@@ -22,6 +23,8 @@ namespace Game
         private Transform[] shotTransforms = new Transform[1];
 
         private float timeWaitingToShoot = 0;
+
+        public UnityEvent OnShot = new UnityEvent();
 
         public override void OnBlockConnected()
         {
@@ -63,7 +66,9 @@ namespace Game
                 }
 
                 timeWaitingToShoot = timeToWaitToShootPerBoostLevel[currentBoostLevel];
+                
                 ShootProjectiles(CreateProjectiles());
+                OnShot.Invoke();
             }
         }
 

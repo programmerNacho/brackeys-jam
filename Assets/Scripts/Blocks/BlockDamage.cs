@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 namespace Game
 {
     public class BlockDamage : MonoBehaviour
     {
         public Block myBlock = null;
         public float destroyExplosionForce = 0;
+
+        public UnityEvent OnBlockDestroyed = new UnityEvent();
+        public UnityEvent OnBlockTakeDamage = new UnityEvent();
+        public UnityEvent OnBlockShieldDamage = new UnityEvent();
 
         private void Awake()
         {
@@ -35,6 +41,7 @@ namespace Game
             {
                 if (shield.currentShieldHealth > 0)
                 {
+                    OnBlockShieldDamage.Invoke();
                     shield.currentShieldHealth--;
                     iAmProtected = true;
                     break;
@@ -48,6 +55,7 @@ namespace Game
         {
             if (myBlock.CurrentHealth > 1)
             {
+                OnBlockTakeDamage.Invoke();
                 myBlock.CurrentHealth--;
                 myBlock.DockManager.DisconnectBlock(myBlock);
                 AddExplosionForceInParent();
@@ -67,6 +75,8 @@ namespace Game
         {
             myBlock.DockManager.DisconnectBlock(myBlock);
             NotifyTheLevelManager();
+
+            OnBlockDestroyed.Invoke();
             Destroy(gameObject);
         }
 
