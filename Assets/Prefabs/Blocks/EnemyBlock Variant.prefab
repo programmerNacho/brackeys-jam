@@ -20,7 +20,7 @@ MonoBehaviour:
   rotate: 1
   lookToTarget: 0
   rotateTime: 3
-  combatBehavior: 2
+  combatBehavior: 0
   rangeOfVisionAgainstPlayer: 150
   rangeOfVisionAgainstNodes: 40
   nodeLayerMask:

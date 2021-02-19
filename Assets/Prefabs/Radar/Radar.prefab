@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 0}
-  range: 50
+  range: 500
   radarTargets: []
 --- !u!1 &4317635595535333754
 GameObject:
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearances: {fileID: 11400000, guid: 4cf6134aa7b1cf54099dc4fa641c8565, type: 2}
   targetUIPrefab: {fileID: 4441409238111615083, guid: fa51b6b2ed5cd5e4b9d4d72c29233c41, type: 3}
+  viewportOffset: 0.05
 --- !u!1 &4317635596436654715
 GameObject:
   m_ObjectHideFlags: 0
