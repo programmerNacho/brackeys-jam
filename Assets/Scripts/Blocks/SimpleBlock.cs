@@ -7,20 +7,20 @@ namespace Game
 
     public class SimpleBlock : Block
     {
-        protected override void CheckOverlaying()
-        {
-            Vector2 source = transform.position;
+        //protected override void CheckOverlaying()
+        //{
+        //    Vector2 source = transform.position;
 
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(source, overlayingRadio);
+        //    Collider2D[] colliders = Physics2D.OverlapCircleAll(source, overlayingRadio);
 
-            foreach (var item in colliders)
-            {
-                Block block = item.GetComponent<BlockCenter>()?.BlockParent;
-                if (block && block != this)
-                {
-                    DamageManager.TakeDamage();
-                }
-            }
-        }
+        //    foreach (var item in colliders)
+        //    {
+        //        Block block = item.GetComponent<BlockCenter>()?.BlockParent;
+        //        if (block && block != this)
+        //        {
+        //            DamageManager.TakeDamage();
+        //        }
+        //    }
+        //}
     }
 }

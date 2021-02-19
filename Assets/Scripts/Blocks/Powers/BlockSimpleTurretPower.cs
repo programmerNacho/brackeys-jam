@@ -132,7 +132,7 @@ namespace Game
                 projectile.transform.up = t.up;
                 projectile.gravityScale = 0f;
                 projectile.drag = 0f;
-                projectile.gameObject.layer = LayerMask.NameToLayer(myBlock.CurrentAffiliation.ToString());
+                projectile.gameObject.layer = LayerMask.NameToLayer(myBlock.GetCore().CurrentAffiliation.ToString());
 
                 projectilesCreated.Add(projectile);
             }

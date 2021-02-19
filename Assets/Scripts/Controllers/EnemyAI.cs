@@ -173,8 +173,7 @@ public class EnemyAI : MonoBehaviour
             Game.SimpleBlock block = item.collider.GetComponentInParent<Game.SimpleBlock>();
             if (block)
             {
-                bool isFree = block.CurrentAffiliation == Affiliation.Free;
-                if (isFree)
+                if (!block.GetCore())
                 {
                     float moduleDistance = Vector2.Distance(transform.position, block.transform.position);
                     bool itsClose = moduleDistance < targetDistance;

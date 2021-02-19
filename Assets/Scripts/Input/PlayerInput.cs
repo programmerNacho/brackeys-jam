@@ -32,33 +32,48 @@ public class PlayerInput : MonoBehaviour
         {
             Vector2 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             shipController.GoToPoint(targetPosition);
-            Debug.Log("Goto: " + targetPosition);
-            Debug.DrawLine(shipController.transform.position, targetPosition, Color.white, 2);
         }
     }
 
     private void Disassemble()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(0))
         {
-            shipController.Disassemble();
+            Vector2 source = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = Vector2.zero;
+
+            RaycastHit2D[] hit = Physics2D.RaycastAll(source, direction, 0);
+
+            foreach (var item in hit)
+            {
+                Game.BlockCenter center = item.collider.GetComponent<Game.BlockCenter>();
+                if (center)
+                {
+                    Game.Block block = center.GetMyBlock();
+                    if (block.GetCore()?.CurrentAffiliation == Affiliation.Player)
+                    {
+                        block.DockManager.DisconnectBlock(block);
+                    }
+                }
+            }
         }
+
     }
     private void Shot()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            shipController.ShotStart();
-            shoting = true;
-        }
-        else if (!Input.GetMouseButton(0))
-        {
-            if (shoting)
-            {
-                shoting = false;
-                shipController.ShotEnd();
-            }
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    shipController.ShotStart();
+        //    shoting = true;
+        //}
+        //else if (!Input.GetMouseButton(0))
+        //{
+        //    if (shoting)
+        //    {
+        //        shoting = false;
+        //        shipController.ShotEnd();
+        //    }
+        //}
     }
 
     private void Move()

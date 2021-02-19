@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150712334565320508}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0.00000032782552}
-  m_LocalPosition: {x: 0, y: -0.812, z: 0}
+  m_LocalPosition: {x: 0, y: -0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5811152273313010013}
@@ -70,9 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 8200186002492320973}
-  dockTransform: {fileID: 4834476242311411990}
-  canDock: 1
 --- !u!1 &1411835761479215535
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2486858015780085496}
   m_LocalRotation: {x: -0, y: -0, z: 0.5000004, w: -0.8660252}
-  m_LocalPosition: {x: 0.65, y: 0.2779995, z: 0}
+  m_LocalPosition: {x: 0.65, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5811152273313010013}
@@ -187,9 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 8200186002492320973}
-  dockTransform: {fileID: 3225130433795790406}
-  canDock: 1
 --- !u!1 &3109634402162840507
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,19 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b0a5d219dad4458f5256d9b101cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateColor: {r: 0, g: 0, b: 0, a: 0}
-  desactivateColor: {r: 0, g: 0, b: 0, a: 0}
-  sprites: []
-  childBlocks: []
-  dockCooldownAfterDisconnect: 2
-  currentAffiliation: 0
-  blockPhysics: {fileID: 5558366988786244289}
-  blockDock: {fileID: 2852881324283718250}
-  centerCollider: {fileID: 1546314469726943075}
-  canDock: 1
+  parentSideConnectedWithMe: {fileID: 0}
+  CanDock: 1
   health: 5
-  overlayingRadio: 0.5
-  simultaneousDock: 0
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
@@ -382,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c00e0eea247384da38ddf7dab2a147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 8200186002492320973}
+  myBlock: {fileID: 0}
 --- !u!60 &1546314469726943075
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -437,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4655856172797354012}
   m_LocalRotation: {x: -0, y: -0, z: -0.49999967, w: -0.8660256}
-  m_LocalPosition: {x: -0.65, y: 0.2779995, z: 0}
+  m_LocalPosition: {x: -0.65, y: 0.278, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5811152273313010013}
@@ -481,9 +465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 8200186002492320973}
-  dockTransform: {fileID: 7944853417183488632}
-  canDock: 1
 --- !u!1 &5738718361387982708
 GameObject:
   m_ObjectHideFlags: 0

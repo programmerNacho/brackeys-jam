@@ -8,25 +8,23 @@ namespace Game
     {
         private ShipController shipController;
 
+        [SerializeField]
+        private List<Block> blocksList = new List<Block>();
+
         public int rateOfFireBoost = 0;
         public int speedBoost = 0;
         public int weight = 0;
 
+        public Affiliation CurrentAffiliation = Affiliation.Free;
+
         protected override void Start()
         {
             base.Start();
+            myCore = this;
             shipController = GetComponent<ShipController>();
-
-            foreach (var block in GetChildrensBlocks())
-            {
-                block.ChangeBlockAndChildBlocksAffiliation(currentAffiliation);
-
-                Block parent = block.transform.parent?.GetComponent<Block>();
-                if (parent) parent.ConnectToChildBlocks(this);
-            }
+            blocksList.Add(this);
 
             CheckShipStatus();
-
         }
 
         public void CheckShipStatus()
@@ -46,7 +44,7 @@ namespace Game
 
         private void ResetBlockStatus()
         {
-            foreach (var block in GetChildrensBlocks())
+            foreach (var block in blocksList)
             {
                 weight++;
 
@@ -60,18 +58,54 @@ namespace Game
 
         private void SetPowers()
         {
-            foreach (var block in GetChildrensBlocks())
+            foreach (var block in blocksList)
             {
                 block.OnSetPowers.Invoke();
             }
         }
+
+        
+
+        
+
+        #region Set
+        public void AddBlock(Block newBlock)
+        {
+            bool newBlockIsAlreadyOnTheList = false;
+            foreach (var checkBlock in blocksList)
+            {
+                if (checkBlock == newBlock)
+                {
+                    newBlockIsAlreadyOnTheList = true;
+                    break;
+                }
+            }
+
+            if (!newBlockIsAlreadyOnTheList)
+            {
+                blocksList.Add(newBlock);
+            }
+
+            CheckShipStatus();
+        }
+
+        public void RemoveBlock(Block newBlock)
+        {
+            if (newBlock != this)
+            {
+                blocksList.Remove(newBlock);
+            }
+
+            CheckShipStatus();
+        }
+        #endregion
+        #region Process
 
         public void SetShipFeatures()
         {
             SetShipControllerSpeed();
             SetTurretRateOfFire();
         }
-
         protected void SetTurretRateOfFire()
         {
             foreach (var turret in GetComponentsInChildren<BlockTurretPower>())
@@ -85,9 +119,12 @@ namespace Game
             shipController.ChangeWeight(weight);
             shipController.ChangeBoost(speedBoost);
         }
-
-        protected override void CheckOverlaying()
+        #endregion
+        #region Get
+        public List<Block> GetBlockList()
         {
+            return blocksList;
         }
+        #endregion
     }
 }

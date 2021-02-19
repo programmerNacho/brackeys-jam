@@ -8,7 +8,27 @@ namespace Game
         public Block myBlock = null;
         public float destroyExplosionForce = 0;
 
-        public virtual void TakeDamage()
+        private void Awake()
+        {
+            myBlock = GetComponent<Block>();
+        }
+
+        public virtual void TakeDamage(bool realDamage)
+        {
+            if (realDamage)
+            {
+                HurtBlock();
+            }
+            else
+            {
+                if (!CheckShields())
+                {
+                    HurtBlock();
+                }
+            }
+
+        }
+        private bool CheckShields()
         {
             bool iAmProtected = false;
             foreach (var shield in myBlock.GetShields())
@@ -21,17 +41,20 @@ namespace Game
                 }
             }
 
-            if (!iAmProtected)
+            return iAmProtected;
+        }
+
+        private void HurtBlock()
+        {
+            if (myBlock.CurrentHealth > 1)
             {
-                if (myBlock.health > 1)
-                {
-                    myBlock.health--;
-                    Disconnect();
-                }
-                else
-                {
-                    BlockDestroy();
-                }
+                myBlock.CurrentHealth--;
+                myBlock.DockManager.DisconnectBlock(myBlock);
+                AddExplosionForceInParent();
+            }
+            else
+            {
+                BlockDestroy();
             }
         }
 
@@ -40,29 +63,9 @@ namespace Game
             GetComponentInParent<Rigidbody2D>()?.GetComponent<BlockPhysics>()?.AddExplosionForce(transform.position, destroyExplosionForce);
         }
 
-        private void Disconnect()
-        {
-            Block[] tempChildrenBlock = new Block[myBlock.childBlocks.Count];
-            myBlock.childBlocks.CopyTo(tempChildrenBlock);
-
-            foreach (var childrenBlock in tempChildrenBlock)
-            {
-                if (childrenBlock)
-                {
-                    childrenBlock.DisconnectFromParent();
-
-                    BlockPhysics blockPhysics = childrenBlock.GetComponent<BlockPhysics>();
-                    blockPhysics.AddExplosionForce(transform.position, destroyExplosionForce);
-                }
-            }
-
-            myBlock.DisconnectFromParent();
-
-            AddExplosionForceInParent();
-        }
         protected virtual void BlockDestroy()
         {
-            Disconnect();
+            myBlock.DockManager.DisconnectBlock(myBlock);
             NotifyTheLevelManager();
             Destroy(gameObject);
         }

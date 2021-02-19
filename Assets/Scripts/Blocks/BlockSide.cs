@@ -6,57 +6,128 @@ namespace Game
 {
     public class BlockSide : MonoBehaviour
     {
-        [SerializeField]
-        private Block blockParent = null;
-        [SerializeField]
-        private Transform dockTransform = null;
+        private Block myBlock = null;
 
-        public bool canDock = true;
+        private bool isLocked = false;
+        private bool checkTrigger = false;
 
-        public Block BlockParent
+        #region Set
+        public void ToLock()
         {
-            get
+            isLocked = true;
+        }
+        public void ToFree()
+        {
+            isLocked = false;
+        }
+        public void CheckTrigger()
+        {
+            checkTrigger = true;
+        }
+        #endregion
+        #region Procces
+        private void Start()
+        {
+            SetMyBlock();
+        }
+        private void SetMyBlock()
+        {
+            myBlock = GetComponentInParent<Block>();
+            myBlock.AddSide(this);
+        }
+        private void CheckTriggerCollision(Collider2D collision)
+        {
+            if (myBlock.GetCore())
             {
-                return blockParent;
+                BlockSide otherSide = collision.GetComponent<BlockSide>();
+                Block otherBlock = otherSide?.GetBlock();
+
+                if (otherBlock)
+                {
+                    if (!otherBlock.GetCore())
+                    {
+                        myBlock.TryConnectANewBlock(this, otherSide);
+                    }
+                }
             }
         }
-
-        public Vector2 MiddlePointGlobal
-        {
-            get
-            {
-                return dockTransform.position;
-            }
-        }
-
-        public Vector2 NormalDirectionGlobal
-        {
-            get
-            {
-                return dockTransform.up;
-            }
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            BlockSide otherBlockSide = collision.GetComponent<BlockSide>();
-
-            bool canDock = otherBlockSide && !IsCollidingWithOwnBlockSide(otherBlockSide) && otherBlockSide.CanBlockParentDock() && CanBlockParentDock();
-
-            if (canDock)
+            if (!isLocked)
             {
-                blockParent.DockTry(otherBlockSide.BlockParent, this, otherBlockSide);
+                CheckTriggerCollision(collision);
             }
         }
-
-        private bool IsCollidingWithOwnBlockSide(BlockSide otherBlockSide)
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            return otherBlockSide.BlockParent == blockParent;
+            if (checkTrigger)
+            {
+                if (!isLocked)
+                {
+                    checkTrigger = false;
+                    CheckTriggerCollision(collision);
+                }
+            }
         }
-
-        private bool CanBlockParentDock()
+        #endregion
+        #region Get
+        public Block GetBlock()
         {
-            return blockParent.CanDock;
+            return myBlock;
         }
+        #endregion
+
+        //[SerializeField]
+        //private Block blockParent = null;
+        //[SerializeField]
+        //private Transform dockTransform = null;
+
+        //public bool canDock = true;
+
+        //public Block BlockParent
+        //{
+        //    get
+        //    {
+        //        return blockParent;
+        //    }
+        //}
+
+        //public Vector2 MiddlePointGlobal
+        //{
+        //    get
+        //    {
+        //        return dockTransform.position;
+        //    }
+        //}
+
+        //public Vector2 NormalDirectionGlobal
+        //{
+        //    get
+        //    {
+        //        return dockTransform.up;
+        //    }
+        //}
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    BlockSide otherBlockSide = collision.GetComponent<BlockSide>();
+
+        //    bool canDock = otherBlockSide && !IsCollidingWithOwnBlockSide(otherBlockSide) && otherBlockSide.CanBlockParentDock() && CanBlockParentDock();
+
+        //    if (canDock)
+        //    {
+        //        blockParent.DockTry(otherBlockSide.BlockParent, this, otherBlockSide);
+        //    }
+        //}
+
+        //private bool IsCollidingWithOwnBlockSide(BlockSide otherBlockSide)
+        //{
+        //    return otherBlockSide.BlockParent == blockParent;
+        //}
+
+        //private bool CanBlockParentDock()
+        //{
+        //    return blockParent.CanDock;
+        //}
     }
 }

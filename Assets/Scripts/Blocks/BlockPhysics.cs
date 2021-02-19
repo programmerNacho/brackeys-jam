@@ -16,6 +16,7 @@ public class BlockPhysics : MonoBehaviour
         {
             rigidbody = gameObject.GetComponent<Rigidbody2D>();
         }
+        rigidbody.mass = 0.25f;
         rigidbody.drag = 3;
         rigidbody.angularDrag = 3;
         rigidbody.useFullKinematicContacts = true;
@@ -26,7 +27,8 @@ public class BlockPhysics : MonoBehaviour
 
     public void RemoveRigidbody2D()
     {
-        Destroy(rigidbody);
+        Rigidbody2D body = GetComponent<Rigidbody2D>();
+        if (body) Destroy(body);
     }
 
     public void AddExplosionForce(Vector2 sourceExplosion, float force)

@@ -20,8 +20,8 @@ MonoBehaviour:
   rotate: 1
   lookToTarget: 0
   rotateTime: 3
-  combatBehavior: 1
-  rangeOfVisionAgainstPlayer: 100
+  combatBehavior: 2
+  rangeOfVisionAgainstPlayer: 150
   rangeOfVisionAgainstNodes: 40
   nodeLayerMask:
     serializedVersion: 2
@@ -66,6 +66,10 @@ PrefabInstance:
     - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: activateColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: CurrentAffiliation
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: currentAffiliation
