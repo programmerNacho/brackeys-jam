@@ -70,9 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 2503561327116607978}
-  dockTransform: {fileID: 4409952490781058911}
-  canDock: 1
 --- !u!1 &2077992914961912403
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +241,9 @@ MonoBehaviour:
   - {fileID: 8553144479407113857}
   - {fileID: 7046818209578188070}
   - {fileID: 8786077163852359927}
+  OnShot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5092297777739545122
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,9 +460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 2503561327116607978}
-  dockTransform: {fileID: 1181355962071970865}
-  canDock: 1
 --- !u!1 &7583234623327176603
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c00e0eea247384da38ddf7dab2a147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 2503561327116607978}
+  myBlock: {fileID: 0}
 --- !u!60 &5046031231205079620
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -636,9 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 2503561327116607978}
-  dockTransform: {fileID: 9201823193628449633}
-  canDock: 1
 --- !u!1 &8670874562014977692
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +680,8 @@ GameObject:
   - component: {fileID: 2503561327116607978}
   - component: {fileID: 2184755071856875494}
   - component: {fileID: 8423417993527650125}
+  - component: {fileID: 1609738621912176644}
+  - component: {fileID: 7248651260676198738}
   m_Layer: 6
   m_Name: BlockTriangleShotgunTurret
   m_TagString: Untagged
@@ -743,19 +739,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b0a5d219dad4458f5256d9b101cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentSideConnectedWithMe: {fileID: 0}
+  CanDock: 1
+  health: 5
   activateColor: {r: 1, g: 0.101960786, b: 0.101960786, a: 1}
   desactivateColor: {r: 0.25, g: 0.1, b: 0.1, a: 1}
   sprites: []
-  childBlocks: []
-  dockCooldownAfterDisconnect: 2
-  currentAffiliation: 0
-  blockPhysics: {fileID: 2184755071856875494}
-  blockDock: {fileID: 8423417993527650125}
-  centerCollider: {fileID: 5046031231205079620}
-  canDock: 1
-  health: 5
-  overlayingRadio: 0.5
-  simultaneousDock: 0
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
@@ -787,3 +776,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32965cda082f8474f88cc07c7f34859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1609738621912176644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211159104580210773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b421dc7f343636240b7a7e61d80867f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBlock: {fileID: 0}
+  destroyExplosionForce: 0
+  OnBlockDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7248651260676198738}
+        m_TargetAssemblyTypeName: Game.ParticleRequest, Assembly-CSharp
+        m_MethodName: RequestParticle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBlockTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBlockShieldDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7248651260676198738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211159104580210773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddb07f925136444a86273c7c6525a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Block

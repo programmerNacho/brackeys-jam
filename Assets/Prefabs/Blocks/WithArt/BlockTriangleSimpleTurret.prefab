@@ -398,6 +398,8 @@ GameObject:
   - component: {fileID: 7237784978267923876}
   - component: {fileID: 6385655661155488680}
   - component: {fileID: 3614797158453666563}
+  - component: {fileID: -68495305116720263}
+  - component: {fileID: 8325352021461516948}
   m_Layer: 6
   m_Name: BlockTriangleSimpleTurret
   m_TagString: Untagged
@@ -492,6 +494,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32965cda082f8474f88cc07c7f34859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-68495305116720263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114940628884411419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b421dc7f343636240b7a7e61d80867f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBlock: {fileID: 0}
+  destroyExplosionForce: 0
+  OnBlockDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8325352021461516948}
+        m_TargetAssemblyTypeName: Game.ParticleRequest, Assembly-CSharp
+        m_MethodName: RequestParticle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBlockTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBlockShieldDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8325352021461516948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114940628884411419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddb07f925136444a86273c7c6525a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Block
 --- !u!1 &4511070454391118546
 GameObject:
   m_ObjectHideFlags: 0

@@ -325,6 +325,8 @@ GameObject:
   - component: {fileID: 8419267109530660134}
   - component: {fileID: 5204083361098210090}
   - component: {fileID: 2489557238459263873}
+  - component: {fileID: -2277308778403124554}
+  - component: {fileID: -6356446241445531481}
   m_Layer: 6
   m_Name: BlockTriangleRifleTurret Variant
   m_TagString: Untagged
@@ -419,6 +421,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32965cda082f8474f88cc07c7f34859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2277308778403124554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007786007385824409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b421dc7f343636240b7a7e61d80867f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBlock: {fileID: 0}
+  destroyExplosionForce: 0
+  OnBlockDestroyed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6356446241445531481}
+        m_TargetAssemblyTypeName: Game.ParticleRequest, Assembly-CSharp
+        m_MethodName: RequestParticle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnBlockTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBlockShieldDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-6356446241445531481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007786007385824409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddb07f925136444a86273c7c6525a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: Block
 --- !u!1 &3331664742180393552
 GameObject:
   m_ObjectHideFlags: 0

@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3561390627156694924, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: identifier
+      value: EnemyCore
+      objectReference: {fileID: 0}
     - target: {fileID: 6658993281109452319, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_Layer
       value: 8

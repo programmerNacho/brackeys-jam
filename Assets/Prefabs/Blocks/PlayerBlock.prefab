@@ -467,6 +467,7 @@ GameObject:
   - component: {fileID: 1341177427}
   - component: {fileID: 1492306383684356090}
   - component: {fileID: 3360507775863577301}
+  - component: {fileID: 3561390627156694924}
   m_Layer: 7
   m_Name: PlayerBlock
   m_TagString: Untagged
@@ -642,13 +643,38 @@ MonoBehaviour:
   destroyExplosionForce: 0
   OnBlockDestroyed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3561390627156694924}
+        m_TargetAssemblyTypeName: Game.ParticleRequest, Assembly-CSharp
+        m_MethodName: RequestParticle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBlockTakeDamage:
     m_PersistentCalls:
       m_Calls: []
   OnBlockShieldDamage:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3561390627156694924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673798582245462853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddb07f925136444a86273c7c6525a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: PlayerCore
 --- !u!1 &1673798582515771430
 GameObject:
   m_ObjectHideFlags: 0
