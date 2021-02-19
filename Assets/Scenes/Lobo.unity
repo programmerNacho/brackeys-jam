@@ -436,11 +436,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595409976100534520, guid: cf6104b3cece99c4a816d61c26021101, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.498653
+      value: 269.1
       objectReference: {fileID: 0}
     - target: {fileID: 2595409976100534520, guid: cf6104b3cece99c4a816d61c26021101, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.977573
+      value: 34.5
       objectReference: {fileID: 0}
     - target: {fileID: 2595409976100534520, guid: cf6104b3cece99c4a816d61c26021101, type: 3}
       propertyPath: m_LocalPosition.z
@@ -477,6 +477,10 @@ PrefabInstance:
     - target: {fileID: 2595409976100534521, guid: cf6104b3cece99c4a816d61c26021101, type: 3}
       propertyPath: m_Name
       value: EnemyBlock Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254280677742201518, guid: cf6104b3cece99c4a816d61c26021101, type: 3}
+      propertyPath: combatBehavior
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf6104b3cece99c4a816d61c26021101, type: 3}

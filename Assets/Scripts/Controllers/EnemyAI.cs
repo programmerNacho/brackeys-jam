@@ -9,6 +9,10 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     private float tickTime = 0.2f;
+    [SerializeField]
+    private float timeToAwake = 1f;
+    [SerializeField]
+    private float activateDistance = 300;
 
     private enum CombatBehavior
     {
@@ -25,6 +29,8 @@ public class EnemyAI : MonoBehaviour
     private float flankTime = 2;
     private float timeToChangeFlankDirection = 0;
     private bool flankDirectionIsRight = false;
+
+    private Game.CoreBlock player = null;
 
     [SerializeField]
     [Range(1, 50)]
@@ -70,10 +76,17 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         SerializeVariables();
+        player = FindObjectOfType<PlayerInput>().GetComponent<Game.CoreBlock>();
     }
 
     private void Update()
     {
+        if (Vector2.Distance(transform.position, player.transform.position) > activateDistance)
+        {
+            Debug.Log("Off");
+            return;
+        }
+
         if (rotate)
         {
             shipController.RotateAngleAcceleration(rotateDirectionTarget);
@@ -92,6 +105,15 @@ public class EnemyAI : MonoBehaviour
 
     private void Tick()
     {
+        Invoke("Tick", 0.2f);
+
+        if (timeToAwake > 0)
+        {
+            Debug.Log("Sleep");
+            timeToAwake -= tickTime;
+            return;
+        }
+
         Rotate();
 
         if (!CheckPlayersInRange())
@@ -109,7 +131,6 @@ public class EnemyAI : MonoBehaviour
         {
             isWander = false;
         }
-        Invoke("Tick", 0.2f);
     }
 
     private void Rotate()

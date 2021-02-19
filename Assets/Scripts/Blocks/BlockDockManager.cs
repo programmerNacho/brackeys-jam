@@ -17,10 +17,10 @@ namespace Game
                     if (!item.gameObject.GetComponent<CoreBlock>())
                     {
                         core.RemoveBlock(item);
+                        item.SetCore(null);
                     }
                 }
                 else break;
-                item.SetCore(null);
 
                 item.LockSidesTemporarily();
                 item.parentSideConnectedWithMe?.ToFree();

@@ -55,10 +55,10 @@ namespace Game
         {
             if (myBlock.CurrentHealth > 1)
             {
-                OnBlockTakeDamage.Invoke();
                 myBlock.CurrentHealth--;
                 myBlock.DockManager.DisconnectBlock(myBlock);
                 AddExplosionForceInParent();
+                OnBlockTakeDamage.Invoke();
             }
             else
             {
@@ -75,9 +75,8 @@ namespace Game
         {
             myBlock.DockManager.DisconnectBlock(myBlock);
             NotifyTheLevelManager();
-
+            Destroy(gameObject, 0.05f);
             OnBlockDestroyed.Invoke();
-            Destroy(gameObject);
         }
 
         private void NotifyTheLevelManager()
