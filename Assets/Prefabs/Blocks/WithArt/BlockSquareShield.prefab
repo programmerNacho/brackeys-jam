@@ -17,6 +17,20 @@ MonoBehaviour:
   currentShieldHealth: 5
   range: 5
   timeToRegenerateShieldHealth: 10
+--- !u!114 &6795808293755654330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 8124503112294677230}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  typeOfSound: 0
 --- !u!1001 &8124503112294677230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,6 +70,10 @@ PrefabInstance:
       propertyPath: desactivateColor.r
       value: 0.101960786
       objectReference: {fileID: 0}
+    - target: {fileID: 1972710058371812957, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 05e33aa1f672e264291d20ed9b46b79d, type: 3}
     - target: {fileID: 4360066866174262887, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
       propertyPath: m_Sprite
       value: 

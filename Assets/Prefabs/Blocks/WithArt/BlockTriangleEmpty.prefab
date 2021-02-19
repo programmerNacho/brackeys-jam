@@ -233,6 +233,8 @@ GameObject:
   - component: {fileID: 2852881324283718250}
   - component: {fileID: 8810917931359500252}
   - component: {fileID: -4487798145950395916}
+  - component: {fileID: 1399339047074812140}
+  - component: {fileID: 9136894576402566080}
   m_Layer: 6
   m_Name: BlockTriangleEmpty
   m_TagString: Untagged
@@ -298,7 +300,19 @@ MonoBehaviour:
   sprites: []
   OnConnect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1972710058371812957, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+        m_TargetAssemblyTypeName: Game.SoundEmitter, Assembly-CSharp
+        m_MethodName: ExecuteSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnSetPowers:
     m_PersistentCalls:
       m_Calls: []
@@ -356,6 +370,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1399339047074812140}
+        m_TargetAssemblyTypeName: Game.SoundEmitter, Assembly-CSharp
+        m_MethodName: ExecuteSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBlockTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -375,6 +401,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: Block
+--- !u!114 &1399339047074812140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217287696406044018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 3ac5917ecd3e90b47aaa181b41701563, type: 3}
+  typeOfSound: 1
+--- !u!114 &9136894576402566080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217287696406044018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 181888adf0c7ded4da04191e56ab8093, type: 3}
+  typeOfSound: 1
 --- !u!1 &4201728488258112188
 GameObject:
   m_ObjectHideFlags: 0

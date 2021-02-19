@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 1492306383684356090}
   - component: {fileID: 3360507775863577301}
   - component: {fileID: 3561390627156694924}
+  - component: {fileID: -4878096909088983328}
   m_Layer: 7
   m_Name: PlayerBlock
   m_TagString: Untagged
@@ -656,6 +657,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -4878096909088983328}
+        m_TargetAssemblyTypeName: Game.SoundEmitter, Assembly-CSharp
+        m_MethodName: ExecuteSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBlockTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -675,6 +688,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: PlayerCore
+--- !u!114 &-4878096909088983328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673798582245462853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: bd29fea612ab56c4f954b0d7ec5e13d7, type: 3}
+  typeOfSound: 1
 --- !u!1 &1673798582515771430
 GameObject:
   m_ObjectHideFlags: 0

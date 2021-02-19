@@ -193,6 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4676248650370180233}
   - component: {fileID: 7871333849042687867}
+  - component: {fileID: 3568039669134687885}
   m_Layer: 6
   m_Name: Power
   m_TagString: Untagged
@@ -267,6 +268,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3568039669134687885}
+        m_TargetAssemblyTypeName: Game.SoundEmitter, Assembly-CSharp
+        m_MethodName: ExecuteSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3568039669134687885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676248650370180232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: f5a520080218af945931c579efeafc77, type: 3}
+  typeOfSound: 1
 --- !u!1 &5102482531687804917
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +671,8 @@ GameObject:
   - component: {fileID: 8423417993527650125}
   - component: {fileID: 1609738621912176644}
   - component: {fileID: 7248651260676198738}
+  - component: {fileID: 8360795633375617013}
+  - component: {fileID: 907246024016000085}
   m_Layer: 6
   m_Name: BlockTriangleShotgunTurret
   m_TagString: Untagged
@@ -709,7 +738,19 @@ MonoBehaviour:
   sprites: []
   OnConnect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3781939257890711878, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+        m_TargetAssemblyTypeName: Game.SoundEmitter, Assembly-CSharp
+        m_MethodName: ExecuteSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnSetPowers:
     m_PersistentCalls:
       m_Calls: []
@@ -767,6 +808,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8360795633375617013}
+        m_TargetAssemblyTypeName: Game.SoundEmitter, Assembly-CSharp
+        m_MethodName: ExecuteSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBlockTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -786,6 +839,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: Block
+--- !u!114 &8360795633375617013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211159104580210773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 493cb813a60a9a144be45baf08a3034b, type: 3}
+  typeOfSound: 1
+--- !u!114 &907246024016000085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211159104580210773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 181888adf0c7ded4da04191e56ab8093, type: 3}
+  typeOfSound: 1
 --- !u!1001 &521475664388095039
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -47,6 +47,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4878096909088983328, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f6bf39aa8705dcc4a978d2f932ebe030, type: 3}
     - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: centerCollider
       value: 
