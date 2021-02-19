@@ -35,7 +35,6 @@ namespace Game
         // Sistema por distancia real
         public override void OnBlockConnected()
         {
-            Debug.Log("Check");
             Vector2 raySource = transform.position;
 
             foreach (var item in Physics2D.OverlapCircleAll(raySource, range))
