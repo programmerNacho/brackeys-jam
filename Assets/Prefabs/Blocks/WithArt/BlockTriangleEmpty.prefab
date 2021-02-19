@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 8200186002492320973}
   - component: {fileID: 5558366988786244289}
   - component: {fileID: 2852881324283718250}
+  - component: {fileID: 8810917931359500252}
   m_Layer: 6
   m_Name: BlockTriangleEmpty
   m_TagString: Untagged
@@ -291,6 +292,9 @@ MonoBehaviour:
   parentSideConnectedWithMe: {fileID: 0}
   CanDock: 1
   health: 5
+  activateColor: {r: 0, g: 0, b: 0, a: 0}
+  desactivateColor: {r: 0, g: 0, b: 0, a: 0}
+  sprites: []
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
@@ -322,6 +326,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32965cda082f8474f88cc07c7f34859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8810917931359500252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217287696406044018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b421dc7f343636240b7a7e61d80867f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBlock: {fileID: 0}
+  destroyExplosionForce: 0
+  OnBlockDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBlockTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBlockShieldDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4201728488258112188
 GameObject:
   m_ObjectHideFlags: 0
