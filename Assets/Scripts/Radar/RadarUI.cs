@@ -12,6 +12,10 @@ namespace Game
         private RadarTargetUI targetUIPrefab = null;
         [SerializeField]
         private float viewportOffset = 0.05f;
+        [SerializeField]
+        private float maxScaleMultiplier = 1;
+        [SerializeField]
+        private float minScaleMultiplier = 0.1f;
 
         private Radar radar = null;
         private Camera mainCamera = null;
@@ -28,6 +32,7 @@ namespace Game
         {
             AssignRadarTargetsToRadarTargetsUI();
             MoveAndRotateRadarTargetsUI();
+            ScaleRadarTargetsUI();
         }
 
         private void AssignRadarTargetsToRadarTargetsUI()
@@ -201,6 +206,22 @@ namespace Game
                     targetUI.SetScreenPosition(mainCamera.ViewportToScreenPoint(UIViewportPosition));
                 }
             }
+        }
+
+        private void ScaleRadarTargetsUI()
+        {
+            foreach (RadarTargetUI targetUI in radarTargetUIs)
+            {
+                if (targetUI.Target)
+                {
+                    float radarRange = radar.Range;
+                    float distanceToTarget = Vector2.Distance(targetUI.Target.transform.position, mainCamera.ScreenToWorldPoint(targetUI.transform.position));
+
+                    float scaleMultiplier = Mathf.Lerp(minScaleMultiplier, maxScaleMultiplier, 1 - distanceToTarget / radarRange);
+                    targetUI.SetScale(scaleMultiplier);
+                }
+            }
+            
         }
     }
 }

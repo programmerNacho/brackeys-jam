@@ -2041,7 +2041,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4317635595535333757, guid: d5c102ee5f9dba54e9e8568449bcbdfd, type: 3}
       propertyPath: viewportOffset
-      value: 0.08
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317635595535333757, guid: d5c102ee5f9dba54e9e8568449bcbdfd, type: 3}
+      propertyPath: maxScaleMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317635595535333757, guid: d5c102ee5f9dba54e9e8568449bcbdfd, type: 3}
+      propertyPath: minScaleMultiplier
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5c102ee5f9dba54e9e8568449bcbdfd, type: 3}

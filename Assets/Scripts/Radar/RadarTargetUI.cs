@@ -11,6 +11,8 @@ namespace Game
         private Image targetIcon = null;
         [SerializeField]
         private Transform arrowPivot = null;
+        [SerializeField]
+        private Vector3 initialLocalScale = Vector3.one;
 
         private RadarTarget target = null;
         private Sprite appearance = null;
@@ -57,6 +59,11 @@ namespace Game
                 Vector2 arrowLookDirection = ((Vector2)Camera.main.WorldToScreenPoint(target.transform.position) - screenPosition).normalized;
                 arrowPivot.up = arrowLookDirection;
             }
+        }
+
+        public void SetScale(float multiplierInitialScale)
+        {
+            transform.localScale = initialLocalScale * multiplierInitialScale;
         }
     }
 }

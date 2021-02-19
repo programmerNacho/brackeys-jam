@@ -27,6 +27,14 @@ namespace Game
         [SerializeField]
         private List<RadarTarget> radarTargets = new List<RadarTarget>();
 
+        public float Range
+        {
+            get
+            {
+                return range;
+            }
+        }
+
         private List<RadarTarget> radarTargetsInsideRangeAndOutOfScreen = new List<RadarTarget>();
 
         private Camera mainCamera = null;
