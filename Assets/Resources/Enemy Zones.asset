@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79f83d86d29ced4aa279e6963c1f848, type: 3}
   m_Name: Enemy Zones
   m_EditorClassIdentifier: 
-  possibilities: []
+  possibilities:
+  - {fileID: 4627836853159517955, guid: f74e40ac1323cbb4485f86b4243de717, type: 3}
+  - {fileID: 6503238437090192105, guid: 800430781b745014ba8439c321903786, type: 3}
+  - {fileID: 6294411422342151468, guid: aee1d1e824895db4c92391a8a0ce599b, type: 3}
+  - {fileID: 8015050832678057967, guid: 0435e25b20883d04f91913829c7fda3c, type: 3}

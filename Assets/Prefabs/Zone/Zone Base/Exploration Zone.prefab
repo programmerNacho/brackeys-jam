@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3001183793938923712, guid: 4b1eb954cbf5c6b4ba7a2fe81aed3d8f, type: 3}
       propertyPath: TypeOfTarget
-      value: Exploration
+      value: ExplorationZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b1eb954cbf5c6b4ba7a2fe81aed3d8f, type: 3}
