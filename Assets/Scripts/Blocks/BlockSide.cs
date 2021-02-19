@@ -37,6 +37,10 @@ namespace Game
         }
         private void CheckTriggerCollision(Collider2D collision)
         {
+            if (!myBlock)
+            {
+                return;
+            }
             if (myBlock.GetCore())
             {
                 BlockSide otherSide = collision.GetComponent<BlockSide>();
