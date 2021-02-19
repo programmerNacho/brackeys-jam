@@ -169,6 +169,9 @@ MonoBehaviour:
   timeToDestroyProjectile: 3
   shotTransforms:
   - {fileID: 864201660}
+  OnShot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1705279586733338197
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,9 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 7237784978267923876}
-  dockTransform: {fileID: 6244993126184218751}
-  canDock: 1
 --- !u!1 &3455007905470579669
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c00e0eea247384da38ddf7dab2a147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 7237784978267923876}
+  myBlock: {fileID: 0}
 --- !u!60 &56491255279975946
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -385,9 +385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 7237784978267923876}
-  dockTransform: {fileID: 4142425059166592815}
-  canDock: 1
 --- !u!1 &4114940628884411419
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,19 +455,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b0a5d219dad4458f5256d9b101cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentSideConnectedWithMe: {fileID: 0}
+  CanDock: 1
+  health: 5
   activateColor: {r: 1, g: 0.5019608, b: 0.101960786, a: 1}
   desactivateColor: {r: 0.25, g: 0.125, b: 0.1, a: 1}
   sprites: []
-  childBlocks: []
-  dockCooldownAfterDisconnect: 2
-  currentAffiliation: 0
-  blockPhysics: {fileID: 6385655661155488680}
-  blockDock: {fileID: 3614797158453666563}
-  centerCollider: {fileID: 56491255279975946}
-  canDock: 1
-  health: 5
-  overlayingRadio: 0.5
-  simultaneousDock: 0
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
@@ -606,9 +596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83d2e71159dfe47a7d30223b02fbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockParent: {fileID: 7237784978267923876}
-  dockTransform: {fileID: 8934267243198096145}
-  canDock: 1
 --- !u!1 &6492268028082050589
 GameObject:
   m_ObjectHideFlags: 0
