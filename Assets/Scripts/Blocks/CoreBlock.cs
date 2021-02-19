@@ -44,15 +44,29 @@ namespace Game
 
         private void ResetBlockStatus()
         {
+            List<Block> blocksToEliminate = new List<Block>();
+
             foreach (var block in blocksList)
             {
-                weight++;
+                if (block)
+                {
+                    weight++;
 
-                block.ClearShields();
+                    block.ClearShields();
 
-                Rigidbody2D body = block.GetComponent<Rigidbody2D>();
-                bool noIsMyBody = body && block != this;
-                if (noIsMyBody) Destroy(body);
+                    Rigidbody2D body = block.GetComponent<Rigidbody2D>();
+                    bool noIsMyBody = body && block != this;
+                    if (noIsMyBody) Destroy(body);
+                }
+                else
+                {
+                    blocksToEliminate.Add(block);
+                }
+            }
+
+            foreach (var item in blocksToEliminate)
+            {
+                RemoveBlock(item);
             }
         }
 

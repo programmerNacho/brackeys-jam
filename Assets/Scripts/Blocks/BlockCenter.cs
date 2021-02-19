@@ -55,6 +55,11 @@ namespace Game
             Block collisionBlock = collision.collider.GetComponent<BlockCenter>()?.GetMyBlock();
             if (collisionBlock)
             {
+                if (!collisionBlock.GetCore() || !myBlock.GetCore())
+                {
+                    return;
+                }
+
                 bool isMyEnemy = myBlock.GetCore().CurrentAffiliation == Affiliation.Player && collisionBlock.GetCore().CurrentAffiliation == Affiliation.Enemy ||
                    myBlock.GetCore().CurrentAffiliation == Affiliation.Enemy && collisionBlock.GetCore().CurrentAffiliation == Affiliation.Player;
 

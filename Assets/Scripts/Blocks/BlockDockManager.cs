@@ -14,7 +14,10 @@ namespace Game
                 
                 if (core)
                 {
-                    core.RemoveBlock(item);
+                    if (!item.gameObject.GetComponent<CoreBlock>())
+                    {
+                        core.RemoveBlock(item);
+                    }
                 }
                 else break;
                 item.SetCore(null);

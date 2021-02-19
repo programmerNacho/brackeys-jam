@@ -28,6 +28,14 @@ namespace Game
         protected List<BlockPowerShield> shields = new List<BlockPowerShield>();
         private int shieldRange = -1;
 
+        [SerializeField]
+        public Color activateColor = new Color();
+        [SerializeField]
+        public Color desactivateColor = new Color();
+
+        [SerializeField]
+        SpriteRenderer[] sprites = new SpriteRenderer[0];
+
         public UnityEvent OnConnect = new UnityEvent();
         public UnityEvent OnSetPowers = new UnityEvent();
 
