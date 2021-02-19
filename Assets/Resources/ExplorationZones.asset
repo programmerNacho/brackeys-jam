@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79f83d86d29ced4aa279e6963c1f848, type: 3}
   m_Name: ExplorationZones
   m_EditorClassIdentifier: 
-  possibilities: []
+  possibilities:
+  - {fileID: 7258791654075271116, guid: 6b2c7ba1964f5004b9034d3a93b46a7e, type: 3}
+  - {fileID: 7258791654075271116, guid: 18f317a10e12c63409de066b6da4976f, type: 3}
+  - {fileID: 7258791654075271116, guid: 8a08c524ac934e8499de4b72234384f8, type: 3}
