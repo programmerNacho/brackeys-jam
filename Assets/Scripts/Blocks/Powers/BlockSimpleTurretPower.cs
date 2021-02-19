@@ -21,42 +21,81 @@ namespace Game
         [SerializeField]
         private Transform[] shotTransforms = new Transform[1];
 
-        private float timeWaitingToShoot = float.MaxValue;
+        private float timeWaitingToShoot = 0;
 
         public override void OnBlockConnected()
         {
 
         }
 
-        private void Update()
+        public override void AimTarget(CoreBlock target, Vector2 targetPredectePosition, float timeElapsedBetweenTicks)
         {
-            float timeToWaitForShot = timeToWaitToShootPerBoostLevel[Mathf.Min(currentBoostLevel, timeToWaitToShootPerBoostLevel.Length - 1)];
-
-            bool iAmPlayerOrEnemy = myBlock.CurrentAffiliation != Affiliation.Free;
-
-            if (iAmPlayerOrEnemy)
+            if (TheEnemyIsWithinRange(target))
             {
-                Block nearestEnemy = GetNearestEnemyBlock(rangeOfSight);
-
-                if(nearestEnemy)
-                {
-                    LookAtNearestEnemy(nearestEnemy);
-                    WaitForShot(timeToWaitForShot);
-
-                    bool hasWaitedEnough = timeWaitingToShoot >= timeToWaitForShot;
-
-                    if (hasWaitedEnough)
-                    {
-                        ResetWaitTime();
-                        ShootProjectiles(CreateProjectiles());
-                    }
-                }
-                else
-                {
-                    WaitForShot(timeToWaitForShot);
-                }
+                LookTarget(targetPredectePosition);
+                Shot(timeElapsedBetweenTicks);
             }
         }
+
+        private bool TheEnemyIsWithinRange(CoreBlock target)
+        {
+            float distanceToTarget = Vector2.Distance(transform.position, target.transform.position);
+            if (distanceToTarget <= rangeOfSight)
+            {
+                return true;
+            }
+            return false;
+        }
+        private void LookTarget(Vector2 targetPredectePosition)
+        {
+            turretPivot.transform.up = (targetPredectePosition - (Vector2)transform.position).normalized;
+        }
+
+        private void Shot(float timeElapsedBetweenTicks)
+        {
+            timeWaitingToShoot -= timeElapsedBetweenTicks;
+
+            if (timeWaitingToShoot <= 0)
+            {
+                if (currentBoostLevel >= timeToWaitToShootPerBoostLevel.Length)
+                {
+                    currentBoostLevel = timeToWaitToShootPerBoostLevel.Length - 1;
+                }
+
+                timeWaitingToShoot = timeToWaitToShootPerBoostLevel[currentBoostLevel];
+                ShootProjectiles(CreateProjectiles());
+            }
+        }
+
+        //private void Update()
+        //{
+        //    float timeToWaitForShot = timeToWaitToShootPerBoostLevel[Mathf.Min(currentBoostLevel, timeToWaitToShootPerBoostLevel.Length - 1)];
+
+        //    bool iAmPlayerOrEnemy = myBlock.CurrentAffiliation != Affiliation.Free;
+
+        //    if (iAmPlayerOrEnemy)
+        //    {
+        //        Block nearestEnemy = GetNearestEnemyBlock(rangeOfSight);
+
+        //        if(nearestEnemy)
+        //        {
+        //            LookAtNearestEnemy(nearestEnemy);
+        //            WaitForShot(timeToWaitForShot);
+
+        //            bool hasWaitedEnough = timeWaitingToShoot >= timeToWaitForShot;
+
+        //            if (hasWaitedEnough)
+        //            {
+        //                ResetWaitTime();
+        //                ShootProjectiles(CreateProjectiles());
+        //            }
+        //        }
+        //        else
+        //        {
+        //            WaitForShot(timeToWaitForShot);
+        //        }
+        //    }
+        //}
 
         private void LookAtNearestEnemy(Block nearestEnemy)
         {

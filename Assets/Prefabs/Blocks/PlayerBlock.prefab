@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 1341177420}
   - component: {fileID: 6396130074767299067}
   - component: {fileID: 1341177427}
+  - component: {fileID: 1492306383684356090}
   m_Layer: 7
   m_Name: PlayerBlock
   m_TagString: Untagged
@@ -440,7 +441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 0}
   rotateSpeed: 2
-  countinuousRotateSpeed: 200
   moveSpeed: 30
   speedReductionByWeigth: 0.5
   boostIncrement: 5
@@ -494,8 +494,10 @@ MonoBehaviour:
   blockPhysics: {fileID: 6396130074767299067}
   blockDock: {fileID: 1341177427}
   centerCollider: {fileID: 0}
+  canDock: 1
   health: 1
   overlayingRadio: 0.5
+  simultaneousDock: 0
   OnConnect:
     m_PersistentCalls:
       m_Calls: []
@@ -528,6 +530,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32965cda082f8474f88cc07c7f34859e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1492306383684356090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673798582245462853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d1654d871557146a75868d23220291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1673798582515771430

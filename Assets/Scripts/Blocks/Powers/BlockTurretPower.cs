@@ -13,41 +13,43 @@ namespace Game
             currentBoostLevel = boostCount;
         }
 
-        protected Block GetNearestEnemyBlock(float radius)
-        {
-            Collider2D[] thingsInRadius = Physics2D.OverlapCircleAll(myBlock.transform.position, radius);
+        public abstract void AimTarget(CoreBlock target, Vector2 targetPredectePosition, float timeElapsedBetweenTicks);
 
-            float minDistance = float.MaxValue;
-            Block nearestEnemyBlock = null;
+    //    protected Block GetNearestEnemyBlock(float radius)
+    //    {
+    //        Collider2D[] thingsInRadius = Physics2D.OverlapCircleAll(myBlock.transform.position, radius);
 
-            Affiliation enemyAffiliation = Affiliation.Free;
+    //        float minDistance = float.MaxValue;
+    //        Block nearestEnemyBlock = null;
 
-            switch (myBlock.CurrentAffiliation)
-            {
-                case Affiliation.Player:
-                    enemyAffiliation = Affiliation.Enemy;
-                    break;
-                case Affiliation.Enemy:
-                    enemyAffiliation = Affiliation.Player;
-                    break;
-            }
+    //        Affiliation enemyAffiliation = Affiliation.Free;
 
-            foreach (Collider2D thing in thingsInRadius)
-            {
-                Block block = thing.GetComponentInParent<Block>();
+    //        switch (myBlock.CurrentAffiliation)
+    //        {
+    //            case Affiliation.Player:
+    //                enemyAffiliation = Affiliation.Enemy;
+    //                break;
+    //            case Affiliation.Enemy:
+    //                enemyAffiliation = Affiliation.Player;
+    //                break;
+    //        }
 
-                if(block && block.CurrentAffiliation == enemyAffiliation)
-                {
-                    float distance = Vector2.Distance(myBlock.transform.position, block.transform.position);
-                    if (distance < minDistance)
-                    {
-                        minDistance = distance;
-                        nearestEnemyBlock = block;
-                    }
-                }
-            }
+    //        foreach (Collider2D thing in thingsInRadius)
+    //        {
+    //            Block block = thing.GetComponentInParent<Block>();
 
-            return nearestEnemyBlock;
-        }
+    //            if(block && block.CurrentAffiliation == enemyAffiliation)
+    //            {
+    //                float distance = Vector2.Distance(myBlock.transform.position, block.transform.position);
+    //                if (distance < minDistance)
+    //                {
+    //                    minDistance = distance;
+    //                    nearestEnemyBlock = block;
+    //                }
+    //            }
+    //        }
+
+    //        return nearestEnemyBlock;
+    //    }
     }
 }

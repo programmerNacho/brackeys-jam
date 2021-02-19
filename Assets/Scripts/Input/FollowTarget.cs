@@ -38,8 +38,7 @@ public class FollowTarget : MonoBehaviour
         size -= zIncrement;
         if (size > sizeMin) size = sizeMin;
         else if (size < SizeMax) size = SizeMax;
-
-        cam.orthographicSize = size;
+        if (cam) cam.orthographicSize = size;
 
     }
 
@@ -48,7 +47,7 @@ public class FollowTarget : MonoBehaviour
         if (target)
         {
             Vector2 targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
-            Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, -10);
+            Vector3 newPosition = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
             transform.position = newPosition;
         }
         else
