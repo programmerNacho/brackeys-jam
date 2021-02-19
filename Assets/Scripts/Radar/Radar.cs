@@ -27,6 +27,8 @@ namespace Game
         [SerializeField]
         private List<RadarTarget> radarTargets = new List<RadarTarget>();
 
+
+
         public float Range
         {
             get
