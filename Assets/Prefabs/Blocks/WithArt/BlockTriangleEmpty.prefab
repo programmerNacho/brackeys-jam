@@ -294,6 +294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b0a5d219dad4458f5256d9b101cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateColor: {r: 0, g: 0, b: 0, a: 0}
+  desactivateColor: {r: 0, g: 0, b: 0, a: 0}
+  sprites: []
   childBlocks: []
   dockCooldownAfterDisconnect: 2
   currentAffiliation: 0
@@ -301,7 +304,7 @@ MonoBehaviour:
   blockDock: {fileID: 2852881324283718250}
   centerCollider: {fileID: 1546314469726943075}
   canDock: 1
-  health: 2
+  health: 5
   overlayingRadio: 0.5
   simultaneousDock: 0
   OnConnect:

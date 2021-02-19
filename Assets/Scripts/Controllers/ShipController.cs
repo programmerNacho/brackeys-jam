@@ -166,7 +166,7 @@ public class ShipController : MonoBehaviour
         }
         else
         {
-            return -Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
+            return -(Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg);
         }
     }
     #endregion

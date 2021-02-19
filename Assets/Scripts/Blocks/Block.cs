@@ -7,6 +7,14 @@ namespace Game
 {
     public abstract class Block : MonoBehaviour
     {
+        [SerializeField]
+        public Color activateColor = new Color();
+        [SerializeField]
+        public Color desactivateColor = new Color();
+
+        [SerializeField]
+        SpriteRenderer[] sprites = new SpriteRenderer[0];
+
         public List<Block> childBlocks = new List<Block>();
         [SerializeField]
         protected float dockCooldownAfterDisconnect = 2f;
@@ -179,6 +187,15 @@ namespace Game
             ConnectToChildBlocks(targetBlock);
 
             targetBlock.ChangeBlockAndChildBlocksAffiliation(CurrentAffiliation);
+
+            CoreBlock core = GetComponentInParent<CoreBlock>();
+            if (core)
+            {
+                foreach (var block in core.GetChildrensBlocks())
+                {
+                    block.SetSpriteColor(activateColor);
+                }
+            }
         }
 
         protected void RecalculateHierarchy(Block block)
@@ -264,7 +281,11 @@ namespace Game
 
             transform.parent = null;
 
-            if (!GetComponent<CoreBlock>()) ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
+            if (!GetComponent<CoreBlock>())
+            {
+                ChangeBlockAndChildBlocksAffiliation(Affiliation.Free);
+                SetSpriteColor(desactivateColor);
+            }
 
             InitiateDockCooldown(dockCooldownAfterDisconnect);
             AddPhysics();
@@ -359,10 +380,17 @@ namespace Game
         {
             return shieldRange;
         }
-
         public void ResetShieldDistance()
         {
             this.shieldRange = 0;
+        }
+
+        private void SetSpriteColor(Color color)
+        {
+            foreach (var sprite in sprites)
+            {
+                sprite.color = color;
+            }
         }
     }
 }

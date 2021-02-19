@@ -52,8 +52,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8154278782919965492}
     - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: activateColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: activateColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: activateColor.g
+      value: 0.101960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: activateColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: currentAffiliation
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: desactivateColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: desactivateColor.b
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: desactivateColor.g
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341177420, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: desactivateColor.r
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1673798581813182276, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_Layer
@@ -63,9 +95,29 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1673798581910154902, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673798581910154902, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673798581910154902, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1673798581910154903, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673798581910154921, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1673798581910154921, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582042096769, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_Layer
@@ -77,11 +129,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.3048
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.675922
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -149,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: moveSpeed
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8351536817885058360, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: rotateSpeed

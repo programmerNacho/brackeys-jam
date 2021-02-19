@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour
     private bool flankDirectionIsRight = false;
 
     [SerializeField]
-    [Range(1, 90)]
+    [Range(1, 50)]
     private float flankAngle = 50;
 
     [SerializeField]

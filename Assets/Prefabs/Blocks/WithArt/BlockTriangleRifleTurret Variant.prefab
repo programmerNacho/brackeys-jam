@@ -176,7 +176,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -5949618632984867723, guid: b7e5c29fe1863a8498950a0b21f3e2da, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0.1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -232,8 +232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myBlock: {fileID: 8419267109530660134}
   turretPivot: {fileID: 2491107216332826212}
-  rangeOfSight: 120
-  projectileSpeed: 25
+  rangeOfSight: 110
+  projectileSpeed: 2.5
   timeToWaitToShootPerBoostLevel:
   - 10
   - 8
@@ -385,6 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766b0a5d219dad4458f5256d9b101cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateColor: {r: 1, g: 1, b: 0.101960786, a: 1}
+  desactivateColor: {r: 0.25, g: 0.25, b: 0.101960786, a: 1}
+  sprites: []
   childBlocks: []
   dockCooldownAfterDisconnect: 2
   currentAffiliation: 0
@@ -392,7 +395,7 @@ MonoBehaviour:
   blockDock: {fileID: 2489557238459263873}
   centerCollider: {fileID: 1183967024901387912}
   canDock: 1
-  health: 2
+  health: 5
   overlayingRadio: 0.5
   simultaneousDock: 0
   OnConnect:
@@ -678,7 +681,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 4038335200063070574, guid: b7e5c29fe1863a8498950a0b21f3e2da, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0.1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

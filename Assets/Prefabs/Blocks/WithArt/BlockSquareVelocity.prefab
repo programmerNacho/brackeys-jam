@@ -20,10 +20,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: activateColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: activateColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: activateColor.g
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: activateColor.r
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: desactivateColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: desactivateColor.b
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: desactivateColor.g
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 802616957376188575, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: desactivateColor.r
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4360066866174262887, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 299737823183680040, guid: b7e5c29fe1863a8498950a0b21f3e2da, type: 3}
+    - target: {fileID: 4360066866174262887, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360066866174262887, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360066866174262887, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6217646424062419232, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
       propertyPath: m_Name
       value: BlockSquareVelocity

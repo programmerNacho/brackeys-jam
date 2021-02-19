@@ -96,7 +96,7 @@ public class PlayerInput : MonoBehaviour
             Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 targetLookDirection = (mouseWorldPosition - (Vector2)transform.position).normalized;
 
-            shipController.RotateTowardDirectionAcceleration(targetLookDirection);
+            shipController.RotateTowardDirectionInstant(targetLookDirection);
         }
     }
 }

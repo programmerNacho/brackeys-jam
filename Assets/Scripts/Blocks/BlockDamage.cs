@@ -6,7 +6,7 @@ namespace Game
     public class BlockDamage : MonoBehaviour
     {
         public Block myBlock = null;
-        public float destroyExplosionForce = 5;
+        public float destroyExplosionForce = 0;
 
         public virtual void TakeDamage()
         {

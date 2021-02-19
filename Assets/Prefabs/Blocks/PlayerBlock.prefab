@@ -262,7 +262,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -6346639749276005083, guid: b7e5c29fe1863a8498950a0b21f3e2da, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 1, b: 0.1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -488,6 +488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd90f1f093c56d4894cbe781c574b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateColor: {r: 0.5019608, g: 1, b: 0.101960786, a: 1}
+  desactivateColor: {r: 0.125, g: 0.25, b: 0.1, a: 1}
+  sprites: []
   childBlocks: []
   dockCooldownAfterDisconnect: 2
   currentAffiliation: 1
