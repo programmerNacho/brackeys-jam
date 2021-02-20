@@ -11,10 +11,13 @@ public class VolumeSlider : MonoBehaviour
 
     private Slider slider = null;
 
-    private void Start()
+    private void Awake()
     {
         slider = GetComponent<Slider>();
+    }
 
+    private void OnEnable()
+    {
         switch (typeOfVolume)
         {
             case TypeOfVolume.FX:
@@ -24,11 +27,6 @@ public class VolumeSlider : MonoBehaviour
                 slider.value = Game.SoundManager.Instance.VolumeMusic;
                 break;
         }
-    }
-
-    private void OnEnable()
-    {
-        //Ajustar barra de volumen
     }
 
     public void SetVolume(float value)
