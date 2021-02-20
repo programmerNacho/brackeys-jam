@@ -528,11 +528,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 0}
   rotateSpeed: 2
-  moveSpeed: 30
+  moveSpeed: 60
   speedReductionByWeigth: 0.5
   boostIncrement: 5
-  baseMaxSpeed: 20
-  baseMinSpeed: 5
+  baseMaxSpeed: 60
+  baseMinSpeed: 20
   shotRate: 0.5
   stopDistance: 0.05
   OnShotStart:

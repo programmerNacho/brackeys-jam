@@ -29,6 +29,8 @@ namespace Game
 
             foreach (Transform child in children)
             {
+                if (!child) return;
+
                 float distanceToZone = Vector2.Distance(child.position, transform.position);
 
                 if(distanceToZone >= maxDistance)

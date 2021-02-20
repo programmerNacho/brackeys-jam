@@ -91,6 +91,7 @@ namespace Game
                         bool weHaveTheSameCore = side.myBlock.GetCore() == myBlock.GetCore();
                         if (weHaveTheSameCore)
                         {
+                            Debug.Log(this + " connected to" + side);
                             this.ToLock();
                             side.ToLock();
                         }

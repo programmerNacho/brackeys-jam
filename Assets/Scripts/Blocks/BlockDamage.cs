@@ -5,14 +5,19 @@ using UnityEngine.Events;
 
 namespace Game
 {
+    [System.Serializable]
+    public class OnBlockDestroyedEvent : UnityEvent<Block>
+    {
+
+    }
     public class BlockDamage : MonoBehaviour
     {
         public Block myBlock = null;
         public float destroyExplosionForce = 0;
 
-        public UnityEvent OnBlockDestroyed = new UnityEvent();
-        public UnityEvent OnBlockTakeDamage = new UnityEvent();
-        public UnityEvent OnBlockShieldDamage = new UnityEvent();
+        public OnBlockDestroyedEvent OnBlockDestroyed = new OnBlockDestroyedEvent();
+        public OnBlockDestroyedEvent OnBlockTakeDamage = new OnBlockDestroyedEvent();
+        public OnBlockDestroyedEvent OnBlockShieldDamage = new OnBlockDestroyedEvent();
 
         private void Awake()
         {
@@ -41,7 +46,7 @@ namespace Game
             {
                 if (shield.currentShieldHealth > 0)
                 {
-                    OnBlockShieldDamage.Invoke();
+                    OnBlockShieldDamage.Invoke(myBlock);
                     shield.currentShieldHealth--;
                     iAmProtected = true;
                     break;
@@ -58,7 +63,7 @@ namespace Game
                 myBlock.CurrentHealth--;
                 myBlock.DockManager.DisconnectBlock(myBlock);
                 AddExplosionForceInParent();
-                OnBlockTakeDamage.Invoke();
+                OnBlockTakeDamage.Invoke(myBlock);
             }
             else
             {
@@ -76,7 +81,7 @@ namespace Game
             myBlock.DockManager.DisconnectBlock(myBlock);
             NotifyTheLevelManager();
             Destroy(gameObject, 0.05f);
-            OnBlockDestroyed.Invoke();
+            OnBlockDestroyed.Invoke(myBlock);
         }
 
         private void NotifyTheLevelManager()

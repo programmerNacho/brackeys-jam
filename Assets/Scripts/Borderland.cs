@@ -9,10 +9,11 @@ public class Borderland : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Rigidbody2D body = null;
-        if (collision.TryGetComponent<Rigidbody2D>(out body))
+        Debug.Log("Force");
+        Rigidbody2D body = collision.GetComponentInParent<Rigidbody2D>();
+        if (body)
         {
-            body.AddForce(transform.up * force * Time.deltaTime, ForceMode2D.Force);
+            body.AddForce(transform.up * force * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
 }

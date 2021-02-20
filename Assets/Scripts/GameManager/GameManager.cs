@@ -31,6 +31,8 @@ namespace Game
         public int Money = 0;
 
         public CoreBlock spawnedPlayer = null;
+
+        [SerializeField]
         private List<CoreBlock> spawnedEnemies = new List<CoreBlock>();
 
         private Radar radar = null;
@@ -84,8 +86,6 @@ namespace Game
 
                 InitiateRound();
             }
-
-            EliminateEnemies();
         }
 
         private void GameWin()
@@ -102,7 +102,7 @@ namespace Game
 
         private void CreatePlayer()
         {
-            if(spawnedPlayer == null)
+            if(!spawnedPlayer)
             {
                 spawnedPlayer = Instantiate(playerCoreBlockPrefab, playerSpawnPoint.position, Quaternion.identity);
                 radar.center = spawnedPlayer.transform;
@@ -113,7 +113,8 @@ namespace Game
         {
             if(spawnedPlayer)
             {
-                Destroy(spawnedPlayer);
+                Destroy(spawnedPlayer.gameObject);
+                spawnedPlayer = null;
             }
         }
 
@@ -132,17 +133,8 @@ namespace Game
 
             for (int i = 0; i < roundNumberOfEnemies; i++)
             {
-                Instantiate(currentRound.enemies[i], enemySpawnPoints[i].position, Quaternion.identity);
-            }
-
-            CoreBlock[] allCoreBlocks = FindObjectsOfType<CoreBlock>();
-
-            foreach (CoreBlock coreBlock in allCoreBlocks)
-            {
-                if (coreBlock.CurrentAffiliation == Affiliation.Enemy)
-                {
-                    spawnedEnemies.Add(coreBlock);
-                }
+                CoreBlock newEnemy = Instantiate(currentRound.enemies[i], enemySpawnPoints[i].position, Quaternion.identity).GetComponentInChildren<CoreBlock>();
+                spawnedEnemies.Add(newEnemy);
             }
         }
 
@@ -150,7 +142,7 @@ namespace Game
         {
             if(spawnedPlayer)
             {
-                spawnedPlayer.GetComponent<BlockDamage>().OnBlockDestroyed.AddListener(OnPlayerKilled);
+                spawnedPlayer.Damage.OnBlockDestroyed.AddListener(OnPlayerKilled);
             }
 
             if(spawnedEnemies.Count > 0)
@@ -159,31 +151,25 @@ namespace Game
                 {
                     if(enemy)
                     {
-                        enemy.GetComponent<BlockDamage>().OnBlockDestroyed.AddListener(OnEnemyKilled);
+                        enemy.Damage.OnBlockDestroyed.AddListener(OnEnemyKilled);
                     }
                 }
             }
         }
 
-        private void OnPlayerKilled()
+        private void OnPlayerKilled(Block blockDestroyed)
         {
             GameLose();
         }
 
-        private void OnEnemyKilled()
+        private void OnEnemyKilled(Block blockDestroyed)
         {
-            bool noEnemiesAlive = true;
+            CoreBlock coreBlock = blockDestroyed as CoreBlock;
+            if (!coreBlock) return;
 
-            for (int i = 0; i < spawnedEnemies.Count; i++)
-            {
-                if(spawnedEnemies[i] != null)
-                {
-                    noEnemiesAlive = false;
-                    break;
-                }
-            }
+            spawnedEnemies.Remove(coreBlock);
 
-            if(noEnemiesAlive)
+            if (spawnedEnemies.Count <= 0)
             {
                 EndRound();
             }
