@@ -44,7 +44,8 @@ namespace Game
 
             set
             {
-                volumeFX = Mathf.Clamp(Mathf.Log10(value) * 20.0f, -80f, 0f);
+                volumeFX = Mathf.Log10(value) * 20.0f;
+                //volumeFX = Mathf.Clamp(Mathf.Log10(value) * 20.0f, -80f, 0f);
                 gameMixer.SetFloat("VolumeFX", volumeFX);
             }
         }

@@ -52,8 +52,6 @@ namespace Game
             otherBlock.CheckOverlaying();
             otherBlock.Physics.RemoveRigidbody2D();
             otherBlock.GetCenter().gameObject.layer = LayerMask.NameToLayer(myBlock.GetCore().CurrentAffiliation.ToString());
-
-            otherBlock.OnConnect.Invoke();
         }
         private bool CheckOverlaying(Block myBlock, Block otherBlock)
         {

@@ -87,6 +87,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (Vector2.Distance(transform.position, player.transform.position) > activateDistance)
         {
+            Debug.Log("Off");
             return;
         }
 
@@ -112,6 +113,7 @@ public class EnemyAI : MonoBehaviour
 
         if (timeToAwake > 0)
         {
+            Debug.Log("Sleep");
             timeToAwake -= tickTime;
             return;
         }
