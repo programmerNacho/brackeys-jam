@@ -246,15 +246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1199920967080977214, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9902596
+      value: 0.9998379
       objectReference: {fileID: 0}
     - target: {fileID: 1199920967080977214, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.13923359
+      value: 0.018009292
       objectReference: {fileID: 0}
     - target: {fileID: 1199920967080977214, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 16.007
+      value: 2.064
       objectReference: {fileID: 0}
     - target: {fileID: 1873525068978068502, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
       propertyPath: m_RootOrder
@@ -305,6 +305,10 @@ PrefabInstance:
       value: BlockSniper
       objectReference: {fileID: 0}
     - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+      propertyPath: rangeOfSight
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 3223126876811285995, guid: 1f8cda4130bed264b9cfb93a4d6ee48a, type: 3}
@@ -312,6 +316,26 @@ PrefabInstance:
       propertyPath: timeToDestroyProjectile
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+      propertyPath: shotTransforms.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+      propertyPath: shotTransforms.Array.data[0]
+      value: 
+      objectReference: {fileID: 9112192022926063858}
+    - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+      propertyPath: shotTransforms.Array.data[1]
+      value: 
+      objectReference: {fileID: 367092503330301589}
+    - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+      propertyPath: shotTransforms.Array.data[2]
+      value: 
+      objectReference: {fileID: 8900791534981674453}
+    - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+      propertyPath: shotTransforms.Array.data[3]
+      value: 
+      objectReference: {fileID: 1053991060531123989}
     - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
       propertyPath: timeToWaitToShootPerBoostLevel.Array.data[0]
       value: 5
@@ -353,6 +377,11 @@ PrefabInstance:
 --- !u!4 &5494896557380500904 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2491107216332826212, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+  m_PrefabInstance: {fileID: 7986003223817247692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9112192022926063858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1199920967080977214, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
   m_PrefabInstance: {fileID: 7986003223817247692}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8783629707706488174
