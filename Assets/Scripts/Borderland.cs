@@ -5,7 +5,7 @@ using UnityEngine;
 public class Borderland : MonoBehaviour
 {
     [SerializeField]
-    private float force = 1200;
+    private float force = 120;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
