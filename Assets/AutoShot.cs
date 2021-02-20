@@ -23,11 +23,11 @@ public class AutoShot : MonoBehaviour
 
     private void SetCoreList()
     {
-        coresList = FindObjectsOfType<Game.CoreBlock>();
-        //foreach (var coreFound in coresList)
-        //{
-        //    bool coreIsEnemy = coreFound != myCore && coreFound.CurrentAffiliation != myCore.CurrentAffiliation;
-        //}
+        //oresList = FindObjectsOfType<Game.CoreBlock>();
+        foreach (var coreFound in coresList)
+        {
+            bool coreIsEnemy = coreFound != myCore && coreFound.CurrentAffiliation != myCore.CurrentAffiliation;
+        }
     }
     private void Tick()
     {
