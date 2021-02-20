@@ -64,14 +64,18 @@ namespace Game
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (checkTrigger)
+            if (!isLocked)
             {
-                if (!isLocked)
-                {
-                    checkTrigger = false;
-                    CheckTriggerCollision(collision);
-                }
+                CheckTriggerCollision(collision);
             }
+            //if (checkTrigger)
+            //{
+            //    if (!isLocked)
+            //    {
+            //        checkTrigger = false;
+            //        CheckTriggerCollision(collision);
+            //    }
+            //}
         }
         #endregion
         #region Get

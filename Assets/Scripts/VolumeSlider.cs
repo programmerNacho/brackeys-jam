@@ -26,6 +26,11 @@ public class VolumeSlider : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        //Ajustar barra de volumen
+    }
+
     public void SetVolume(float value)
     {
         switch (typeOfVolume)

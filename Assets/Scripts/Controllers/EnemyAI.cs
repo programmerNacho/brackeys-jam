@@ -76,11 +76,15 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         SerializeVariables();
-        player = FindObjectOfType<PlayerInput>().GetComponent<Game.CoreBlock>();
+        player = FindObjectOfType<PlayerInput>()?.GetComponent<Game.CoreBlock>();
     }
 
     private void Update()
     {
+        if (!player)
+        {
+            return;
+        }
         if (Vector2.Distance(transform.position, player.transform.position) > activateDistance)
         {
             Debug.Log("Off");

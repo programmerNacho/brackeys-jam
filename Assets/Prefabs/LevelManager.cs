@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]
+    private Menus menus = null;
+    [SerializeField]
+    private float waitToOpenMenu = 3;
+
+    [Header("Cores in game")]
+    [SerializeField]
     List<Game.CoreBlock> targetsRemainig = new List<Game.CoreBlock>();
     [SerializeField]
     List<Game.CoreBlock> playersRemainig = new List<Game.CoreBlock>();
@@ -18,18 +24,20 @@ public class LevelManager : MonoBehaviour
 
         if (playersRemainig.Count <= 0)
         {
-            Debug.Log("MISSION FAILED!!");
-            Invoke("RestartScene", 3);
+            Invoke("ShowMenuFail", waitToOpenMenu);
         }
         else if (targetsRemainig.Count <= 0)
         {
-            Debug.Log("MISSION COMPLETE!!");
+            Invoke("ShowMenuWin", waitToOpenMenu);
         }
     }
 
-    public void RestartScene()
+    public void ShowMenuFail()
     {
-        string scene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene("Scene_Name");
+        menus.SetCurrentMenu(Menus.Menu.fail);
+    }
+    public void ShowMenuWin()
+    {
+        menus.SetCurrentMenu(Menus.Menu.win);
     }
 }
