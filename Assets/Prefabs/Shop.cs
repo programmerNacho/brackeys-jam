@@ -24,9 +24,16 @@ public class Shop : MonoBehaviour
     public LayerMask sideLayer;
     public GameObject freeSide = null;
     public float freeSideDistance = 2;
+    public bool isActive = true;
+
+    public void SetIsActive(bool value)
+    {
+        isActive = value;
+    }
 
     public void CreateNewBlock(int saleListPos, Vector2 mousePosition)
     {
+        if (!isActive) return;
         if (saleListPos >= saleList.Count) return;
 
         bool iHaveMoney = Game.GameManager.Instance.Money >= saleList[saleListPos].price;
