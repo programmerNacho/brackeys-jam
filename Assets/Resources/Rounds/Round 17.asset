@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58f82d6d5af2141a91a31497d74ee2, type: 3}
+  m_Name: Round 17
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 8245475543085031373, guid: 2ecf11d25ce861b4991dffd5a2824d52, type: 3}
+  - {fileID: 7060931840688125760, guid: f3041c32ed9cf364fb22bc213f02df6d, type: 3}
+  - {fileID: 8245475543085031373, guid: 2ecf11d25ce861b4991dffd5a2824d52, type: 3}
+  moneyWon: 100
