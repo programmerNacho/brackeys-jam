@@ -6,11 +6,13 @@ using System;
 [Serializable]
 public struct BlockForSale
 {
+    public Sprite icon;
     public GameObject block;
     public int price;
 
-    public BlockForSale(GameObject block, int price)
+    public BlockForSale(Sprite icon, GameObject block, int price)
     {
+        this.icon = icon;
         this.block = block;
         this.price = price;
     }
