@@ -82,16 +82,16 @@ namespace Game
             }
             else
             {
-                EliminatePlayer();
+                //EliminatePlayer();
 
-                Block[] blocks = FindObjectsOfType<Block>();
+                //Block[] blocks = FindObjectsOfType<Block>();
 
-                foreach (var b in blocks)
-                {
-                    Destroy(b.gameObject);
-                }
+                //foreach (var b in blocks)
+                //{
+                //    Destroy(b.gameObject);
+                //}
 
-                Money = currentRound.moneyWon;
+                Money += currentRound.moneyWon;
                 currentRound = rounds[++currentRoundIndex];
 
                 InitiateRound();
