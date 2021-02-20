@@ -24,6 +24,10 @@ public class AutoShot : MonoBehaviour
     private void SetCoreList()
     {
         coresList = FindObjectsOfType<Game.CoreBlock>();
+        //foreach (var coreFound in coresList)
+        //{
+        //    bool coreIsEnemy = coreFound != myCore && coreFound.CurrentAffiliation != myCore.CurrentAffiliation;
+        //}
     }
     private void Tick()
     {
@@ -43,6 +47,11 @@ public class AutoShot : MonoBehaviour
 
         foreach (var coreFound in coresList)
         {
+            if (!coreFound)
+            {
+                continue;
+            }
+
             bool coreIsEnemy = coreFound != myCore && coreFound.CurrentAffiliation != myCore.CurrentAffiliation;
 
             if (coreIsEnemy)
