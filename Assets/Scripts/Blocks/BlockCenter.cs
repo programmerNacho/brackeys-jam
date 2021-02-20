@@ -8,15 +8,9 @@ namespace Game
     {
         [SerializeField]
         private Block myBlock = null;
-
-        private void Start()
+        public void SetBlock(Block block)
         {
-            SetMyBlock();
-        }
-        private void SetMyBlock()
-        {
-            myBlock = GetComponentInParent<Block>();
-            myBlock.AddCenter(this);
+            myBlock = block;
         }
         public bool CheckOverlaying()
         {
@@ -33,8 +27,8 @@ namespace Game
                     bool noIsMe = center && center != this;
                     if (noIsMe)
                     {
-                        bool weDontHaveTheSameCore = center.myBlock.GetCore() != myBlock.GetCore();
-                        if (weDontHaveTheSameCore)
+                        bool weHaveTheSameCore = center.myBlock.GetCore() != myBlock.GetCore();
+                        if (weHaveTheSameCore)
                         {
                             myBlock.Damage.TakeDamage(true);
                             return false;

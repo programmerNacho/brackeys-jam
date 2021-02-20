@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.04}
+  m_Size: {x: 0.3, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &239369983006927709
 Rigidbody2D:
@@ -149,7 +149,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.04}
+  m_Size: {x: 0.3, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &4787010963222279052
 Rigidbody2D:
@@ -241,7 +241,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.04}
+  m_Size: {x: 0.3, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &932185405080448697
 Rigidbody2D:
@@ -415,7 +415,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.04}
+  m_Size: {x: 0.3, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &1673798582042096770
 Rigidbody2D:
@@ -575,6 +575,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd90f1f093c56d4894cbe781c574b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  center: {fileID: 4083239886339084574}
+  sides:
+  - {fileID: 1673798582042096771}
+  - {fileID: 8614084815470814981}
+  - {fileID: 9097378842632623841}
+  - {fileID: 5025221155783722431}
+  - {fileID: 5211382356908032638}
+  - {fileID: 2598412236415517952}
   parentSideConnectedWithMe: {fileID: 0}
   CanDock: 1
   health: 1
@@ -921,7 +929,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.04}
+  m_Size: {x: 0.3, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &2330597108972430971
 Rigidbody2D:
@@ -1089,7 +1097,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.04}
+  m_Size: {x: 0.3, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &5563791873800006992
 Rigidbody2D:

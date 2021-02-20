@@ -11,9 +11,15 @@ public class PlayerInput : MonoBehaviour
 
     private bool shoting = false;
 
+    private Shop shop = null;
+
+
+
     private void Start()
     {
         SerializeVariables();
+        shop = FindObjectOfType<Shop>();
+
     }
     private void SerializeVariables()
     {
@@ -27,6 +33,7 @@ public class PlayerInput : MonoBehaviour
         KeyboardRotation();
         Shot();
         Disassemble();
+        BuyBlock();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -35,6 +42,46 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    private void BuyBlock()
+    {
+        if (!shop) return;
+        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        shop.CheckBlockPosition(mouseWorldPosition);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            shop.CreateNewBlock(0, mouseWorldPosition);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            shop.CreateNewBlock(1, mouseWorldPosition);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            shop.CreateNewBlock(2, mouseWorldPosition);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            shop.CreateNewBlock(3, mouseWorldPosition);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            shop.CreateNewBlock(4, mouseWorldPosition);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            shop.CreateNewBlock(5, mouseWorldPosition);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            shop.CreateNewBlock(6, mouseWorldPosition);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            shop.CreateNewBlock(7, mouseWorldPosition);
+        }
+    }
     private void Disassemble()
     {
         if (Input.GetMouseButtonDown(0))

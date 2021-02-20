@@ -32,6 +32,8 @@ namespace Game
         }
         public void PrepareBlockToConnect(Block myBlock, BlockSide mySide,Block otherBlock, BlockSide otherside)
         {
+            if (mySide.GetLocked() || otherside.GetLocked()) return;
+
             bool iHaveCore = myBlock.GetCore() && !otherBlock.GetCore();
             bool canDock = myBlock.CanDock && otherBlock.CanDock;
             if ( iHaveCore && canDock)
@@ -66,7 +68,7 @@ namespace Game
             otherside.ToLock();
             otherBlock.parentSideConnectedWithMe = mySide;
         }
-        private void PlaceOtherBlockInOffsetPosition(Block myBlock, BlockSide mySide, Block otherBLock, BlockSide otherside)
+        public void PlaceOtherBlockInOffsetPosition(Block myBlock, BlockSide mySide, Block otherBLock, BlockSide otherside)
         {
             Vector2 myBlockPosition = myBlock.transform.position;
             Vector2 mySidePosition = mySide.transform.position;

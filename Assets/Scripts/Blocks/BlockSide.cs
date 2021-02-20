@@ -12,6 +12,10 @@ namespace Game
         private bool checkTrigger = false;
 
         #region Set
+        public void SetBlock(Block block)
+        {
+            myBlock = block;
+        }
         public void ToLock()
         {
             isLocked = true;
@@ -26,15 +30,6 @@ namespace Game
         }
         #endregion
         #region Procces
-        private void Start()
-        {
-            SetMyBlock();
-        }
-        private void SetMyBlock()
-        {
-            myBlock = GetComponentInParent<Block>();
-            myBlock.AddSide(this);
-        }
         private void CheckTriggerCollision(Collider2D collision)
         {
             if (!myBlock)
@@ -77,11 +72,42 @@ namespace Game
             //    }
             //}
         }
+
+        public void CheckOverlaying()
+        {
+            Collider2D collider = GetComponent<Collider2D>();
+            RaycastHit2D[] hits = new RaycastHit2D[10];
+
+            collider.Cast(Vector2.zero, hits, 1);
+
+            foreach (var item in hits)
+            {
+                if (item)
+                {
+                    BlockSide side = item.collider.GetComponent<BlockSide>();
+                    bool noIsMe = side && side != this;
+                    if (noIsMe)
+                    {
+                        bool weHaveTheSameCore = side.myBlock.GetCore() == myBlock.GetCore();
+                        if (weHaveTheSameCore)
+                        {
+                            this.ToLock();
+                            side.ToLock();
+                        }
+                    }
+                }
+            }
+        }
         #endregion
         #region Get
         public Block GetBlock()
         {
             return myBlock;
+        }
+
+        public bool GetLocked()
+        {
+            return isLocked;
         }
         #endregion
 

@@ -1,0 +1,120 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+[Serializable]
+public struct BlockForSale
+{
+    public GameObject block;
+    public int price;
+
+    public BlockForSale(GameObject block, int price)
+    {
+        this.block = block;
+        this.price = price;
+    }
+
+}
+public class Shop : MonoBehaviour
+{
+    [SerializeField]
+    private int money = 0;
+
+    [SerializeField]
+    public List<BlockForSale> saleList = new List<BlockForSale>();
+
+    public LayerMask sideLayer;
+    public GameObject freeSide = null;
+    public float freeSideDistance = 2;
+
+    public void CreateNewBlock(int saleListPos, Vector2 mousePosition)
+    {
+        if (saleListPos >= saleList.Count) return;
+
+        bool iHaveMoney = money >= saleList[saleListPos].price;
+        GameObject block = saleList[saleListPos].block;
+
+        if (iHaveMoney && block)
+        {
+            Game.BlockSide side = CheckBlockPosition(mousePosition);
+
+            Game.Block newBlock = Instantiate(block, mousePosition, new Quaternion()).GetComponentInParent<Game.Block>();
+            RemoveMoney(saleList[saleListPos].price);
+
+            //if (side)
+            //{
+            //    Game.Block newBlock = Instantiate(block, mousePosition, new Quaternion()).GetComponentInParent<Game.Block>();
+
+            //    //if (newBlock)
+            //    //{
+            //    //    side.GetBlock().TryConnectANewBlock(side, newBlock.GetMainSide());
+            //    //}
+
+            //    RemoveMoney(saleList[saleListPos].price);
+            //}
+        }
+    }
+
+    public Game.BlockSide CheckBlockPosition(Vector2 mousePosition)
+    {
+        freeSide.SetActive(false);
+        Vector2 direction = Vector2.zero;
+
+        RaycastHit2D[] hit = Physics2D.RaycastAll(mousePosition, direction, 0, sideLayer);
+
+        foreach (var item in hit)
+        {
+            Game.BlockSide side = item.collider.GetComponent<Game.BlockSide>();
+            if (side && !side.GetLocked())
+            {
+                PlaceFreeSide(side);
+                return side;
+            }
+        }
+
+        return null;
+    }
+
+    private void PlaceFreeSide(Game.BlockSide side)
+    {
+        if (!side) return;
+
+        Game.Block block = side.GetBlock();
+
+        if (!block) return;
+
+        freeSide.SetActive(true);
+
+        Vector2 blockPosition = block.transform.position;
+        Vector2 sidePosition = side.transform.position;
+
+        Vector2 dockDirection = (sidePosition - blockPosition).normalized;
+        float distanceToMySide = Vector2.Distance(sidePosition, blockPosition);
+        float distanceOtherBLockToOtherSide = freeSideDistance;
+        float offsetDistance = distanceToMySide + distanceOtherBLockToOtherSide;
+
+        Vector2 dockPosition = blockPosition + (dockDirection * offsetDistance);
+
+        freeSide.transform.rotation = side.transform.rotation;
+        freeSide.transform.position = dockPosition;
+    }
+
+    public void SetMoney(int money)
+    {
+        this.money = money;
+    }
+    public void AddMoney(int money)
+    {
+        this.money += money;
+    }
+    public void RemoveMoney(int money)
+    {
+        this.money -= money;
+        if (this.money < 0) this.money = 0;
+    }
+    public int GetMoney()
+    {
+        return money;
+    }
+}

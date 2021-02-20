@@ -9,7 +9,10 @@ namespace Game
     {
         protected CoreBlock myCore = null;
 
+        [SerializeField]
         protected BlockCenter center = null;
+
+        [SerializeField]
         protected List<BlockSide> sides = new List<BlockSide>();
 
         public BlockSide parentSideConnectedWithMe = null;
@@ -73,6 +76,10 @@ namespace Game
         }
         public bool CheckOverlaying()
         {
+            //foreach (var item in sides)
+            //{
+            //    item.CheckOverlaying();
+            //}
             return center.CheckOverlaying();
         }
         public void AddShield(BlockPowerShield shield, int range)
@@ -115,10 +122,20 @@ namespace Game
 
 
         #region Procces
+
+        private void Awake()
+        {
+            center.SetBlock(this);
+
+            foreach (var item in sides)
+            {
+                item.SetBlock(this);
+            }
+
+            InicializeAuxiliarComponents();
+        }
         protected virtual void Start()
         {
-            InicializeAuxiliarComponents();
-
             CurrentHealth = health;
             Invoke("FreeSides", 0.1f);
         }
@@ -191,6 +208,14 @@ namespace Game
         public int GetShieldDistance()
         {
             return shieldRange;
+        }
+
+        public BlockSide GetMainSide()
+        {
+            if (sides.Count > 0)
+                return sides[0];
+            else
+                return null;
         }
 
         #endregion
