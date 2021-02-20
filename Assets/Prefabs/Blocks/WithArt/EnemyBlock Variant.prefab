@@ -15,7 +15,7 @@ MonoBehaviour:
   shipController: {fileID: 0}
   tickTime: 0.2
   timeToAwake: 1
-  activateDistance: 300
+  activateDistance: 400
   flank: 1
   flankTime: 3
   flankAngle: 50
@@ -143,11 +143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -191.84598
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 290.08948
       objectReference: {fileID: 0}
     - target: {fileID: 1673798582245462852, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
       propertyPath: m_LocalPosition.z
