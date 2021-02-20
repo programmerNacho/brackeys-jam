@@ -1937,6 +1937,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4812363826499875143, guid: 7e54815aa9dc9ca4881bd75a1038c742, type: 3}
+      propertyPath: saleList.Array.data[3].block
+      value: 
+      objectReference: {fileID: 5147111823188625237, guid: 064c39e2b83d51847981893b9b632e92, type: 3}
+    - target: {fileID: 4812363826499875143, guid: 7e54815aa9dc9ca4881bd75a1038c742, type: 3}
+      propertyPath: saleList.Array.data[5].block
+      value: 
+      objectReference: {fileID: 3341087882822110533, guid: 4ec7c0c232d86fe4ea1145b25d271794, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e54815aa9dc9ca4881bd75a1038c742, type: 3}
 --- !u!4 &924902425485911258 stripped
