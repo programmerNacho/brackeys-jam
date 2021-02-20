@@ -191,7 +191,7 @@ namespace Game
 
             if (spawnedEnemies.Count <= 0)
             {
-                EndRound();
+                Invoke("EndRound", 4f);
             }
         }
     }

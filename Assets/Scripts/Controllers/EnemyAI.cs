@@ -55,13 +55,13 @@ public class EnemyAI : MonoBehaviour
 
 
     [SerializeField]
-    private CombatBehavior combatBehavior = CombatBehavior.Pasive;
+    private CombatBehavior combatBehavior = CombatBehavior.Ofensive;
 
     [SerializeField]
-    private float rangeOfVisionAgainstPlayer  = 20;
+    private float rangeOfVisionAgainstPlayer  = 300;
 
     [SerializeField]
-    private float rangeOfVisionAgainstNodes = 5;
+    private float rangeOfVisionAgainstNodes = 50;
 
     [SerializeField]
     private LayerMask nodeLayerMask = new LayerMask();
@@ -118,21 +118,17 @@ public class EnemyAI : MonoBehaviour
 
         Rotate();
 
-        if (!CheckPlayersInRange())
+        CheckPlayersInRange();
+
+        if (!CheckNodesInRange())
         {
-            if (!CheckNodesInRange())
-            {
-                Wander();
-            }
-            else
-            {
-                isWander = false;
-            }
+            Wander();
         }
         else
         {
             isWander = false;
         }
+
     }
 
     private void Rotate()
