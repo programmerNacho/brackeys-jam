@@ -7,29 +7,22 @@ namespace Game
     public class SoundEmitter : MonoBehaviour
     {
         public AudioClip clip = null;
-        public AudioSource source = null;
 
         public enum TypeOfSound { TwoD, Spatial }
 
         public TypeOfSound typeOfSound = TypeOfSound.TwoD;
 
-        private void Awake()
-        {
-            if (!source) source = GetComponent<AudioSource>();
-        }
-
         public void ExecuteSound()
         {
-            source.PlayOneShot(clip);
-            //switch (typeOfSound)
-            //{
-            //    case TypeOfSound.TwoD:
-            //        SoundManager.Instance.PlaySound2D(clip);
-            //        break;
-            //    case TypeOfSound.Spatial:
-            //        SoundManager.Instance.PlaySoundPerDistanceFromPlayer(clip, transform);
-            //        break;
-            //}
+            switch (typeOfSound)
+            {
+                case TypeOfSound.TwoD:
+                    SoundManager.Instance.PlaySound2D(clip);
+                    break;
+                case TypeOfSound.Spatial:
+                    SoundManager.Instance.PlaySoundPerDistanceFromPlayer(clip, transform);
+                    break;
+            }
         }
     }
 }
