@@ -19,9 +19,6 @@ public struct BlockForSale
 public class Shop : MonoBehaviour
 {
     [SerializeField]
-    private int money = 0;
-
-    [SerializeField]
     public List<BlockForSale> saleList = new List<BlockForSale>();
 
     public LayerMask sideLayer;
@@ -32,7 +29,7 @@ public class Shop : MonoBehaviour
     {
         if (saleListPos >= saleList.Count) return;
 
-        bool iHaveMoney = money >= saleList[saleListPos].price;
+        bool iHaveMoney = Game.GameManager.Instance.Money >= saleList[saleListPos].price;
         GameObject block = saleList[saleListPos].block;
 
         if (iHaveMoney && block)
@@ -102,19 +99,19 @@ public class Shop : MonoBehaviour
 
     public void SetMoney(int money)
     {
-        this.money = money;
+        Game.GameManager.Instance.Money = money;
     }
     public void AddMoney(int money)
     {
-        this.money += money;
+        Game.GameManager.Instance.Money += money;
     }
     public void RemoveMoney(int money)
     {
-        this.money -= money;
-        if (this.money < 0) this.money = 0;
+        Game.GameManager.Instance.Money -= money;
+        if (Game.GameManager.Instance.Money < 0) Game.GameManager.Instance.Money = 0;
     }
     public int GetMoney()
     {
-        return money;
+        return Game.GameManager.Instance.Money;
     }
 }
