@@ -728,6 +728,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1502487426}
     m_Modifications:
+    - target: {fileID: 2532033780631129245, guid: f3041c32ed9cf364fb22bc213f02df6d, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1691946039}
     - target: {fileID: 3795421129398328434, guid: f3041c32ed9cf364fb22bc213f02df6d, type: 3}
       propertyPath: m_Name
       value: Boss A
@@ -2568,6 +2572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13eeb2c4f3dce484285a12862efd2151, type: 3}
+--- !u!82 &1691946039 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4460257376255642341, guid: f3041c32ed9cf364fb22bc213f02df6d, type: 3}
+  m_PrefabInstance: {fileID: 625859520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1710378281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2747935595871608185, guid: 13eeb2c4f3dce484285a12862efd2151, type: 3}

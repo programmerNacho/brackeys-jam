@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: bd29fea612ab56c4f954b0d7ec5e13d7, type: 3}
-  source: {fileID: 0}
+  source: {fileID: 2488264675504402584}
   typeOfSound: 1
 --- !u!82 &2488264675504402584
 AudioSource:

@@ -13,13 +13,18 @@ namespace Game
 
         public TypeOfSound typeOfSound = TypeOfSound.TwoD;
 
-        private void Awake()
+        private void Start()
         {
             if (!source) source = GetComponent<AudioSource>();
         }
 
         public void ExecuteSound()
         {
+            if (!source)
+            {
+                    return;
+            }
+
             source.PlayOneShot(clip);
             //switch (typeOfSound)
             //{
