@@ -17,20 +17,6 @@ MonoBehaviour:
   currentShieldHealth: 5
   range: 5
   timeToRegenerateShieldHealth: 10
---- !u!114 &6795808293755654330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 8124503112294677230}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  typeOfSound: 0
 --- !u!1001 &8124503112294677230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,6 +79,10 @@ PrefabInstance:
     - target: {fileID: 6217646424062419232, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
       propertyPath: m_Name
       value: BlockSquareShield
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273979675703611362, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7346584944507003311, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
       propertyPath: m_RootOrder
@@ -157,3 +147,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7599902723564819965, guid: 776df9d1c7923fb4bb1f27c66da34e07, type: 3}
   m_PrefabInstance: {fileID: 8124503112294677230}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6795808293755654330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8d9262e156e0d40bd395f65947d40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
+  source: {fileID: 0}
+  typeOfSound: 0

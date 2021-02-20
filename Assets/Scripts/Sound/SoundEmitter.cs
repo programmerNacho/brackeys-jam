@@ -25,6 +25,7 @@ namespace Game
                     return;
             }
 
+            Debug.Log(clip.name);
             source.PlayOneShot(clip);
             //switch (typeOfSound)
             //{
