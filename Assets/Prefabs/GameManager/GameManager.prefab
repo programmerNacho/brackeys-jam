@@ -354,7 +354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1828695262
 RectTransform:
   m_ObjectHideFlags: 0
@@ -364,7 +364,7 @@ RectTransform:
   m_GameObject: {fileID: 1828695261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.56375, y: 0.56375, z: 0.56375}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 1052501732}
   m_Father: {fileID: 5628684505232784748}
@@ -372,7 +372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 225.5, y: 127}
+  m_AnchoredPosition: {x: 6, y: -2}
   m_SizeDelta: {x: 799.99994, y: 450.5543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1828695265
@@ -737,10 +737,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 924902425485911256}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnStartFighting:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1736547417}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 924902425485911256}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -908,6 +932,11 @@ PrefabInstance:
 --- !u!4 &924902425485911258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4812363826499875140, guid: 7e54815aa9dc9ca4881bd75a1038c742, type: 3}
+  m_PrefabInstance: {fileID: 5628684504887121310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &924902425485911256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4812363826499875142, guid: 7e54815aa9dc9ca4881bd75a1038c742, type: 3}
   m_PrefabInstance: {fileID: 5628684504887121310}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5628684505445654197
