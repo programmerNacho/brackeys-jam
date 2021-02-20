@@ -56,7 +56,7 @@ public class AutoShot : MonoBehaviour
         Vector2 targetDirection = targetBody.velocity.normalized;
         float distanceToTarget = Vector2.Distance(transform.position, target.transform.position);
         float targetSpeed = targetBody.velocity.magnitude * distanceToTarget * Time.deltaTime;
-        targetSpeed *= 8f;
+        targetSpeed *= 0.8f;
 
         Vector2 targetPredectePosition = (Vector2)target.transform.position + (targetDirection * targetSpeed);
 

@@ -87,6 +87,7 @@ namespace Game
             {
                 Vector3 radarTargetWorldPosition = t.transform.position;
 
+                if (center)
                 if(Vector2.Distance(center.position, radarTargetWorldPosition) <= range)
                 {
                     Vector3 radarTargetViewportPosition = mainCamera.WorldToViewportPoint(t.transform.position);
