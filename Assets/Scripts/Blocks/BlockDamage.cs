@@ -80,7 +80,16 @@ namespace Game
         {
             myBlock.DockManager.DisconnectBlock(myBlock);
             NotifyTheLevelManager();
-            Destroy(gameObject, 0.05f);
+            Destroy(gameObject, 4f);
+
+            transform.localScale = Vector3.zero;
+
+            Destroy(myBlock.GetCenter());
+            foreach (var item in myBlock.GetSides())
+            {
+                Destroy(item);
+            }
+
             OnBlockDestroyed.Invoke(myBlock);
         }
 

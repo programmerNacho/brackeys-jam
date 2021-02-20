@@ -210,12 +210,9 @@ namespace Game
             return shieldRange;
         }
 
-        public BlockSide GetMainSide()
+        public BlockSide[] GetSides()
         {
-            if (sides.Count > 0)
-                return sides[0];
-            else
-                return null;
+            return sides.ToArray();
         }
 
         #endregion
