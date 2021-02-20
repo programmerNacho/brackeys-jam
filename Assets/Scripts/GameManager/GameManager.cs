@@ -30,7 +30,7 @@ namespace Game
         private Round currentRound = null;
         public int Money = 0;
 
-        private CoreBlock spawnedPlayer = null;
+        public CoreBlock spawnedPlayer = null;
         private List<CoreBlock> spawnedEnemies = new List<CoreBlock>();
 
         private Radar radar = null;
