@@ -233,13 +233,13 @@ MonoBehaviour:
   myBlock: {fileID: 8419267109530660134}
   turretPivot: {fileID: 2491107216332826212}
   rangeOfSight: 110
-  projectileSpeed: 3
+  projectileSpeed: 10
   timeToWaitToShootPerBoostLevel:
   - 6
   - 5
   - 4
   projectilePrefab: {fileID: 3223126876811285995, guid: 0b439ab8262567f49bb9a34da96d41e9, type: 3}
-  timeToDestroyProjectile: 8
+  timeToDestroyProjectile: 4
   shotTransforms:
   - {fileID: 1199920967080977214}
   OnShot:

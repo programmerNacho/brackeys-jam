@@ -309,6 +309,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3223126876811285995, guid: 1f8cda4130bed264b9cfb93a4d6ee48a, type: 3}
     - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
+      propertyPath: timeToDestroyProjectile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4275544944668974007, guid: 5fac488c3560a3743be8fdd8be7e0d85, type: 3}
       propertyPath: timeToWaitToShootPerBoostLevel.Array.data[0]
       value: 5
       objectReference: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   shipController: {fileID: 0}
   tickTime: 0.2
   timeToAwake: 1
-  activateDistance: 200
+  activateDistance: 300
   flank: 1
   flankTime: 3
   flankAngle: 50
@@ -23,8 +23,8 @@ MonoBehaviour:
   lookToTarget: 0
   rotateTime: 3
   combatBehavior: 2
-  rangeOfVisionAgainstPlayer: 150
-  rangeOfVisionAgainstNodes: 0
+  rangeOfVisionAgainstPlayer: 300
+  rangeOfVisionAgainstNodes: 50
   nodeLayerMask:
     serializedVersion: 2
     m_Bits: 64
