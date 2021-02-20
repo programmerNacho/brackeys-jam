@@ -20,10 +20,8 @@ namespace Game
             }
         }
 
-        [SerializeField]
-        private Transform center = null;
-        [SerializeField]
-        private float range = 50f;
+        public Transform center = null;
+        public float range = 50f;
         [SerializeField]
         private List<RadarTarget> radarTargets = new List<RadarTarget>();
 
