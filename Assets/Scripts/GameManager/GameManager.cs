@@ -28,6 +28,7 @@ namespace Game
         public List<Round> rounds = new List<Round>();
 
         private Round currentRound = null;
+        private int currentRoundIndex = 0;
         public int Money = 0;
 
         public CoreBlock spawnedPlayer = null;
@@ -42,6 +43,9 @@ namespace Game
         public UnityEvent OnWin = new UnityEvent();
         public UnityEvent OnLose = new UnityEvent();
 
+        private bool alreadyWin = false;
+        private bool alreadyLost = false;
+
         private void Start()
         {
             Money = initialMoney;
@@ -50,6 +54,7 @@ namespace Game
             if(rounds.Count > 0)
             {
                 currentRound = rounds[0];
+                currentRoundIndex = 0;
             }
 
             Invoke("InitiateRound", 0.1f);
@@ -70,8 +75,6 @@ namespace Game
 
         private void EndRound()
         {
-            int currentRoundIndex = rounds.IndexOf(currentRound);
-
             bool isLastRound = currentRoundIndex == rounds.Count - 1;
             if(isLastRound)
             {
@@ -81,8 +84,15 @@ namespace Game
             {
                 EliminatePlayer();
 
+                Block[] blocks = FindObjectsOfType<Block>();
+
+                foreach (var b in blocks)
+                {
+                    Destroy(b.gameObject);
+                }
+
                 Money = currentRound.moneyWon;
-                currentRound = rounds[currentRoundIndex + 1];
+                currentRound = rounds[++currentRoundIndex];
 
                 InitiateRound();
             }
@@ -90,14 +100,22 @@ namespace Game
 
         private void GameWin()
         {
-            OnWin.Invoke();
-            Debug.Log("Win!");
+            if(!alreadyWin)
+            {
+                OnWin.Invoke();
+                alreadyWin = true;
+                Debug.Log("Win!");
+            }
         }
 
         private void GameLose()
         {
-            OnLose.Invoke();
-            Debug.Log("Lose!");
+            if(!alreadyLost)
+            {
+                OnLose.Invoke();
+                alreadyLost = true;
+                Debug.Log("Lose!");
+            }
         }
 
         private void CreatePlayer()
@@ -166,6 +184,8 @@ namespace Game
         {
             CoreBlock coreBlock = blockDestroyed as CoreBlock;
             if (!coreBlock) return;
+
+            blockDestroyed.Damage.OnBlockDestroyed.RemoveListener(OnEnemyKilled);
 
             spawnedEnemies.Remove(coreBlock);
 
