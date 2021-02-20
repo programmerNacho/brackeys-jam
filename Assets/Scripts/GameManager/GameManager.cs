@@ -50,7 +50,7 @@ namespace Game
                 currentRound = rounds[0];
             }
 
-            InitiateRound();
+            Invoke("InitiateRound", 0.1f);
         }
 
         private void InitiateRound()
