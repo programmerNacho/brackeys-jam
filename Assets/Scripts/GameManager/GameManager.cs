@@ -21,12 +21,14 @@ namespace Game
             }
         }
 
+        public int initialMoney = 500;
         public CoreBlock playerCoreBlockPrefab = null;
         public Transform playerSpawnPoint = null;
         public List<Transform> enemySpawnPoints = new List<Transform>();
         public List<Round> rounds = new List<Round>();
 
         private Round currentRound = null;
+        public int Money = 0;
 
         private CoreBlock spawnedPlayer = null;
         private List<CoreBlock> spawnedEnemies = new List<CoreBlock>();
@@ -40,6 +42,7 @@ namespace Game
 
         private void Start()
         {
+            Money = initialMoney;
             radar = GetComponentInChildren<Radar>();
 
             if(rounds.Count > 0)
@@ -76,6 +79,7 @@ namespace Game
             {
                 EliminatePlayer();
 
+                Money = currentRound.moneyWon;
                 currentRound = rounds[currentRoundIndex + 1];
 
                 InitiateRound();
