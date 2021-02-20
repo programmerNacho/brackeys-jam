@@ -5,16 +5,25 @@ using UnityEngine;
 public class AutoShot : MonoBehaviour
 {
     private Game.CoreBlock myCore = null;
-    private float tickRate = 0.05f;
+    private float tickRate = 0.1f;
 
     private Game.CoreBlock target = null;
+
+    private Game.CoreBlock[] coresList = new Game.CoreBlock[0];
 
     private void Start()
     {
         myCore = GetComponent<Game.CoreBlock>();
         if (!myCore) Destroy(this);
 
+        Invoke("SetCoreList", 1);
+
         Invoke("Tick", tickRate);
+    }
+
+    private void SetCoreList()
+    {
+        coresList = FindObjectsOfType<Game.CoreBlock>();
     }
     private void Tick()
     {
@@ -32,7 +41,7 @@ public class AutoShot : MonoBehaviour
         target = null;
         float distanceToTarget = 0;
 
-        foreach (var coreFound in FindObjectsOfType<Game.CoreBlock>())
+        foreach (var coreFound in coresList)
         {
             bool coreIsEnemy = coreFound != myCore && coreFound.CurrentAffiliation != myCore.CurrentAffiliation;
 
