@@ -229,6 +229,30 @@ PrefabInstance:
       propertyPath: countinuousRotateSpeed
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 8354901927443019185, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354901927443019185, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354901927443019185, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354901927443019185, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354901927443019185, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354901927443019185, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8351536817885058367, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf0f2d381856d9f41905ecd4dcbe878c, type: 3}
