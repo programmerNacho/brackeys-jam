@@ -14,12 +14,16 @@ namespace Game
         private TextMeshProUGUI buttonText = null;
         [SerializeField]
         private TextMeshProUGUI moneyText = null;
+        [SerializeField]
+        private TextMeshProUGUI nameText = null;
 
-        public void Initialize(Sprite sprite, int index, int cost)
+        public void Initialize(string blockName, Sprite sprite, Color color, int index, int cost)
         {
             icon.sprite = sprite;
+            icon.color = color;
             buttonText.text = (index + 1).ToString();
             moneyText.text = cost.ToString();
+            nameText.text = blockName;
         }
     }
 }

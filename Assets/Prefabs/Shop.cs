@@ -7,14 +7,18 @@ using System;
 public struct BlockForSale
 {
     public Sprite icon;
+    public Color color;
     public GameObject block;
     public int price;
+    public string blockName;
 
-    public BlockForSale(Sprite icon, GameObject block, int price)
+    public BlockForSale(Sprite icon,Color color , GameObject block, int price, string blockName)
     {
         this.icon = icon;
+        this.color = color;
         this.block = block;
         this.price = price;
+        this.blockName = blockName;
     }
 
 }

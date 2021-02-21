@@ -22,7 +22,7 @@ namespace Game
             for (int i = 0; i < sales.Count; i++)
             {
                 ShopSaleUI clone = Instantiate(shopSaleUI, parent);
-                clone.Initialize(sales[i].icon, i, sales[i].price);
+                clone.Initialize(sales[i].blockName, sales[i].icon, sales[i].color, i, sales[i].price);
             }
         }
 
