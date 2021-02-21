@@ -49,7 +49,7 @@ MonoBehaviour:
     timeToDestroy: 7
   - identifier: EnemyCore
     particles: {fileID: 8408944806167709922, guid: 72207e7573ff7ac4b9ceefd659dd7f83, type: 3}
-    timeToDestroy: 0
+    timeToDestroy: 5
   - identifier: Block
     particles: {fileID: 6015092167372078745, guid: 9517ee555488fa446bf6207b7e8b1ec3, type: 3}
-    timeToDestroy: 0
+    timeToDestroy: 5
