@@ -68,20 +68,20 @@ public class Shop : MonoBehaviour
 
     public Game.BlockSide CheckBlockPosition(Vector2 mousePosition)
     {
-        freeSide.SetActive(false);
-        Vector2 direction = Vector2.zero;
+        //freeSide.SetActive(false);
+        //Vector2 direction = Vector2.zero;
 
-        RaycastHit2D[] hit = Physics2D.RaycastAll(mousePosition, direction, 0, sideLayer);
+        //RaycastHit2D[] hit = Physics2D.RaycastAll(mousePosition, direction, 0, sideLayer);
 
-        foreach (var item in hit)
-        {
-            Game.BlockSide side = item.collider.GetComponent<Game.BlockSide>();
-            if (side && !side.GetLocked())
-            {
-                PlaceFreeSide(side);
-                return side;
-            }
-        }
+        //foreach (var item in hit)
+        //{
+        //    Game.BlockSide side = item.collider.GetComponent<Game.BlockSide>();
+        //    if (side && !side.GetLocked())
+        //    {
+        //        PlaceFreeSide(side);
+        //        return side;
+        //    }
+        //}
 
         return null;
     }
