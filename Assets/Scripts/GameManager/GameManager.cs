@@ -78,7 +78,7 @@ namespace Game
             bool isLastRound = currentRoundIndex == rounds.Count - 1;
             if(isLastRound)
             {
-                GameWin();
+                Invoke("GameWin", 4);
             }
             else
             {
@@ -177,7 +177,7 @@ namespace Game
 
         private void OnPlayerKilled(Block blockDestroyed)
         {
-            GameLose();
+            Invoke("GameLose", 4);
         }
 
         private void OnEnemyKilled(Block blockDestroyed)
