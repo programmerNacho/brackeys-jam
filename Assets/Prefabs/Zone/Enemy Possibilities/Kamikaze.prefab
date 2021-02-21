@@ -63,6 +63,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4321500262270838346, guid: 4af0602b687978d42b3e3271dbf18213, type: 3}
+      propertyPath: flankTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321500262270838346, guid: 4af0602b687978d42b3e3271dbf18213, type: 3}
+      propertyPath: flankAngle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321500262270838346, guid: 4af0602b687978d42b3e3271dbf18213, type: 3}
+      propertyPath: lookToTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5843019193738606765, guid: 4af0602b687978d42b3e3271dbf18213, type: 3}
       propertyPath: m_RootOrder
       value: 7
