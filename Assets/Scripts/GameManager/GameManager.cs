@@ -104,7 +104,7 @@ namespace Game
             {
                 OnWin.Invoke();
                 alreadyWin = true;
-                Debug.Log("Win!");
+                FindObjectOfType<Menus>().SetCurrentMenu(Menus.Menu.win);
             }
         }
 
@@ -114,7 +114,7 @@ namespace Game
             {
                 OnLose.Invoke();
                 alreadyLost = true;
-                Debug.Log("Lose!");
+                FindObjectOfType<Menus>().SetCurrentMenu(Menus.Menu.fail);
             }
         }
 

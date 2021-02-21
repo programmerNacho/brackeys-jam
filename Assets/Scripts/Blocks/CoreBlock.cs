@@ -11,6 +11,8 @@ namespace Game
         [SerializeField]
         private List<Block> blocksList = new List<Block>();
 
+        public bool isAlive = true;
+
         public int rateOfFireBoost = 0;
         public int speedBoost = 0;
         public int weight = 0;

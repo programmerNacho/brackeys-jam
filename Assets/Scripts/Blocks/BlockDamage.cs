@@ -90,6 +90,9 @@ namespace Game
                 Destroy(item);
             }
 
+            CoreBlock core = myBlock.gameObject.GetComponent<CoreBlock>();
+            if (core) core.isAlive = false;
+
             OnBlockDestroyed.Invoke(myBlock);
         }
 

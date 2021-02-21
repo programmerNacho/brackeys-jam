@@ -23,11 +23,7 @@ public class AutoShot : MonoBehaviour
 
     private void SetCoreList()
     {
-        //oresList = FindObjectsOfType<Game.CoreBlock>();
-        foreach (var coreFound in coresList)
-        {
-            bool coreIsEnemy = coreFound != myCore && coreFound.CurrentAffiliation != myCore.CurrentAffiliation;
-        }
+        coresList = FindObjectsOfType<Game.CoreBlock>();
     }
     private void Tick()
     {
@@ -45,6 +41,8 @@ public class AutoShot : MonoBehaviour
         target = null;
         float distanceToTarget = 0;
 
+        SetCoreList();
+
         foreach (var coreFound in coresList)
         {
             if (!coreFound)
@@ -54,7 +52,7 @@ public class AutoShot : MonoBehaviour
 
             bool coreIsEnemy = coreFound != myCore && coreFound.CurrentAffiliation != myCore.CurrentAffiliation;
 
-            if (coreIsEnemy)
+            if (coreIsEnemy && coreFound.isAlive)
             {
                 float distanceToCoreFound = Vector2.Distance((Vector2)transform.position, (Vector2)coreFound.transform.position);
                 bool coreIsCloser = !target || distanceToCoreFound < distanceToTarget;
