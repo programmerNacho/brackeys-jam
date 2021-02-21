@@ -44,7 +44,7 @@ namespace Game
 
             set
             {
-                volumeFX = Mathf.Clamp(Mathf.Log10(value) * 20.0f, -80f, 0f);
+                volumeFX = value;
                 gameMixer.SetFloat("VolumeFX", volumeFX);
             }
         }
@@ -58,9 +58,32 @@ namespace Game
 
             set
             {
-                volumeMusic = Mathf.Log10(value) * 20.0f;
-                //volumeMusic = Mathf.Clamp(value, -80f, 0f);
+                volumeMusic = value;
                 gameMixer.SetFloat("VolumeMusic", volumeMusic);
+            }
+        }
+
+        public void MusicChange()
+        {
+            if (VolumeMusic == -80f)
+            {
+                VolumeMusic = -10f;
+            }
+            else
+            {
+                VolumeMusic = -80f;
+            }
+        }
+
+        public void FXChange()
+        {
+            if(VolumeFX == -80f)
+            {
+                VolumeFX = -10f;
+            }
+            else
+            {
+                VolumeFX = -80f;
             }
         }
 
