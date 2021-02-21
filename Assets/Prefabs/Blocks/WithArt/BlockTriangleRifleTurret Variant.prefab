@@ -568,7 +568,7 @@ MonoBehaviour:
   - {fileID: 2030999485682974037}
   parentSideConnectedWithMe: {fileID: 0}
   CanDock: 1
-  health: 5
+  health: 2
   activateColor: {r: 1, g: 1, b: 0.101960786, a: 1}
   desactivateColor: {r: 0.25, g: 0.25, b: 0.101960786, a: 1}
   sprites: []
