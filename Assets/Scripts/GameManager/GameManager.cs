@@ -57,10 +57,10 @@ namespace Game
                 currentRoundIndex = 0;
             }
 
-            Invoke("InitiateRound", 0.1f);
+            //Invoke("InitiateRound", 1f);
         }
 
-        private void InitiateRound()
+        public void InitiateRound()
         {
             CreatePlayer();
             CreateEnemies();
