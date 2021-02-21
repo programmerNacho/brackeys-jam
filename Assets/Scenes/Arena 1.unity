@@ -7011,6 +7011,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1602845945120074945, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1867662331748779919, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7047,6 +7051,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -42.3
       objectReference: {fileID: 0}
+    - target: {fileID: 4335255917340452765, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4453701105988989503, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7058,6 +7066,10 @@ PrefabInstance:
     - target: {fileID: 4668369800416670739, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842285372194284960, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5281104581406049348, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
       propertyPath: m_LocalScale.y
@@ -7151,6 +7163,14 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: cf6cbc424cf89ee4f85884c007690555, type: 3}
+    - target: {fileID: 8087314145896518475, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8627001044248648221, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab4cfa0d178ce494ca9978ef35f32e3f, type: 3}
 --- !u!1 &1834022369
