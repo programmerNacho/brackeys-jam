@@ -529,8 +529,8 @@ MonoBehaviour:
   body: {fileID: 0}
   rotateSpeed: 2
   moveSpeed: 60
-  speedReductionByWeigth: 0.5
-  boostIncrement: 5
+  speedReductionByWeigth: 2
+  boostIncrement: 10
   baseMaxSpeed: 60
   baseMinSpeed: 20
   shotRate: 0.5
@@ -596,6 +596,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   blocksList: []
+  isAlive: 1
   rateOfFireBoost: 0
   speedBoost: 0
   weight: 1
