@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 7107342824512462954, guid: 35e2e0b1bf1f2f24cb402790f90d7194, type: 3}
-  moneyWon: 100
+  moneyWon: 150

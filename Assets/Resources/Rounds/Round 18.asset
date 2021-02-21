@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 7985228585283250486, guid: ee32751eb1387fe499fd5121b1df9c49, type: 3}
   - {fileID: 9151934536695188813, guid: d0271a65ffb8ca248a1eee63b87950d8, type: 3}
   - {fileID: 7060931840688125760, guid: f3041c32ed9cf364fb22bc213f02df6d, type: 3}
-  moneyWon: 100
+  moneyWon: 1000

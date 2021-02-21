@@ -15,4 +15,4 @@ MonoBehaviour:
   enemies:
   - {fileID: 7107342824512462954, guid: 935e18cb6eb75b9409557f80cf23c659, type: 3}
   - {fileID: 7107342824512462954, guid: f6992da32cc45254fae5af1ed3131177, type: 3}
-  moneyWon: 100
+  moneyWon: 300

@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 7107342824512462954, guid: 935e18cb6eb75b9409557f80cf23c659, type: 3}
   - {fileID: 7107342824512462954, guid: 002eabeb27edffb439dfe6de3666cf1b, type: 3}
   - {fileID: 7107342824512462954, guid: feeb1cf5ce95162448ccf71741102514, type: 3}
-  moneyWon: 100
+  moneyWon: 400
