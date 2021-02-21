@@ -47,7 +47,7 @@ public class Shop : MonoBehaviour
 
         if (iHaveMoney && block)
         {
-            Game.BlockSide side = CheckBlockPosition(mousePosition);
+            //Game.BlockSide side = CheckBlockPosition(mousePosition);
 
             Game.Block newBlock = Instantiate(block, mousePosition, new Quaternion()).GetComponentInParent<Game.Block>();
             RemoveMoney(saleList[saleListPos].price);
